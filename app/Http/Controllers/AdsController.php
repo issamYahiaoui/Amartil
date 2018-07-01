@@ -1,0 +1,171 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Ads;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class AdsController extends Controller
+{
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+         $view = Auth::user()->hasCustomerRole() ? "front" :"dashboard" ;
+
+        return view($view.'.ads.list',[
+            'list'=> Ads::all(),
+            'active'=>'ads',
+            'title'=> "Ads",
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $view = Auth::user()->hasCustomerRole() ? "front" :"dashboard" ;
+        return view($view.'.ads.add',[
+            'active'=>'ads',
+            'title'=> "Add Ads",
+
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+   dd($request->all()) ;
+
+
+        $rules = [
+//            'title' => 'required',
+//            'description' => 'required',
+//            'price' => 'required',
+        ];
+        $rules = [
+
+        ];
+
+        $this->validate($request, $rules);
+
+
+        $ads =  Ads::create([
+            'title' => $request->get('title'),
+            'subtitle' => $request->get('subtitle'),
+            'description' => $request->get('description'),
+            'price' => $request->get('price'),
+            'owner_phone' => $request->get('owner_phone'),
+            'adr' => $request->get('adr'),
+            'lat' => $request->get('lat'),
+            'log' => $request->get('log'),
+            'featured' => $request->get('featured') ? 1:0,
+
+            'category_id' => $request->get('category_id'),
+            'customer_id' => Auth::user()->id ,
+
+        ]);
+
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+
+        ];
+
+        $this->validate($request, $rules);
+
+        $ads =  Ads::find($id)->update([
+            'title' => $request->get('title'),
+            'subtitle' => $request->get('subtitle'),
+            'description' => $request->get('description'),
+            'price' => bcrypt($request->get('price')),
+            'owner_phone' => bcrypt($request->get('owner_phone')),
+            'adr' => bcrypt($request->get('adr')),
+            'lat' => bcrypt($request->get('lat')),
+            'log' => bcrypt($request->get('log')),
+            'featured' => $request->get('featured') ? 1:0,
+            'active' => $request->get('active') ? 1:0,
+            'category_id' => bcrypt($request->get('category_id')),
+            'customer_id' => Auth::user()->id ,
+
+        ]);
+
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+
+        Ads::find($id)->delete() ;
+
+        return Redirect::back();
+    }
+}
