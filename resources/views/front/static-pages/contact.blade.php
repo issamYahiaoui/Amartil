@@ -20,7 +20,7 @@
                                     </div>
                                 @endif
                                 <div class="row">
-                                    <form action="{{url('contact')}}" class="listar-formtheme listar-formcontactus">
+                                    <form method="POST" action="{{url('contact')}}" class="listar-formtheme listar-formcontactus">
                                         @csrf
                                         <fieldset>
                                             <h2>Contact Form</h2>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session ;
+use Illuminate\Support\Facades\Redirect ;
 
 class HomeController extends Controller
 {
@@ -52,6 +54,7 @@ class HomeController extends Controller
 
 
         ];
+
 
         $this->validate($request, $rules);
 
