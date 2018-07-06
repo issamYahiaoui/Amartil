@@ -17,7 +17,7 @@ class RedirectIfAdmin
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::user()->role !== "admin" ||Auth::user()->role !== "superadmin"  ) {
+        if (Auth::user()->role === "customer"  ) {
             return redirect('/');
         }
 

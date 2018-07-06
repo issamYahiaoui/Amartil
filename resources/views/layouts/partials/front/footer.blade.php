@@ -4,7 +4,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="listar-upperbox">
-                        <strong class="listar-logo"><a href="javascript:void(0);"><img src="{{asset('front/images/logo.png')}}" alt="image description"></a></strong>
+                        <strong class="listar-logo"><a href="javascript:void(0);"> <img width="50px" height="50px" src="{{asset('front/images/logomartil.png')}}" alt="homepage" class="light-logo" />
+                            </a></strong>
                         <ul class="listar-socialicons">
                             <li class="listar-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
                             <li class="listar-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>

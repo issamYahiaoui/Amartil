@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Ads;
+use App\AdsPhoto;
+use App\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class AdsController extends Controller
 {
@@ -23,7 +27,7 @@ class AdsController extends Controller
      */
     public function index()
     {
-         $view = Auth::user()->hasCustomerRole() ? "front" :"dashboard" ;
+         $view ="dashboard" ;
 
         return view($view.'.ads.list',[
             'list'=> Ads::all(),
@@ -39,7 +43,7 @@ class AdsController extends Controller
      */
     public function create()
     {
-        $view = Auth::user()->hasCustomerRole() ? "front" :"dashboard" ;
+        $view ="dashboard" ;
         return view($view.'.ads.add',[
             'active'=>'ads',
             'title'=> "Add Ads",
@@ -113,6 +117,34 @@ class AdsController extends Controller
     public function edit($id)
     {
         //
+        $ads = Ads::find($id) ;
+        if (!$ads) abort(404) ;
+        $view_name = null  ; $model = null  ;
+        if ($ads->apartment()){
+            $view_name = "dashboard.ads.apartments.edit" ;
+            $model = $ads->apartment() ;
+        } else {
+            if ($ads->car()) {
+                $view_name = "dashboard.ads.cars.edit" ;
+                $model = $ads->car() ;
+
+            }
+        }
+
+        return view($view_name,[
+            'model' => $model ,
+            'title' => 'ads' ,
+            'active' => 'ads'
+        ]) ;
+    }
+
+    public function deleteImage($id){
+        $img  = AdsPhoto::find($id) ;
+        if (!$img) abort(404) ;
+         $img->delete();
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
     }
 
     /**

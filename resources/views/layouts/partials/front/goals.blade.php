@@ -5,7 +5,7 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="listar-feature">
                         <span class="listar-featureicon"><i class="icon-layers"></i></span>
-                        <h2><span class="listar-bluethemecolor">01</span> Choose a Category</h2>
+                        <h2><span class="listar-bluethemecolor">01</span> Choisir Une Categorie</h2>
                         <div class="listar-description">
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer nihil imperdiet doming...</p>
                         </div>
@@ -14,7 +14,7 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="listar-feature">
                         <span class="listar-featureicon"><i class="icon-map3"></i></span>
-                        <h2><span class="listar-bluethemecolor">02</span> Find Location</h2>
+                        <h2><span class="listar-bluethemecolor">02</span> Trouver La meilleure annonce</h2>
                         <div class="listar-description">
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer nihil imperdiet doming...</p>
                         </div>
@@ -23,7 +23,7 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <div class="listar-feature">
                         <span class="listar-featureicon"><i class="icon-hotairballoon"></i></span>
-                        <h2><span class="listar-bluethemecolor">03</span> Go have Fun</h2>
+                        <h2><span class="listar-bluethemecolor">03</span>Contactez L'annonceur</h2>
                         <div class="listar-description">
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer nihil imperdiet doming...</p>
                         </div>

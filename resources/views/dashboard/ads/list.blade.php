@@ -56,13 +56,19 @@
                         </thead>
 
                         <tbody>
+
                         @foreach($list as $model)
 
                             <tr>
                                 <td style="width: 20%"  class="text-center" >
-                                    <img width="100%" class="img-responsive" src="{{asset('/dashboard/images/prop1.jpeg')}}" alt="">
-                                </td>
 
+                                    @if(count($model->images()) > 0)
+                                        <img width="100%" class="img-responsive" src="{{asset('images/'.$model->images()[0]->filename)}}" alt="">
+                                        @else
+                                        <img width="100%" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
+                                    @endif
+
+                                </td>
                                 <td class="text-center">{{$model->title}}</td>
                                 <td class="text-center">{{$model->description}}</td>
                                 <td class="text-center">{{$model->price}}</td>
@@ -70,8 +76,8 @@
 
                                 <td class="text-center"  style="display: flex ; justify-content: space-around ; align-items: center ; width: available">
 
-                                        <form action="{{url('ads/'.$model->id)}}" method="POST" >
-                                            @method('PUT')
+                                        <form action="{{url('ads/'.$model->id.'/edit')}}" method="GET" >
+
                                             @csrf
                                             <div class="row">
                                                 <button type="submit" class="btn btn-block btn-outline-danger "><li class="fa fa-edit"></li></button>

@@ -4,10 +4,10 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="listar-sectionhead">
                     <div class="listar-sectiontitle">
-                        <h2>Latest News Posts</h2>
+                        <h2>Les dernieres publications</h2>
                     </div>
                     <div class="listar-description">
-                        <p>Checkout Latest News and Articles from <a class="listar-bluethemecolor" href="javascript:void(0);">Our Blog</a></p>
+                        <p>Checkez les derniers articles de  <a class="listar-bluethemecolor" href="javascript:void(0);">Our Blog</a></p>
                     </div>
                 </div>
             </div>

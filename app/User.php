@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Tour;
+use App\Ads ;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -32,6 +32,9 @@ class User extends Authenticatable
     }
     public function admin(){
         return User::where('role', 'superadmin')->first() ;
+    }
+    public function ads(){
+        return Ads::where('customer_id', $this->id)->get() ;
     }
 
 

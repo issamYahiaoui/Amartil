@@ -29,7 +29,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/users';
-    protected $redirectToCustomer = '/users';
+    protected $redirectToCustomer = '/u/dashboard';
 
     /**
      * Create a new controller instance.
@@ -81,7 +81,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->role === "customer") {
-            return $this->redirect($this->redirectToCustomer) ;
+            return \redirect($this->redirectToCustomer) ;
         }
         return redirect($this->redirectTo);
     }

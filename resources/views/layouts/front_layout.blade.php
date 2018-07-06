@@ -6,10 +6,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BootStrap HTML5 CSS3 Theme</title>
+    <title>{{config('app.name')}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{asset('front/favicon.png')}}">
+    {{--<link rel="shortcut icon" href="http://2.bp.blogspot.com/-bzr9RZlrgKI/Vc1FUbD2cQI/AAAAAAAAAIk/LZkCb1lVfVg/s1600/favicon.jpg">--}}
+    {{--<link rel="icon" href="{{asset('front/favicon.png')}}">--}}
+    <link rel="icon" href="{{asset('front/images/logomartil.png')}}" alt="homepage">
     <link rel="stylesheet" href="{{asset('front/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/bootstrap-slider.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/normalize.css')}}">
@@ -27,6 +29,28 @@
     <link rel="stylesheet" href="{{asset('front/style.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
+
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/util.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/common.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/geocoder.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/map.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/marker.js"></script>
+    <style type="text/css">.gm-style {
+            font: 400 11px Roboto, Arial, sans-serif;
+            text-decoration: none;
+        }
+        .gm-style img { max-width: none; }</style>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/onion.js"></script>
+    <style type="text/css">@-webkit-keyframes _gm8744 {
+                               0% { -webkit-transform: translate3d(0px,0px,0); -webkit-animation-timing-function: ease-out; }
+                               50% { -webkit-transform: translate3d(0px,-20px,0); -webkit-animation-timing-function: ease-in; }
+                               100% { -webkit-transform: translate3d(0px,0px,0); -webkit-animation-timing-function: ease-out; }
+                           }
+    </style>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/controls.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/stats.js"></script>
+
+
     <script src="{{asset('front/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
 </head>
 <body class="listar-home listar-homeone">
@@ -40,6 +64,7 @@
     <div class="pin"></div>
     <div class="pulse"></div>
 </div>
+@include('layouts.partials.front.header')
 <!--************************************
         Preloader End
 *************************************-->
@@ -47,99 +72,16 @@
         Wrapper Start
 *************************************-->
 <div id="listar-wrapper" class="listar-wrapper listar-haslayout">
-    <!--************************************
-            Header Start
-    *************************************-->
-   @include('layouts.partials.front.header')
-    <!--************************************
-            Header End
-    *************************************-->
-    <!--************************************
-            Home Slider Start
-    *************************************-->
-   @include('layouts.partials.front.bannerslider')
-    <!--************************************
-            Home Slider End
-    *************************************-->
-    <!--************************************
-            Main Start
-    *************************************-->
-    <main id="listar-main" class="listar-main listar-haslayout">
-        <!--************************************
-                Explore The City Start
-        *************************************-->
-      @include('layouts.partials.front.explorecities')
-        <!--************************************
-                Explore The City End
-        *************************************-->
-        <!--************************************
-                Best Theme Video Start
-        *************************************-->
-        @include('layouts.partials.front.parallex1')
-        <!--************************************
-                Best Theme Video End
-        *************************************-->
-        <!--************************************
-                Theme Features Start
-        *************************************-->
-       @include('layouts.partials.front.goals')
-        <!--************************************
-                Theme Features End
-        *************************************-->
-        <!--************************************
-                Explore The City Start
-        *************************************-->
-      @include('layouts.partials.front.categories')
-        <!--************************************
-                Explore The City End
-        *************************************-->
-        <!--************************************
-                Discover New Places Start
-        *************************************-->
-     @include('layouts.partials.front.places')
-        <!--************************************
-                Discover New Places End
-        *************************************-->
-        <!--************************************
-                Add Listing Start
-        *************************************-->
-        @include('layouts.partials.front.parallex2')
-        <!--************************************
-                Add Listing End
-        *************************************-->
-        <!--************************************
-                Blog Post Start
-        *************************************-->
-       @include('layouts.partials.front.posts')
-        <!--************************************
-                Blog Post End
-        *************************************-->
-        <!--************************************
-                Testimonials Start
-        *************************************-->
-       @include('layouts.partials.front.feedback')
-        <!--************************************
-                Testimonials End
-        *************************************-->
-        <!--************************************
-                Three Columns Start
-        *************************************-->
-        @include('layouts.partials.front.newsletter')
-        <!--************************************
-                Three Columns End
-        *************************************-->
-    </main>
-    <!--************************************
-            Main End
-    *************************************-->
-    <!--************************************
-            Footer Start
-    *************************************-->
-    @include('layouts.partials.front.footer')
-    <!--************************************
-            Footer End
-    *************************************-->
+
+   @yield('content')
 </div>
+
+
+
+
+
+
+@include('layouts.partials.front.footer')
 <!--************************************
         Wrapper End
 *************************************-->

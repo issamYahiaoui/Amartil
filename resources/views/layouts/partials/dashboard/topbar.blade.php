@@ -10,14 +10,14 @@
                     <!-- Dark Logo icon -->
                     <img src="{{asset('dashboard/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
                     <!-- Light Logo icon -->
-                    <img src="{{asset('dashboard/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                    <img width="50px" height="50px" src="{{asset('front/images/logomartil.png')}}" alt="homepage" class="light-logo" />
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text --><span>
                          <!-- dark Logo text -->
-                         <img src="{{asset('dashboard/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
+                         {{--<img src="{{asset('dashboard/images/logo-text.png')}}" alt="homepage" class="dark-logo" />--}}
                     <!-- Light Logo text -->
-                         <img src="{{asset('dashboard/images/logo-light-text.png')}}" class="light-logo" alt="homepage" /></span> </a>
+                         <img width="50px" height="50px" class="light-logo" alt="" hidden /></span> </a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->

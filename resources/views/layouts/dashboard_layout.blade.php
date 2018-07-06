@@ -9,7 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" src="{{asset('dashboard/images/logo-icon.png')}}">
+    {{--<link rel="shortcut icon" href="http://2.bp.blogspot.com/-bzr9RZlrgKI/Vc1FUbD2cQI/AAAAAAAAAIk/LZkCb1lVfVg/s1600/favicon.jpg">--}}
+    <link rel="icon" href="{{asset('front/images/logomartil.png')}}" alt="homepage">
+
+    {{--<link rel="icon" type="image/png" sizes="16x16" src="{{asset('dashboard/images/logo-icon.png')}}">--}}
     <title>Amartli</title>
     <!-- Custom CSS -->
     <link href="{{asset('dashboard/css/style.min.css')}}" rel="stylesheet">
@@ -85,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            @yield('list-card')
+            @yield('grey-content')
         </div>
         <!-- ============================================================== -->
         <!-- End PAge Content -->

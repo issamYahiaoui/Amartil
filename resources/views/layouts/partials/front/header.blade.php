@@ -2,52 +2,38 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <strong class="listar-logo"><a href="index.html"><img src="{{asset('front/images/logo.png')}}" alt="company logo here"></a></strong>
+                <strong class="listar-logo">
+
+                        <a href="{{url('/')}}">
+                            <img  width="50px" height="50px" class="img-responsive" src="{{asset('front/images/logomartil.png')}}" alt="company logo here">
+
+
+                        </a>
+
+
+
+
+
+                </strong>
+
                 <nav class="listar-addnav">
                     <ul>
                         <li>
-                            <a id="listar-btnsignin" class="listar-btn listar-btnblue" href="#listar-loginsingup">
-                                <i class="icon-smiling-face"></i>
-                                <span>Join Now</span>
-                            </a>
+                            @if( ! \Illuminate\Support\Facades\Auth::user())
+
+                                <a id="listar-btnsignin" class="listar-btn listar-btnblue" href="#listar-loginsingup">
+                                    <i class="icon-smiling-face"></i>
+                                    <span>Se Connecter</span>
+                                </a>
+                            @endif
                         </li>
                         <li>
                             <a class="listar-btn listar-btngreen" href="dashboardaddlisting.html">
                                 <i class="icon-plus"></i>
-                                <span>Add Listing</span>
+                                <span>Ajouter Une Annonce </span>
                             </a>
                         </li>
-                        <li>
-                            <div class="dropdown listar-themedropdown">
-                                <a id="listar-cartdropdown" class="listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <em>2</em>
-                                    <i class="icon-icons240"></i>
-                                </a>
-                                <div class="dropdown-menu listar-themedropdownmenu listar-minicart" aria-labelledby="listar-cartdropdown">
-                                    <div class="listar-cartitem">
-                                        <figure><a href="javascript:void(0);"><img src="{{asset('front/images/cart/img-01.jpg')}}" alt="image description"></a></figure>
-                                        <div class="listar-iteminfo">
-                                            <span>Orange Juice</span>
-                                            <span>2 x $15</span>
-                                            <a class="listar-btndelate" href="javascript:void(0);">X</a>
-                                        </div>
-                                    </div>
-                                    <div class="listar-cartitem">
-                                        <figure><a href="javascript:void(0);"><img src="{{asset('front/images/cart/img-01.jpg')}}" alt="image description"></a></figure>
-                                        <div class="listar-iteminfo">
-                                            <span>Orange Juice</span>
-                                            <span>2 x $15</span>
-                                            <a class="listar-btndelate" href="javascript:void(0);">X</a>
-                                        </div>
-                                    </div>
-                                    <div class="listar-cartitem listar-totalarea">
-                                        <span>Order Total:</span>
-                                        <span>$60.00</span>
-                                    </div>
-                                    <a class="listar-btn listar-btngreen listar-btn-lg" href="javascript:void(0);">View Bag &amp; Checkout</a>
-                                </div>
-                            </div>
-                        </li>
+
                     </ul>
                 </nav>
                 <nav id="listar-nav" class="listar-nav">
@@ -61,89 +47,77 @@
                     </div>
                     <div id="listar-navigation" class="collapse navbar-collapse listar-navigation">
                         <ul>
-                            <li class="menu-item-has-children current-menu-item">
-                                <a href="javascript:void(0);">Home</a>
-                                <ul class="sub-menu">
-                                    <li class="current-menu-item"><a href="index.html">Home v 1</a></li>
-                                    <li><a href="indexv2.html">Home v 2</a></li>
-                                    <li><a href="indexv3.html">Home v 3</a></li>
-                                    <li><a href="indexv4.html">Home v 4</a></li>
-                                </ul>
+                            <li class="menu-item current-menu-item">
+                                <a href="{{url('/')}}">Acceuil</a>
+
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">Explore</a>
+                                <a href="javascript:void(0);">Explorer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="listingvlist.html">All Listings</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Food</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Cafe</a></li>
-                                            <li><a href="listingv2.html">Restaurant</a></li>
-                                            <li><a href="listingv1.html">Dinner</a></li>
-                                            <li><a href="listingv2.html">Pizza Place</a></li>
-                                            <li><a href="listingv1.html">Italian</a></li>
-                                            <li><a href="listingv2.html">Bakeries</a></li>
-                                        </ul>
+                                    <li><a href="{{url('all-ads')}}">Tous les annonces</a></li>
+                                    <li class="menu-item">
+                                        <a href="javascript:void(0);">Appartements</a>
+
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Entertainment</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Art &amp; Design</a></li>
-                                            <li><a href="listingv2.html">Movie Theater</a></li>
-                                            <li><a href="listingv1.html">Theme Parks</a></li>
-                                            <li><a href="listingv2.html">Music Life</a></li>
-                                        </ul>
+                                    <li class="menu-item">
+                                        <a href="javascript:void(0);">Vehicules</a>
+
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Educational</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">School</a></li>
-                                            <li><a href="listingv2.html">College</a></li>
-                                            <li><a href="listingv1.html">University</a></li>
-                                            <li><a href="listingv2.html">Short Courses</a></li>
-                                        </ul>
+                                    <li class="menu-item">
+                                        <a href="javascript:void(0);">Autres</a>
+
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Nightlife</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Wine Bars</a></li>
-                                            <li><a href="listingv2.html">Pubs</a></li>
-                                            <li><a href="listingv1.html">Nightclub</a></li>
-                                            <li><a href="listingv2.html">Lounge</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Outdoors</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Boutiques</a></li>
-                                            <li><a href="listingv2.html">Fashion</a></li>
-                                            <li><a href="listingv1.html">Furniture</a></li>
-                                            <li><a href="listingv2.html">Sport Equipment</a></li>
-                                        </ul>
-                                    </li>
+
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="howitwork.html">How It Works</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="pkgprice.html">Packages</a></li>
-                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                    <li><a href="contactus.html">Contact Us</a></li>
-                                    <li><a href="404error.html">404 Error</a></li>
-                                    <li><a href="comingsoon.html">Coming Sooon</a></li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="{{url('faq')}}">FAQ</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="newsv1.html">Blog Standard</a></li>
-                                    <li><a href="newsv2.html">Blog Classic</a></li>
-                                    <li><a href="newsv3.html">Blog sidebar</a></li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="{{url('contact')}}">Contact</a>
+
                             </li>
-                            <li><a href="dashboard.html">Dasboard</a></li>
+                            <li><a href="{{url('blog')}}">Blog</a></li>
+                            <li><a href="{{url('u/dashboard')}}">Dasboard</a></li>
+                            @if(\Illuminate\Support\Facades\Auth::user())
+                                <li class="menu-item-has-children">
+                                    <a  class="listar-btn " href="javascript:void(0);">
+                                        <i class="fa fa-user-circle"></i>
+                                        <span> {{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a  href="{{url('u/dashboard')}}">
+                                                <i class="icon-speedometer2"></i>
+                                                <span>Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a  href="{{url('u/ads')}}">
+                                                <i class="icon-layers"></i>
+                                                <span>Mes Annonces</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a  href="{{url('u/profile')}}">
+                                                <i class="icon-user2"></i>
+                                                <span>Profile</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                <i class="icon-lock6"></i>  Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </nav>

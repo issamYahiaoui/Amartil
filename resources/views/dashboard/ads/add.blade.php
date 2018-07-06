@@ -25,147 +25,31 @@
                 </div>
             </div>
         </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card ">
 
-                        <div class="card-body">
-                            <form method="POST" action="{{ url('ads') }}"class="form-horizontal">
-                                @csrf
-
-                                <div class="form-body">
-                                    <h3 class="box-title">Basic Information</h3>
-                                    <hr class="m-t-0 m-b-40">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Listing Title</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="John doe">
-                                                    <small class="form-control-feedback">  </small> </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Video Url</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="">
-                                                    <small class="form-control-feedback"> </small> </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-                                    </div>
-                                    <!--/row-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Category</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control custom-select">
-                                                        @foreach( \App\Category::all() as $category )
-                                                        <option value="{{$category->id}}"> {{ $category->name }}</option>
-                                                            @endforeach
-                                                    </select>
-                                                    <small class="form-control-feedback"> </small> </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Phone number</label>
-                                                <div class="col-md-9">
-                                                    <input type="number" class="form-control" placeholder="">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-                                    </div>
-                                    <!--/row-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Address</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Price</label>
-                                                <div class="col-md-9">
-                                                    <input type="number" class="form-control" placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-
-                                        <!--/span-->
-                                    </div>
-                                    <h3 class="box-title">Social media</h3>
-                                    <hr class="m-t-0 m-b-40">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Facebook Url</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label text-right col-md-3">Twitter Url</label>
-                                                <div class="col-md-9">
-                                                    <input type="number" class="form-control" placeholder="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-
-                                        <!--/span-->
-                                    </div>
-                                    <h3 class="box-title">Gallery</h3>
-                                    <hr class="m-t-0 m-b-40">
-                                    <div class="row">
-
-                                        <input name="files" type="file" class="form-control" multiple hidden >
-                                        <button id="triggerFile" type="button" class="btn btn-outline-info btn-rounded"><i class="fa fa-file-photo-o"></i> Upload Images</button>
-
-                                    </div>
-                                    <br> <br>
-
-                                        <div id="result" class=""  >
-
-                                        </div>
-                                    <br> <br>
-
-                                    <!--/row-->
-                                </div>
-                                <hr>
-                                <div class="form-actions">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-offset-3 col-md-9">
-                                                    <button type="submit" class="btn btn-success">Submit</button>
-                                                    <button type="button" class="btn btn-inverse">Cancel</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6"> </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="row " style="display: flex ; justify-content: space-around">
+                <div class="">
+                    <a class="btn btn-primary"
+                    href="{{url('apartments/create')}}"
+                    >
+                        <li class="fa fa-home"></li>
+                        Add Apartment ad
+                    </a>
+                </div>
+                <div class="">
+                    <a class="btn btn-info"
+                    href="{{url('cars/create')}}"
+                    >
+                        <li class="fa fa-car"></li>
+                        Add Car ad
+                    </a>
                 </div>
             </div>
+        </div>
+
     </div>
 @endsection
+
 
 
 @section('js')
@@ -222,6 +106,8 @@
 
     </script>
     @endsection
+
+
 
 
 @section('css')

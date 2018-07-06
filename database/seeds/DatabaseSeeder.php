@@ -51,30 +51,26 @@ class DatabaseSeeder extends Seeder
             'name' =>'Category 5' ,
 
         ]) ;
-        $ads =  \App\Ads::create([
-            'title' => 'prop 1' ,
-            'subtitle' => 'prop1 subtitle',
-            'owner_phone' => '0123456789',
-            'description' => 'lorem epsum .......' ,
-            'price' => 120 ,
-
-        ]) ;
-        \App\Ads::create([
-            'title' => 'prop 2' ,
-            'subtitle' => 'prop2 subtitle',
-            'owner_phone' => '0123456789',
-            'description' => 'lorem epsum .......' ,
-            'price' => 120 ,
-
-        ]) ;
-        \App\Ads::create([
-            'title' => 'prop 3' ,
-            'subtitle' => 'prop3 subtitle',
-            'owner_phone' => '0123456789',
-            'description' => 'lorem epsum .......' ,
-            'price' => 120 ,
-
-        ]) ;
+//        $ads =  \App\Ads::create([
+//            'title' => 'prop 1' ,
+//
+//            'owner_phone' => '0123456789',
+//
+//
+//
+//        ]) ;
+//        \App\Ads::create([
+//            'title' => 'prop 2' ,
+//            'owner_phone' => '0123456789',
+//
+//
+//        ]) ;
+//        \App\Ads::create([
+//            'title' => 'prop 3' ,
+//            'owner_phone' => '0123456789',
+//
+//
+//        ]) ;
 
     }
 }

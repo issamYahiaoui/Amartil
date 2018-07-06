@@ -28,13 +28,13 @@
                         <li><a href="{{url('ads/create')}}">Add Ads</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-dashboard"></i>
-                        <span class="hide-menu">Categories</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{url('categories')}}">Categories</a></li>
-                        <li><a href="{{url('categories/create')}}">Add Category</a></li>
-                    </ul>
-                </li>
+                {{--<li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-dashboard"></i>--}}
+                        {{--<span class="hide-menu">Categories</span></a>--}}
+                    {{--<ul aria-expanded="false" class="collapse">--}}
+                        {{--<li><a href="{{url('categories')}}">Categories</a></li>--}}
+                        {{--<li><a href="{{url('categories/create')}}">Add Category</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-comment"></i>
                         <span class="hide-menu">Blog</span></a>
                     <ul aria-expanded="false" class="collapse">

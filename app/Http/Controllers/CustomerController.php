@@ -18,6 +18,22 @@ class CustomerController extends Controller
         //
     }
 
+    public function dashboard(){
+        return view('front.dashboard.index') ;
+    }
+    public function profile(){
+        return view('front.dashboard.profile') ;
+    }
+    public function ads(){
+        return view('front.dashboard.ads.list') ;
+    }
+    public function addAd(){
+    return view('front.dashboard.ads.add') ;
+}
+
+
+
+
 
 
     /**
