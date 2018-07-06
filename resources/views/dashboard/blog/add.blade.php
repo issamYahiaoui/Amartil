@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="from-group row ">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Article image</label>
+                            <label for="" class="col-sm-3 text-right control-label col-form-label">Article Banner image</label>
                             <div class="col-md-5">
 
                                 <input name="file" type="file" class="form-control" hidden >
@@ -79,7 +79,7 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('dashboard/node_modules/tinymce/tinymce.min.js')}}"></script>
+
 
     <script>
         console.log('files js is On')
@@ -150,8 +150,6 @@
 
 @section('css')
 
-    <link rel="stylesheet" href="{{asset('dashboard/node_modules/html5-editor/bootstrap-wysihtml5.css')}}"/>
-    <link rel="stylesheet" href="{{asset('dashboard/node_modules/tinymce/skins/lightgray/skin.min.css')}}"/>
 
     <style>
         img {

@@ -20,6 +20,9 @@
 
 
     <link href="{{asset('dashboard/node_modules/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{{asset('dashboard/node_modules/html5-editor/bootstrap-wysihtml5.css')}}"/>
+    <link rel="stylesheet" href="{{asset('dashboard/node_modules/tinymce/skins/lightgray/skin.min.css')}}"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -132,6 +135,7 @@
 <script src="{{asset('dashboard/node_modules/dropzone-master/dist/dropzone.js')}}"></script>
 <!--Custom JavaScript -->
 <script src="{{asset('dashboard/js/custom.min.js')}}"></script>
+<script src="{{asset('dashboard/node_modules/tinymce/tinymce.min.js')}}"></script>
 
 @yield('js')
 

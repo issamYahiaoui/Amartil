@@ -33,6 +33,7 @@ Route::resource('cars', 'CarController');
 Route::resource('categories', 'CategoryController');
 Route::resource('articles', 'ArticleController');
 Route::resource('blog', 'BlogController');
+Route::resource('comments', 'CommentController');
 
 Route::prefix('a')->group(function () {
 

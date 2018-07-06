@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
-use Illuminate\Http\Request;
 
-class BlogController extends Controller
+use App\Comment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session ;
+use Illuminate\Support\Facades\Redirect ;
+class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +23,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
 
-        return view('front.blog.home') ;
+
+
     }
 
     /**
@@ -26,7 +35,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+
+
     }
 
     /**
@@ -37,7 +47,29 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+        $rules = [
+            'content' => 'required',
+            'article_id' => 'required',
+            'user_id' => 'required',
+
+
+        ];
+
+        $this->validate($request, $rules);
+
+        $comment =  Comment::create([
+            'content' => $request->get('content'),
+            'article_id' => $request->get('article_id'),
+            'user_id' => $request->get('user_id'),
+        ]);
+
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
     }
 
     /**
@@ -46,15 +78,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
-        $article = Article::find($id) ;
-        if (!$article) abort(404) ;
-        return view('front.blog.article',
-            [
-            'model' => $article
-            ]) ;
+
+
     }
 
     /**
@@ -77,7 +104,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -88,6 +115,8 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        Comment::find($id)->delete() ;
+        return Redirect::back();
     }
 }
