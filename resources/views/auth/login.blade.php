@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" src="{{asset('dashboard/images/logo-icon.png')}}">
-    <title>V360 PRO</title>
+    <title>{{config('app_name')}}</title>
 
     <!-- page css -->
     <link href="{{asset('dashboard/css/pages/login-register-lock.css')}}" rel="stylesheet">
@@ -45,7 +45,7 @@
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf
-                    <h3 class="box-title m-b-20">Login to V360 PRO</h3>
+                    <h3 class="box-title m-b-20">Login to AMartil</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input  type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"  placeholder="Email" name="email" value="{{ old('email') }}" required> </div>
