@@ -313,7 +313,7 @@
                                 </div>
                                 <br> <br>
 
-                                <div id="result" class=""  >
+                                <div id="result" class=" "   >
 
                                 </div>
                                 <br> <br>
@@ -346,49 +346,49 @@
     </script>
 
     <script>
-        console.log('files js is On')
-        $('#triggerFile').on('click',function () {
-            console.log('clicked ')
-            $('input[type=file]').click()
-        })
+            console.log('files js is On')
+            $('#triggerFile').on('click',function () {
+                console.log('clicked ')
+                $('input[type=file]').click()
+            })
 
 
 
 
-        var filesInput =  $('input[type=file]');
+            var filesInput =  $('input[type=file]');
 
-        filesInput.on("change", function(event){
-            console.log('on change ...')
-            var files = event.target.files; //FileList object
-            var output =  $('#result');
+            filesInput.on("change", function(event){
+                console.log('on change ...')
+                var files = event.target.files; //FileList object
+                var output =  $('#result');
 
-            for(var i = 0; i< files.length; i++)
-            {
-                console.log(i)
-                var file = files[i];
+                for(var i = 0; i< files.length; i++)
+                {
+                    console.log(i)
+                    var file = files[i];
 
-                //Only pics
-                if(!file.type.match('image'))
-                    continue;
+                    //Only pics
+                    if(!file.type.match('image'))
+                        continue;
 
-                var picReader = new FileReader();
+                    var picReader = new FileReader();
 
-                picReader.addEventListener("load",function(event){
-                    console.log('on load ...')
+                    picReader.addEventListener("load",function(event){
+                        console.log('on load ...')
 
-                    var picFile = event.target;
-                    console.log(picFile)
-                    $('#result').append("<div class='col-md-3 preview-item'  ><img  class='' src='" + picFile.result + "'" +
-                        "title='" + picFile.name + "'/></div>");
+                        var picFile = event.target;
+                        console.log(picFile)
+                        $('#result').append("<div class='col-md-3 preview-item'  ><img  class='' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "'/></div>");
 
 
-                });
+                    });
 
-                //Read the image
-                picReader.readAsDataURL(file);
-            }
-            console.log(files)
-        });
+                    //Read the image
+                    picReader.readAsDataURL(file);
+                }
+                console.log(files)
+            });
 
         $('#other').hide()
 

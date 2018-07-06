@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session ;
+use Illuminate\Support\Facades\Redirect ;
+use Intervention\Image\Facades\Image;
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+
+
+        return view('dashboard.blog.list',[
+            'list'=> Article::all(),
+            'active'=>'articles',
+            'title'=> "Articles",
+        ]);
     }
 
     /**
@@ -23,7 +40,12 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('dashboard.blog.add',[
+            'active'=>'articles',
+            'title'=> "Add Article",
+
+        ]);
     }
 
     /**
@@ -34,7 +56,41 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+
+
+        ];
+
+        $this->validate($request, $rules);
+        $file =$request->file('file') ;
+
+        $img = "" ;
+        if (count($file)){
+
+            $img = $file->getClientOriginalName() ;
+            Image::make($file->getRealPath())->save(public_path('images/' . $img));
+        }
+
+        $article =  Article::create([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'tag' => $request->get('tag'),
+            'user_id' => Auth::user()->id,
+            'img_url' => $img
+        ]);
+
+
+
+
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
     }
 
     /**
@@ -43,9 +99,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
+
     }
 
     /**
@@ -68,7 +125,38 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+
+
+        ];
+
+        $this->validate($request, $rules);
+        $file =$request->file('file') ;
+
+        $img = "" ;
+        if (count($file)){
+
+            $img = $file->getClientOriginalName() ;
+
+            Image::make($file->getRealPath())->save(public_path('images/' . $img));
+        }
+
+        $article =  Article::find($id)->update([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+            'tag' => $request->get('tag'),
+            'user_id' => Auth::user()->id,
+            'img_url' => $img
+        ]);
+
+
+
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
     }
 
     /**
@@ -79,6 +167,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        Article::find($id)->delete() ;
+        return Redirect::back();
     }
 }
