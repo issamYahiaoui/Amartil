@@ -11,14 +11,23 @@
                     <div id="listar-content" class="listar-content">
                         <div class="listar-contactusarea">
                             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 pull-left">
+                                @if(Session::has('success'))
+                                    <div id="alert" class="alert alert-success text-center col-md-12">
+
+                                        {{Session::get('success')}}
+                                        <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
+                                                    class="fa fa-minus"></i></span>
+                                    </div>
+                                @endif
                                 <div class="row">
-                                    <form class="listar-formtheme listar-formcontactus">
+                                    <form action="{{url('contact')}}" class="listar-formtheme listar-formcontactus">
+                                        @csrf
                                         <fieldset>
                                             <h2>Contact Form</h2>
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <div class="form-group">
-                                                        <input type="text" name="yourname" class="form-control" placeholder="Your Name">
+                                                        <input type="text" name="name" class="form-control" placeholder="Your Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -37,7 +46,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                    <button class="listar-btn listar-btngreen" type="button">Send Message</button>
+                                                    <button class="listar-btn listar-btngreen" type="submit">Send Message</button>
                                                 </div>
                                             </div>
                                         </fieldset>
