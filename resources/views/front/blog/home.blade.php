@@ -6,13 +6,14 @@
     <!--************************************
             Header Start
     *************************************-->
-    @include('layouts.partials.front.header')
+
     <div class="listar-innerbanner" style="background : url({{asset('front/images/parallax/bgparallax-06.jpg')}}) !important ">
         <div class="listar-parallaxcolor listar-innerbannerparallaxcolor">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="listar-innerbannercontent">
+
                             <div class="listar-pagetitle">
                                 <h1>Dernieres nouvelles</h1>
                             </div>
@@ -77,9 +78,5 @@
         </div>
     </main>
 
-    @include('layouts.partials.front.footer')
-    <!--************************************
-            Footer End
-    *************************************-->
-    </main>
+
 @endsection

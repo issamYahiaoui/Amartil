@@ -9,7 +9,7 @@ class Car extends Model
     //
 
     protected  $fillable = ['adr' , 'zip' , 'car_model','model','is_owner','type_owner', 'description' , 'safety' , 'fuel_type' , 'mileage'
-        ,'format_price' , 'price'  , 'ads_id' , 'year' , 'fiscal_power', 'color' , 'nbr_cylindre' , 'warranty'
+        ,'format_price' , 'price'  , 'ads_id' ,'lat','lng', 'year' , 'fiscal_power', 'color' , 'nbr_cylindre' , 'warranty'
     ] ;
 
 

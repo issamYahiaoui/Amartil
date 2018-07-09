@@ -24,12 +24,15 @@ Route::put('users/{id}/activate', 'UserController@activate');
 Route::get('me', 'UserController@show');
 Route::get('img/{id}/delete', 'AdsController@deleteImage');
 Route::Resource('customers', 'CustomerController');
+Route::post('loginCustomer', 'Auth\LoginController@login');
+
 
 
 
 Route::resource('ads', 'AdsController');
 Route::resource('apartments', 'ApartmentController');
 Route::resource('cars', 'CarController');
+Route::resource('others', 'OtherController');
 Route::resource('categories', 'CategoryController');
 Route::resource('articles', 'ArticleController');
 Route::resource('blog', 'BlogController');
@@ -44,6 +47,8 @@ Route::prefix('u')->group(function () {
     Route::get('profile', 'CustomerController@profile');
     Route::get('ads', 'CustomerController@ads');
     Route::get('add-ad', 'CustomerController@addAd');
+    Route::get('add-ad/{type}', 'CustomerController@addAdType');
+    Route::get('edit-ad/{id}', 'CustomerController@editAd');
 
 
 });
@@ -53,6 +58,7 @@ Route::post('contact', 'HomeController@storeContact');
 Route::get('faq', 'HomeController@faq');
 Route::get('about', 'HomeController@about');
 Route::get('all-ads', 'HomeController@allAds');
+Route::get('all-ads/{id}', 'HomeController@showAd');
 
 Route::get('*', function() {
     return view('/') ;

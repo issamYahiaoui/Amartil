@@ -17,7 +17,7 @@ class CarController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin');
+
 
 
     }
@@ -98,6 +98,8 @@ class CarController extends Controller
         $car =  Car::create([
             'ads_id' =>$ads->id,
             'adr' => $request->get('adr'),
+            'lat' => $request->get('lat'),
+            'lng' => $request->get('lng'),
             'zip' => $request->get('zip'),
             'is_owner' => $request->get('is_owner'),
             'type_owner' => $other ?  $request->get('type_owner') : null,
@@ -112,6 +114,8 @@ class CarController extends Controller
             'warranty' => $request->get('warranty'),
             'format_price' => $request->get('format_price'),
             'price' => $request->get('price'),
+            'model' => $request->get('model'),
+            'car_model' => $request->get('car_model'),
         ]);
 
 
@@ -169,7 +173,7 @@ class CarController extends Controller
 
         ]) ;
         $files =$request->file('files') ;
-        // dd($files);
+//        dd($files);
         if (count($files)){
 
             for ($i=0 ; $i< count($files); $i++) {
@@ -188,6 +192,8 @@ class CarController extends Controller
         $car =  Car::find($id)->update([
             'ads_id' =>$ads->id,
             'adr' => $request->get('adr'),
+            'lat' => $request->get('lat'),
+            'lng' => $request->get('lng'),
             'zip' => $request->get('zip'),
             'is_owner' => $request->get('is_owner'),
             'type_owner' => $other ?  $request->get('type_owner') : null,
@@ -202,6 +208,8 @@ class CarController extends Controller
             'warranty' => $request->get('warranty'),
             'format_price' => $request->get('format_price'),
             'price' => $request->get('price'),
+            'model' => $request->get('model'),
+            'car_model' => $request->get('car_model'),
         ]);
 
 

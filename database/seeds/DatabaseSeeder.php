@@ -32,25 +32,22 @@ class DatabaseSeeder extends Seeder
             'user_id' => $customer_user->id ,
         ]) ;
        \App\Category::create([
-            'name' =>'Category 1' ,
+            'name' =>'Appartements Et Maisons' ,
 
         ]) ;
         \App\Category::create([
-            'name' =>'Category 2' ,
+            'name' =>'Vehicules' ,
 
         ]) ;
         \App\Category::create([
-            'name' =>'Category 3' ,
+            'name' =>'Motocycles' ,
 
         ]) ;
         \App\Category::create([
-            'name' =>'Category 4' ,
+            'name' =>'Autres' ,
 
         ]) ;
-        \App\Category::create([
-            'name' =>'Category 5' ,
 
-        ]) ;
 //        $ads =  \App\Ads::create([
 //            'title' => 'prop 1' ,
 //

@@ -28,6 +28,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 
 
@@ -137,6 +138,18 @@
 <script src="{{asset('dashboard/js/custom.min.js')}}"></script>
 <script src="{{asset('dashboard/node_modules/tinymce/tinymce.min.js')}}"></script>
 
+
+
+<script >
+    $(document).ready(function() {
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
 @yield('js')
 
 </body>

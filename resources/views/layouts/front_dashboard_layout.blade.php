@@ -93,7 +93,7 @@
 <script src="{{asset('front/js/vendor/jquery-library.js')}}"></script>
 <script src="{{asset('front/js/vendor/bootstrap.min.js')}}"></script>
 <script src="{{asset('front/js/mapclustering/data.json')}}"></script>
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>
+{{--<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>--}}
 <script src="{{asset('front/js/tinymce/tinymce.min.js?apiKey=4cuu2crphif3fuls3yb1pe4qrun9pkq99vltezv2lv6sogci')}}"></script>
 <script src="{{asset('front/js/mapclustering/markerclusterer.min.js')}}"></script>
 <script src="{{asset('front/js/mapclustering/infobox.js')}}"></script>
@@ -120,7 +120,16 @@
 <script src="{{asset('front/js/appear.js')}}"></script>
 <script src="{{asset('front/js/gmap3.js')}}"></script>
 <script src="{{asset('front/js/dev_themefunction.js')}}"></script>
-
+<script >
+    $(document).ready(function() {
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
 @yield('js')
 </body>
 </html>

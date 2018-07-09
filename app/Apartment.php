@@ -10,7 +10,7 @@ class Apartment extends Model
 
     protected  $fillable = ['intention','adr' , 'zip', 'is_owner' , 'type_owner' , 'property_type' , 'rooms' , 'bathrooms', 'salons' , 'bedrooms'
 
-    , 'total_area' ,'description' ,'flour', ' additional_details' , 'year_built' ,'format_price' , 'price' , 'price_meter' , 'ads_id'
+    , 'total_area' ,'description' ,'flour', 'lat','lng',' additional_details' , 'year_built' ,'format_price' , 'price' , 'price_meter' , 'ads_id'
 
     ] ;
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User ;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
+use App\Ads;
 class CustomerController extends Controller
 {
     /**
@@ -16,8 +17,7 @@ class CustomerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-
+        $this->middleware('customer');
 
     }
     public function index()
@@ -38,6 +38,52 @@ class CustomerController extends Controller
     public function addAd(){
     return view('front.dashboard.ads.add') ;
 }
+    public function addAdType($type){
+        switch ($type){
+            case 'apartment' : {
+
+                return view('front.dashboard.ads.add.apartment') ;
+            }
+            case 'car' : {
+                return view('front.dashboard.ads.add.car') ;
+            }
+            case 'other' : {
+                return view('front.dashboard.ads.add.other') ;
+            }
+
+        }
+
+    }
+
+
+
+    public function editAd($id)
+    {
+        //
+        $ads = Ads::find($id) ;
+        if (!$ads) abort(404) ;
+        $view_name = null  ; $model = null  ;
+        if ($ads->apartment()){
+            $view_name = "front.dashboard.ads.edit.apartment" ;
+            $model = $ads->apartment() ;
+        } else {
+            if ($ads->car()) {
+                $view_name = "front.dashboard.ads.edit.car" ;
+                $model = $ads->car() ;
+
+            }elseif ($ads->other()){
+                $view_name = "front.dashboard.ads.edit.other" ;
+                $model = $ads->other() ;
+            }
+        }
+
+        return view($view_name,[
+            'model' => $model ,
+            'title' => 'ads' ,
+            'active' => 'ads'
+        ]) ;
+    }
+
 
 
 

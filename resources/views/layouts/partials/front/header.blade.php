@@ -28,7 +28,7 @@
                             @endif
                         </li>
                         <li>
-                            <a class="listar-btn listar-btngreen" href="dashboardaddlisting.html">
+                            <a class="listar-btn listar-btngreen" href="{{url('add-ad')}}">
                                 <i class="icon-plus"></i>
                                 <span>Ajouter Une Annonce </span>
                             </a>
@@ -46,7 +46,7 @@
                         </button>
                     </div>
                     <div id="listar-navigation" class="collapse navbar-collapse listar-navigation">
-                        <ul>
+                        <ul class="nav-black">
                             <li class="menu-item current-menu-item">
                                 <a href="{{url('/')}}">Acceuil</a>
 
@@ -78,8 +78,9 @@
 
                             </li>
                             <li><a href="{{url('blog')}}">Blog</a></li>
-                            <li><a href="{{url('u/dashboard')}}">Dasboard</a></li>
+
                             @if(\Illuminate\Support\Facades\Auth::user())
+                                <li><a href="{{url('u/dashboard')}}">Dasboard</a></li>
                                 <li class="menu-item-has-children">
                                     <a  class="listar-btn " href="javascript:void(0);">
                                         <i class="fa fa-user-circle"></i>

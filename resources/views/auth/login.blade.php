@@ -42,6 +42,14 @@
 <section id="wrapper">
     <div class="login-register" style="background-image:url({{asset('dashboard/images/background/login-register.jpg')}});" >
         <div class="login-box card">
+            @if(Session::has('fail'))
+                <div id="alert" class="alert alert-danger text-center col-md-12">
+
+                    {{Session::get('fail')}}
+                    <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
+                                class="fa fa-close"></i></span>
+                </div>
+            @endif
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf

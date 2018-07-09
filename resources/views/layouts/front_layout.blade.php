@@ -176,7 +176,7 @@
 <script src="{{asset('front/js/bootstrap-slider.js')}}"></script>
 <script src="{{asset('front/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('front/js/jquery.vide.min.js')}}"></script>
-<script src="{{asset('front/JS/auto-complete.js')}}"></script>
+<script src="{{asset('front/js/auto-complete.js')}}"></script>
 <script src="{{asset('front/js/chosen.jquery.js')}}"></script>
 <script src="{{asset('front/js/scrollbar.min.js')}}"></script>
 <script src="{{asset('front/js/isotope.pkgd.js')}}"></script>

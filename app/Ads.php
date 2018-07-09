@@ -8,6 +8,7 @@ use App\Category ;
 use App\AdsPhoto;
 use App\Apartment ;
 use App\Car ;
+use App\Other;
 class Ads extends Model
 {
     //
@@ -29,7 +30,22 @@ class Ads extends Model
     public function car(){
         return Car::where('ads_id',$this->id)->first() ;
     }
+    public function other(){
+        return Other::where('ads_id',$this->id)->first() ;
+    }
     public function  images(){
         return AdsPhoto::where('ads_id', $this->id)->get() ;
     }
+    public function subclass(){
+        if ($this->apartment()) {
+            return $this->apartment() ;
+        }elseif($this->car()){
+            return $this->car() ;
+        }elseif ($this->other()){
+            return $this->other();
+        }
+    }
+
+
+
 }

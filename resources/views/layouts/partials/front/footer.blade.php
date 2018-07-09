@@ -1,4 +1,4 @@
-<footer id="listar-footer" class="listar-footer listar-haslayout">
+<footer id="listar-footer" class="listar-footer listar-haslayout" >
     <div class="listar-footeraboutarea">
         <div class="container">
             <div class="row">
@@ -15,12 +15,12 @@
                         </ul>
                         <nav class="listar-navfooter">
                             <ul>
-                                <li><a href="javascript:void(0);">Home</a></li>
-                                <li><a href="javascript:void(0);">how it work</a></li>
-                                <li><a href="javascript:void(0);">Shop</a></li>
-                                <li><a href="javascript:void(0);">Packages</a></li>
-                                <li><a href="javascript:void(0);">News</a></li>
-                                <li><a href="javascript:void(0);">Contact Us</a></li>
+                                <li><a href="{{url('/')}}">Acceuil</a></li>
+                                <li><a href="{{url('/all-ads')}}">Tous Les Annonces </a></li>
+                                <li><a href="{{url('/faq')}}">Faq</a></li>
+                                <li><a href="{{url('/blog')}}">Blog</a></li>
+                                <li><a href="{{url('/contact')}}">Contact</a></li>
+                                <li><a href="{{url('/u/dashboard')}}">Dashboard</a></li>
                             </ul>
                         </nav>
                     </div>

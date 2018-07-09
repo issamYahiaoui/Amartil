@@ -16,6 +16,8 @@ class CreateCarsTable extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->increments('id');
             $table->string('adr')->nullable();
+            $table->float('lat')->nullable();
+            $table->float('lng')->nullable();
             $table->string('zip')->nullable();
             $table->string('is_owner')->nullable();
             $table->string('type_owner')->nullable();
@@ -26,15 +28,16 @@ class CreateCarsTable extends Migration
             $table->string('fuel_type')->nullable();
             $table->string('mileage')->nullable();
             $table->string('year')->nullable();
-            $table->integer('fiscal_power')->nullable();
-            $table->integer('color')->nullable();
+            $table->string('fiscal_power')->nullable();
+            $table->string('color')->nullable();
             $table->integer('nbr_cylindre')->nullable();
             $table->string('warranty')->nullable();
             $table->string('format_price')->nullable();
-            $table->string('price')->nullable();
+            $table->integer('price')->nullable();
 
 
-            $table->integer('ads_id')->nullable();
+            $table->integer('ads_id')->unsigned();
+            $table->foreign('ads_id')->references('id')->on('ads')->onDelete('cascade');;
 
             $table->timestamps();
         });

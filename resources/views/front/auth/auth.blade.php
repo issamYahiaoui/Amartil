@@ -6,6 +6,20 @@
     <div class="listar-contentarea">
         <div class="listar-themescrollbar">
             <div class="listar-logincontent">
+                @if(count($errors->all())>0)
+                    <div class="alert alert-danger text-center col-md-12 ">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+                        </button>
+                        <ul class="list-unstyled text-center">
+                            @foreach($errors->all() as $error)
+                                <li class="text-center">
+                                    {{ $error }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="listar-themetabs">
                     <ul class="listar-tabnavloginregistered" role="tablist">
                         <li role="presentation" class="active"><a href="#listar-loging" data-toggle="tab">Log in</a></li>
@@ -13,7 +27,7 @@
                     </ul>
                     <div class="tab-content listar-tabcontentloginregistered">
                         <div role="tabpanel" class="tab-pane active fade in" id="listar-loging">
-                            <form class="listar-formtheme listar-formlogin"   method="POST" action="{{ route('login') }}">
+                            <form class="listar-formtheme listar-formlogin"   method="POST" action="{{ url('/loginCustomer') }}">
                                 @csrf
                                 <fieldset>
                                     <div class="form-group listar-inputwithicon">

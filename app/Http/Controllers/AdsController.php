@@ -128,6 +128,9 @@ class AdsController extends Controller
                 $view_name = "dashboard.ads.cars.edit" ;
                 $model = $ads->car() ;
 
+            }elseif ($ads->other()){
+                $view_name = "dashboard.ads.others.edit" ;
+                $model = $ads->other() ;
             }
         }
 
@@ -196,7 +199,8 @@ class AdsController extends Controller
     public function destroy($id)
     {
 
-        Ads::find($id)->delete() ;
+       $ads = Ads::find($id) ;
+       $ads->delete() ;
 
         return Redirect::back();
     }

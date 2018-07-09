@@ -70,8 +70,8 @@
 
                                 </td>
                                 <td class="text-center">{{$model->title}}</td>
-                                <td class="text-center">{{$model->description}}</td>
-                                <td class="text-center">{{$model->price}}</td>
+                                <td class="text-center">{{$model->subclass()->description}}</td>
+                                <td class="text-center">{{$model->subclass()->price}}</td>
                                 <td class="text-center">{{$model->owner_phone}}</td>
 
                                 <td class="text-center"  style="display: flex ; justify-content: space-around ; align-items: center ; width: available">
@@ -108,7 +108,7 @@
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{url('categories/'.$model->id)}}" method="POST" >
+                                                        <form action="{{url('ads/'.$model->id)}}" method="POST" >
                                                             @method('DELETE')
                                                             @csrf
                                                             <div class="row justify-content-center">

@@ -16,7 +16,7 @@ class ApartmentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin');
+
 
 
     }
@@ -63,7 +63,7 @@ class ApartmentController extends Controller
 
 
 
-      //  dd($request->file('files')) ;
+//        dd($request->all()) ;
 
 
 
@@ -102,13 +102,14 @@ class ApartmentController extends Controller
         $apartment =  Apartment::create([
             'ads_id' =>$ads->id,
             'adr' => $looking ?  null : $request->get('adr'),
+            'lat' => $looking ?  null : $request->get('lat'),
+            'lng' => $looking ?  null : $request->get('lng'),
             'zip' => $looking?  null : $request->get('zip'),
             'is_owner' => $looking?  null : $request->get('is_owner'),
             'type_owner' => $looking?  null :$other ?  $request->get('type_owner') : null,
             'property_type' => $looking?  null : $request->get('property_type'),
             'rooms' => $looking?    null : (!$hide? null : $request->get('rooms')),
             'bathrooms' =>  $looking?  null : !$hide? null : $request->get('bathrooms'),
-            'salons' => $looking?  null : !$hide? null :  $request->get('salons'),
             'bedrooms' => $looking?  null : !$hide? null : $request->get('bedrooms'),
             'flour' => $looking?  null : !$hide? null : $request->get('flour'),
             'total_area' => $looking?  null : $request->get('total_area'),
@@ -121,6 +122,8 @@ class ApartmentController extends Controller
             'intention' => $request->get('intention'),
         ]);
 //        dd($apartment , $ads) ;
+        $apartment->additional_details = $looking? null : $request->get('additional_details');
+        $apartment->save();
 
 
         Session::Flash('success',"Operation has successfully finished");
@@ -202,29 +205,34 @@ class ApartmentController extends Controller
 
         $hide = ($request->get('property_type') === "Apartment" || $request->get('property_type') === "Houses and villas") ;
         $other = ($request->get('is_owner') === "other") ;
-        $apartment =  Apartment::find($id)->update([
+        $apartment =  Apartment::find($id) ;
+            $apartment->update([
             'ads_id' =>$ads->id,
+            'additional_details' => $request->get('additional_details'),
             'adr' => $looking ?  null : $request->get('adr'),
+            'lat' => $looking ?  null : $request->get('lat'),
+            'lng' => $looking ?  null : $request->get('lng'),
+
             'zip' => $looking?  null : $request->get('zip'),
             'is_owner' => $looking?  null : $request->get('is_owner'),
             'type_owner' => $looking?  null :$other ?  $request->get('type_owner') : null,
             'property_type' => $looking?  null : $request->get('property_type'),
             'rooms' => $looking?    null : (!$hide? null : $request->get('rooms')),
             'bathrooms' =>  $looking?  null : !$hide? null : $request->get('bathrooms'),
-            'salons' => $looking?  null : !$hide? null :  $request->get('salons'),
             'bedrooms' => $looking?  null : !$hide? null : $request->get('bedrooms'),
             'flour' => $looking?  null : !$hide? null : $request->get('flour'),
             'total_area' => $looking?  null : $request->get('total_area'),
             'description' => $request->get('description'),
-            'additional_details' => $looking?  null : $request->get('additional_details'),
             'year_built' => $looking?  null : $request->get('year_built'),
             'format_price' => $looking?  null : $request->get('format_price'),
             'price' =>  $looking?  null :$request->get('price'),
             'price_meter' => $looking?  null : $request->get('price_meter') ,
             'intention' => $request->get('intention'),
         ]);
-//        dd($apartment , $ads) ;
-
+//        dd($request->get('additional_details')) ;
+        $apartment->additional_details = $looking? null : $request->get('additional_details');
+        $apartment->save();
+//         dd($apartment->additional_details) ;
 
         Session::Flash('success',"Operation has successfully finished");
         return Redirect::back();

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use function Couchbase\defaultDecoder;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect ;
+use Illuminate\Support\Facades\Session;
+
 class LoginController extends Controller
 {
     /*
@@ -29,7 +32,8 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/users';
-    protected $redirectToCustomer = '/u/dashboard';
+    protected $redirectToCustomer = '/';
+
 
     /**
      * Create a new controller instance.
@@ -48,6 +52,7 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
+        //dd($request->all()) ;
 
         $this->validate($request, [
             'email' => ['required'],
@@ -62,8 +67,21 @@ class LoginController extends Controller
             'active' => 1,
 
         ];
+
+            if($request->url() == "http://localhost:8000/login" ){
+                $user = User::where('email',$request->input('email') )->first() ;
+                if ($user){
+                if($user->role === "customer" ){
+                    Session::Flash('fail',"This is a private space for the admin");
+                    return Redirect::back();
+
+                    }
+                 }
+            }
+
         // Attempt to auth the user
         if (Auth::attempt($credentials)) {
+
 
             // Login success
             return $this->sendLoginResponse($request);
@@ -80,6 +98,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+
         if ($user->role === "customer") {
             return \redirect($this->redirectToCustomer) ;
         }
