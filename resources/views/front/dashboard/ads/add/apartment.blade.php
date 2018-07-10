@@ -37,7 +37,7 @@
                                     <div class="form-group listar-dashboardfield">
                                         <label>Description</label>
                                         <div class="clearfix"></div>
-                                        <textarea id="listar-tinymceeditor" class="listar-tinymceeditor"></textarea>
+                                        <textarea name="description" id="listar-tinymceeditor" class="listar-tinymceeditor"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
