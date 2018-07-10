@@ -36,7 +36,7 @@
                                     <ul>
                                         <li>
                                             <i class="icon-telephone114"></i>
-                                            <span>{{$model->ads()->owner_phone}}</span>
+                                            <span>{{\App\User::adminPhone()}}</span>
                                         </li>
                                         <li>
                                             <i class="icon-icons74"></i>

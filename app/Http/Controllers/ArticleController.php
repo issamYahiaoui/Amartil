@@ -27,7 +27,7 @@ class ArticleController extends Controller
 
 
         return view('dashboard.blog.list',[
-            'list'=> Article::all(),
+            'list'=> dd(Article::all()),
             'active'=>'articles',
             'title'=> "Articles",
         ]);
@@ -70,7 +70,7 @@ class ArticleController extends Controller
         $file =$request->file('file') ;
 
         $img = "" ;
-        if (count($file)){
+        if ($file){
 
             $img = $file->getClientOriginalName() ;
             Image::make($file->getRealPath())->save(public_path('images/' . $img));
