@@ -10,7 +10,7 @@
                     <ul class="listar-statistics " style="display: flex ; justify-content: space-around">
                         <li class="listar-newuser">
                             <div class="listar-couterholder">
-                                <h3 data-from="0" data-to="{{count(\Illuminate\Support\Facades\Auth::user()->ads())}}" data-speed="8000" data-refresh-interval="50">315</h3>
+                                <h3 data-from="0" data-to="{{count(\App\Ads::where('customer_id',\Illuminate\Support\Facades\Auth::user()->id)->get())}}" data-speed="8000" data-refresh-interval="50">315</h3>
                                 <h4>Mes annonces</h4>
                                 <div class="listar-statisticicon"><i class="icon-map2"></i></div>
                             </div>

@@ -53,7 +53,7 @@
                         <li>
                             <a class="listar-btn listar-btngreen" href="{{url('u/add-ad')}}">
                                 <i class="icon-plus"></i>
-                                <span>Add Listing</span>
+                                <span>Ajouter Annonce</span>
                             </a>
                         </li>
                     </ul>
