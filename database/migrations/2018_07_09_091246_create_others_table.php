@@ -20,7 +20,7 @@ class CreateOthersTable extends Migration
             $table->float('lng')->nullable();
             $table->text('description')->nullable();
             $table->string('price')->nullable();
-            $table->integer('ads_id')->unsigned();
+            $table->integer('ads_id')->unsigned()->nullable();
             $table->foreign('ads_id')->references('id')->on('ads')->onDelete('cascade');;
             $table->timestamps();
         });

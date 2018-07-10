@@ -78,8 +78,8 @@ class OtherController extends Controller
             'video_url' => $request->get('video_url'),
             'customer_id' => Auth::user()->id,
 
-
         ]) ;
+
         $files =$request->file('files') ;
         // dd($files);
         if (count($files)){
@@ -95,17 +95,29 @@ class OtherController extends Controller
             }
         }
 
+        $other = new Other() ;
+        $other->adr = $request->get('adr') ;
+        $other->lat = $request->get('lat') ;
+        $other->lng = $request->get('lng') ;
+        $other->description = $request->get('description') ;
+        $other->price = $request->get('price') ;
+        $other->ads_id = $request->get('ads_id') ;
 
 
-        $other =  Other::create([
-            'ads_id' =>$ads->id,
-            'adr' => $request->get('adr'),
-            'lat' => $request->get('lat'),
-            'lng' => $request->get('lng'),
-            'description' => $request->get('description'),
-            'price' => $request->get('price'),
-        ]);
-//        dd($other) ;
+
+//          Other::create([
+//
+//            'adr' => $request->get('adr'),
+//            'lat' => $request->get('lat'),
+//            'lng' => $request->get('lng'),
+//            'description' => $request->get('description'),
+//            'price' => $request->get('price'),
+//            'ads_id' => $ads->id,
+//        ]);
+        $other->ads_id = $ads->id ;
+        $other->save();
+
+
 
 
         Session::Flash('success',"Operation has successfully finished");
