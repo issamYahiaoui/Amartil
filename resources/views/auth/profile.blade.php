@@ -59,7 +59,7 @@
                             @endif
                         </div>
                         <div class="form-group  row ">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Email</label>
+                            <label for="" class="col-sm-3 text-right control-label col-form-label">Phone</label>
 
                             <div class="col-md-5">
                                 <input  type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"   placeholder="" name="phone" value="{{$model->phone}}" required> </div>
