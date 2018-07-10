@@ -57,7 +57,7 @@ Route::get('contact', 'HomeController@contact');
 Route::post('contact', 'HomeController@storeContact');
 Route::get('faq', 'HomeController@faq');
 Route::get('about', 'HomeController@about');
-Route::get('all-ads', 'HomeController@allAds');
+Route::get('show-ads/{type}', 'HomeController@allAds');
 Route::get('all-ads/{id}', 'HomeController@showAd');
 
 Route::get('*', function() {

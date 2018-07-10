@@ -3,6 +3,20 @@
 
 @section('content')
     <div class="row justify-content-center">
+        @if(count($errors->all())>0)
+            <div class="alert alert-danger text-center col-md-12 ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+                </button>
+                <ul class="list-unstyled text-center">
+                    @foreach($errors->all() as $error)
+                        <li class="text-center">
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @if(Session::has('success'))
             <div id="alert" class="alert alert-success text-center col-md-12">
 
@@ -34,7 +48,7 @@
                             @endif
                         </div>
                         <div class="form-group  row ">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Phone</label>
+                            <label for="" class="col-sm-3 text-right control-label col-form-label">Email</label>
 
                             <div class="col-md-5">
                                 <input  type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"   placeholder="" name="email" value="{{$model->email}}" required> </div>

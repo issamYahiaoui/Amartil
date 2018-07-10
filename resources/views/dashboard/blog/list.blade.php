@@ -42,7 +42,7 @@
                     </div>
                     <br> <br>
                     <div class="table-responsive"></div>
-                    <table id="categoryTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="categoryTable" class="display  table responsive nowrap table-hover  table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th class="text-center">Image</th>
@@ -138,15 +138,16 @@
 
 @section('js')
     <script src="{{asset('dashboard/node_modules/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
+
+    <!-- start - This is for export functionality only -->
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script>
         $('#categoryTable').DataTable({
+            responsive: true,
+
             dom: 'Bfrtip',
             buttons: [
                 {

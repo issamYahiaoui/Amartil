@@ -20,6 +20,14 @@
                         </ul>
                     </div>
                 @endif
+                    @if(Session::has('success'))
+                        <div id="alert" class="alert alert-success text-center col-md-12">
+
+                            {{Session::get('success')}}
+                            <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
+                                        class="fa fa-minus"></i></span>
+                        </div>
+                    @endif
                 <div class="listar-themetabs">
                     <ul class="listar-tabnavloginregistered" role="tablist">
                         <li role="presentation" class="active"><a href="#listar-loging" data-toggle="tab">Log in</a></li>
@@ -32,7 +40,7 @@
                                 <fieldset>
                                     <div class="form-group listar-inputwithicon">
                                         <i class="icon-profile-male"></i>
-                                        <input type="text" name="email" class="form-control" placeholder="Username Or Email">
+                                        <input type="text" name="email" class="form-control" placeholder=" Email">
                                     </div>
                                     <div class="form-group listar-inputwithicon">
                                         <i class="icon-icons208"></i>
@@ -60,6 +68,10 @@
                                     <div class="form-group listar-inputwithicon">
                                         <i class="icon-icons208"></i>
                                         <input type="email" name="email" class="form-control" placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group listar-inputwithicon">
+                                        <i class="icon-icons208"></i>
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone">
                                     </div>
                                     <div class="form-group listar-inputwithicon">
                                         <i class="icon-lock-stripes"></i>

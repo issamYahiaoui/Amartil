@@ -7,6 +7,7 @@ use App\AdsPhoto;
 
 use App\Other;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use Intervention\Image\Facades\Image;
@@ -75,6 +76,8 @@ class OtherController extends Controller
             'category_id' => $request->get('category_id'),
             'featured' => $request->get('featured'),
             'video_url' => $request->get('video_url'),
+            'customer_id' => Auth::user()->id,
+
 
         ]) ;
         $files =$request->file('files') ;

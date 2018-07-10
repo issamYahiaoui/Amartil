@@ -40,8 +40,26 @@ class HomeController extends Controller
     public function about(){
         return view('front.static-pages.about') ;
     }
-    public function allAds(){
-        return view('front.home.all-ads') ;
+    public function allAds($type){
+        $list = null ;
+        switch ($type){
+            case $type === "all":
+                $list = Ads::all() ;
+                break ;
+            case $type === "apartments":
+                $list = Ads::join('apartments', 'apartments.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
+                break ;
+            case $type === "cars":
+                $list = Ads::join('cars', 'cars.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
+                break ;
+            case $type === "others":
+                $list = Ads::join('others', 'others.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
+
+        }
+
+        return view('front.home.all-ads',[
+            'list' => $list
+        ]) ;
     }
     public function showAd($id){
         //

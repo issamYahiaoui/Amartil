@@ -68,93 +68,44 @@
                         </button>
                     </div>
                     <div id="listar-navigation" class="collapse navbar-collapse listar-navigation">
-                        <ul>
-                            <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Home v 1</a></li>
-                                    <li><a href="indexv2.html">Home v 2</a></li>
-                                    <li><a href="indexv3.html">Home v 3</a></li>
-                                    <li><a href="indexv4.html">Home v 4</a></li>
-                                </ul>
+                        <ul class="nav-black">
+                            <li class="menu-item current-menu-item">
+                                <a href="{{url('/')}}">Acceuil</a>
+
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">Explore</a>
+                                <a href="javascript:void(0);">Explorer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="listingvlist.html">All Listings</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Food</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Cafe</a></li>
-                                            <li class="current-menu-item"><a href="listingv2.html">Restaurant</a></li>
-                                            <li><a href="listingv1.html">Dinner</a></li>
-                                            <li><a href="listingv2.html">Pizza Place</a></li>
-                                            <li><a href="listingv1.html">Italian</a></li>
-                                            <li><a href="listingv2.html">Bakeries</a></li>
-                                        </ul>
+                                    <li><a href="{{url('show-ads/all')}}">Tous les annonces</a></li>
+                                    <li class="menu-item">
+                                        <a href="{{url('show-ads/apartments')}}">Appartements</a>
+
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Entertainment</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Art &amp; Design</a></li>
-                                            <li><a href="listingv2.html">Movie Theater</a></li>
-                                            <li><a href="listingv1.html">Theme Parks</a></li>
-                                            <li><a href="listingv2.html">Music Life</a></li>
-                                        </ul>
+                                    <li class="menu-item">
+                                        <a href="{{url('show-ads/cars')}}">Vehicules</a>
+
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Educational</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">School</a></li>
-                                            <li><a href="listingv2.html">College</a></li>
-                                            <li><a href="listingv1.html">University</a></li>
-                                            <li><a href="listingv2.html">Short Courses</a></li>
-                                        </ul>
+                                    <li class="menu-item">
+                                        <a href="{{url('show-ads/others')}}">Autres</a>
+
                                     </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Nightlife</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Wine Bars</a></li>
-                                            <li><a href="listingv2.html">Pubs</a></li>
-                                            <li><a href="listingv1.html">Nightclub</a></li>
-                                            <li><a href="listingv2.html">Lounge</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="javascript:void(0);">Outdoors</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="listingv1.html">Boutiques</a></li>
-                                            <li><a href="listingv2.html">Fashion</a></li>
-                                            <li><a href="listingv1.html">Furniture</a></li>
-                                            <li><a href="listingv2.html">Sport Equipment</a></li>
-                                        </ul>
-                                    </li>
+
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="howitwork.html">How It Works</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="pkgprice.html">Packages</a></li>
-                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                    <li><a href="contactus.html">Contact Us</a></li>
-                                    <li><a href="404error.html">404 Error</a></li>
-                                    <li><a href="comingsoon.html">Coming Sooon</a></li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="{{url('faq')}}">FAQ</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="newsv1.html">Blog Standard</a></li>
-                                    <li><a href="newsv2.html">Blog Classic</a></li>
-                                    <li><a href="newsv3.html">Blog sidebar</a></li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="{{url('contact')}}">Contact</a>
+
                             </li>
-                            <li class="current-menu-item"><a href="dashboard.html">Dasboard</a></li>
+                            <li><a href="{{url('blog')}}">Blog</a></li>
+
+
                         </ul>
                     </div>
                 </nav>
+
             </div>
         </div>
     </div>
@@ -162,3 +113,15 @@
     @include('layouts.partials.front_dashboard.sidebar')
 
 </header>
+<style>
+    .listar-header {
+        z-index: 100;
+        padding: 15px 0;
+        background: #fff !important;
+        position: relative;
+        text-align: center;
+        -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.10);
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.10);
+    }
+    .nav-black > li > a{color: #222 !important;}
+</style>

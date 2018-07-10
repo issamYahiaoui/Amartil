@@ -28,7 +28,7 @@
                             @endif
                         </li>
                         <li>
-                            <a class="listar-btn listar-btngreen" href="{{url('add-ad')}}">
+                            <a class="listar-btn listar-btngreen" href="{{url('u/add-ad')}}">
                                 <i class="icon-plus"></i>
                                 <span>Ajouter Une Annonce </span>
                             </a>
@@ -54,17 +54,17 @@
                             <li class="menu-item-has-children">
                                 <a href="javascript:void(0);">Explorer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="{{url('all-ads')}}">Tous les annonces</a></li>
+                                    <li><a href="{{url('show-ads/all')}}">Tous les annonces</a></li>
                                     <li class="menu-item">
-                                        <a href="javascript:void(0);">Appartements</a>
+                                        <a href="{{url('show-ads/apartments')}}">Appartements</a>
 
                                     </li>
                                     <li class="menu-item">
-                                        <a href="javascript:void(0);">Vehicules</a>
+                                        <a href="{{url('show-ads/cars')}}">Vehicules</a>
 
                                     </li>
                                     <li class="menu-item">
-                                        <a href="javascript:void(0);">Autres</a>
+                                        <a href="{{url('show-ads/others')}}">Autres</a>
 
                                     </li>
 

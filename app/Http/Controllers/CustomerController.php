@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User ;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use App\Ads;
@@ -16,8 +17,8 @@ class CustomerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('customer');
+        $this->middleware('auth')->except(['store']);
+        $this->middleware('customer')->except(['store']);
 
     }
     public function index()
@@ -30,7 +31,10 @@ class CustomerController extends Controller
         return view('front.dashboard.index') ;
     }
     public function profile(){
-        return view('front.dashboard.profile') ;
+        return view('front.dashboard.profile',[
+            'title' => 'Profile' ,
+            'model' => Auth::user()
+        ]) ;
     }
     public function ads(){
         return view('front.dashboard.ads.list') ;
@@ -110,18 +114,25 @@ class CustomerController extends Controller
     {
         $rules = [
             'email' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ];
 
         $this->validate($request, $rules);
-        if (User::where('email',$request->get('email'))->first()) abort(404) ;
+        if (User::where('email',$request->get('email'))->first())  return Redirect::back()->withErrors([
+            'email' => 'Email address already exists'
+        ]) ;
         $user =  User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
             'role' => 'customer',
+            'active' => 1,
             'password' => bcrypt($request->get('password')),
 
         ]);
+
 
         Session::Flash('success',"Operation has successfully finished");
         return Redirect::back();

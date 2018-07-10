@@ -1,6 +1,28 @@
 @extends('layouts.front_dashboard_layout')
 
 @section('content')
+    @if(count($errors->all())>0)
+        <div class="alert alert-danger text-center col-md-12 ">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+            </button>
+            <ul class="list-unstyled text-center">
+                @foreach($errors->all() as $error)
+                    <li class="text-center">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(Session::has('success'))
+        <div id="alert" class="alert alert-success text-center col-md-12">
+
+            {{Session::get('success')}}
+            <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
+                        class="fa fa-minus"></i></span>
+        </div>
+    @endif
     <div id="listar-content" class="listar-content">
 
             <form style="width: 100%" class="listar-formtheme listar-formaddlisting" method="POST" action="{{ url('me') }}">
@@ -16,7 +38,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group listar-dashboardfield">
                                 <label>Nom</label>
-                                <input type="text" name="name" class="form-control" placeholder="Mr Customer">
+                                <input type="text" name="name" class="form-control" value="{{$model->name}}">
                             </div>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -27,7 +49,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group listar-dashboardfield">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="customer@gmail.com">
+                                <input type="email" name="email" class="form-control"  value="{{$model->email}}">
                             </div>
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -38,7 +60,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group listar-dashboardfield">
                                 <label>Mobile</label>
-                                <input type="text" name="phone" class="form-control" placeholder="013214577">
+                                <input type="text" name="phone" class="form-control"  value="{{$model->phone}}">
                             </div>
                             @if ($errors->has('phone'))
                                 <span class="invalid-feedback" role="alert">

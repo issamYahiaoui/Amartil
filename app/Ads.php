@@ -22,7 +22,16 @@ class Ads extends Model
     }
 
     public function category(){
-        return Category::find($this->category_id) ;
+        if ($this->apartment()) {
+            return "<span><i style='padding-right: 5px '  class=\"fa fa-home\"></i>Appartements et maisons</span>" ;
+        }elseif($this->car()){
+            return "<span><i style='padding-right: 5px '  class=\"fa fa-car\"></i>Vehicules</span>" ;
+
+        }elseif ($this->other()){
+            return "<span><i  style='padding-right: 5px' class=\"fa fa-dashboard\"></i>Autres</span>" ;
+
+        }
+
     }
     public function apartment(){
         return Apartment::where('ads_id',$this->id)->first() ;

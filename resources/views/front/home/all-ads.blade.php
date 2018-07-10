@@ -70,35 +70,54 @@
                     <div class="container "  >
                         <div class="row">
                             <div class="listar-listingarea">
-                                <div class="listar-searchstatus"><h1><span>Results </span>  <strong>({{count(\App\Ads::all())}})</strong></h1></div>
+                                <div class="listar-searchstatus"><h1><span>Results </span>  <strong>({{count($list)}})</strong></h1></div>
 
                                 <br> <br>
                                 <div class="listar-themeposts listar-placesposts listar-listview">
                                     <div class="row ">
-                                        @foreach(\App\Ads::all() as $ad)
+                                        @foreach($list as $ad)
                                             {{--{{dd($ad->car())}}--}}
                                             <div class="col-md-offset-1 col-md-10">
                                                 <div class="listar-themepost listar-placespost">
-                                                    <figure style="max-height: 315px" class="listar-featuredimg"><span href="detailv1.html"><img src="{{asset('front/images/post/img-13.jpg')}}" alt="image description" class="mCS_img_loaded"></span></figure>
-                                                    <div class="listar-postcontent" >
-                                                        <h3><a href="{{url('all-ads/'.$ad->id)}}">{{$ad->title}}</a></h3>
-                                                        <div class="listar-description" style="min-height: 170px!important;">
+                                                    <figure style="max-height: 315px" class="listar-featuredimg"><span href="detailv1.html">
+                                                            @if(count($ad->images()) > 0)
+                                                                <img src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
+                                                            @else
+                                                                <img  src="{{asset('dashboard/images/img-28.jpeg')}}" alt="image description" class="mCS_img_loaded">
+                                                            @endif
 
-                                                            <p> {{$ad->subclass()->description }} </p>
-                                                            <p> {{$ad->subclass()->description }} </p>
-                                                            <p> {{$ad->subclass()->description }} </p>
-                                                            <p> {{$ad->subclass()->description }} </p>
-                                                        </div>
+                                                        </span></figure>
+                                                    <div class="listar-postcontent" >
+                                                        <span  class="ad_num" style="border: solid #2457cf 2px ;
+                                                         border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF"  >
+
+                                                                {{$ad->id + 50}}
+                                                                  </span>
+                                                        <h3><a href="{{url('all-ads/'.$ad->id)}}">
+
+                                                                {{$ad->title}}</a>
+
+
+                                                        </h3>
+                                                        <br> <br>
                                                         <div class="listar-reviewcategory">
-                                                            <div class="listar-review">
-                                                                {{$ad->category()? $ad->category()->name : "Category Name" }}
+                                                            <div  style="font-size: 15px" class="listar-review">
+
+                                                                 {!!  $ad->category()  !!}
                                                             </div>
-                                                            <a href="listingv1.html" class="listar-category">
+                                                            <a style="font-size: 25px ; color: #ffa127" class="listar-category">
                                                                 <i class="icon-coin-dollar"></i>
-                                                                <span>{{$ad->subclass()->price}}</span>
+                                                                <span >{{$ad->subclass()->price}} DM</span>
                                                             </a>
                                                         </div>
-                                                        <div class="listar-themepostfoot">
+                                                        <div  class="listar-description" style="height: 137px!important;">
+
+                                                            <p>
+                                                                {{substr($ad->subclass()->description, 0, 200) }} ...
+                                                            </p>
+
+                                                        </div>
+                                                        <div style="margin-top: 2px" class="listar-themepostfoot">
                                                             <a class="listar-location" href="javascript:void(0);">
                                                                 <i class="icon-icons74"></i>
                                                                 <em>{{$ad->subclass()->adr }}</em>
@@ -120,15 +139,15 @@
 
 
 
-                                    <nav class="listar-pagination">
-                                        <ul>
-                                            <li class="listar-prevpage"><a href="javascript:void(0);"><i class="fa fa-angle-left"></i></a></li>
-                                            <li class="listar-active"><a href="javascript:void(0);">1</a></li>
-                                            <li><a href="javascript:void(0);">2</a></li>
-                                            <li><a href="javascript:void(0);">3</a></li>
-                                            <li class="listar-nextpage"><a href="javascript:void(0);"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                    </nav>
+                                    {{--<nav class="listar-pagination">--}}
+                                        {{--<ul>--}}
+                                            {{--<li class="listar-prevpage"><a href="javascript:void(0);"><i class="fa fa-angle-left"></i></a></li>--}}
+                                            {{--<li class="listar-active"><a href="javascript:void(0);">1</a></li>--}}
+                                            {{--<li><a href="javascript:void(0);">2</a></li>--}}
+                                            {{--<li><a href="javascript:void(0);">3</a></li>--}}
+                                            {{--<li class="listar-nextpage"><a href="javascript:void(0);"><i class="fa fa-angle-right"></i></a></li>--}}
+                                        {{--</ul>--}}
+                                    {{--</nav>--}}
                                 </div>
                             </div>
                         </div>
@@ -172,6 +191,14 @@
                     }
                 }
 
+
+                .ad_num{
+                    color: #FFFFFF !important;
+                    padding: 3px !important;
+                    border: solid black;
+                    border-radius: 50% !important; ;
+                    background: #2457cf !important;
+                }
 
 
             </style>

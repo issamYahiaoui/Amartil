@@ -3,6 +3,20 @@
 
 @section('content')
     <div class=" ">
+        @if(count($errors->all())>0)
+            <div class="alert alert-danger text-center col-md-12 ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+                </button>
+                <ul class="list-unstyled text-center">
+                    @foreach($errors->all() as $error)
+                        <li class="text-center">
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @if(Session::has('success'))
             <div id="alert" class="alert alert-success text-center col-md-12">
 

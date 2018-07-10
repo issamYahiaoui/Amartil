@@ -6,6 +6,7 @@ use App\Ads;
 use App\AdsPhoto;
 use App\Apartment;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 use Illuminate\Http\Request;
@@ -79,6 +80,7 @@ class ApartmentController extends Controller
             'category_id' => $request->get('category_id'),
             'featured' => $request->get('featured'),
             'video_url' => $request->get('video_url'),
+            'customer_id' => Auth::user()->id,
 
         ]) ;
         $files =$request->file('files') ;

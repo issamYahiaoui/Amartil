@@ -41,40 +41,39 @@
 
                     </div>
                     <br> <br>
-                    <div class="table-responsive"></div>
-                    <table id="categoryTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                        <tr>
-                            <th class="text-center">image</th>
-                            <th class="text-center">Title</th>
-                            <th class="text-center">Description</th>
-                            <th class="text-center">Price</th>
-                            <th class="text-center">Customer Phone</th>
-                            <th class="text-center">Actions</th>
 
-                        </tr>
-                        </thead>
 
-                        <tbody>
-
-                        @foreach($list as $model)
-
+                        <table id="categoryTable" class="display  table responsive nowrap table-hover  table-bordered" cellspacing="0" width="100%">
+                            <thead>
                             <tr>
-                                <td style="width: 20%"  class="text-center" >
+                                <th class="text-center">image</th>
+                                <th class="text-center">Title</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Customer Phone</th>
+                                <th class="text-center">Actions</th>
 
-                                    @if(count($model->images()) > 0)
-                                        <img width="100%" class="img-responsive" src="{{asset('images/'.$model->images()[0]->filename)}}" alt="">
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            @foreach($list as $model)
+
+                                <tr>
+                                    <td style="width: 20%"  class="text-center" >
+
+                                        @if(count($model->images()) > 0)
+                                            <img width="100%" class="img-responsive" src="{{asset('images/'.$model->images()[0]->filename)}}" alt="">
                                         @else
-                                        <img width="100%" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
-                                    @endif
+                                            <img width="100%" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
+                                        @endif
 
-                                </td>
-                                <td class="text-center">{{$model->title}}</td>
-                                <td class="text-center">{{$model->subclass()->description}}</td>
-                                <td class="text-center">{{$model->subclass()->price}}</td>
-                                <td class="text-center">{{$model->owner_phone}}</td>
+                                    </td>
+                                    <td class="text-center">{{$model->title}}</td>
+                                    <td class="text-center">{{$model->subclass()->price}}</td>
+                                    <td class="text-center">{{$model->owner_phone}}</td>
 
-                                <td class="text-center"  style="display: flex ; justify-content: space-around ; align-items: center ; width: available">
+                                    <td class="text-center"  style="display: flex ; justify-content: space-around ; align-items: center ; width: available">
 
                                         <form action="{{url('ads/'.$model->id.'/edit')}}" method="GET" >
 
@@ -129,11 +128,12 @@
                                         </div>
 
 
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
                 </div>
 
             </div>
@@ -147,17 +147,30 @@
 @endsection
 
 
+@section('css')
+    <link href="{{asset('dashboard/plugins/bower_components/datatables/jquery.dataTables.min.css')}}" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    @endsection
+
+
+
 @section('js')
     <script src="{{asset('dashboard/node_modules/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
+
+    <!-- start - This is for export functionality only -->
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+
+
     <script>
         $('#categoryTable').DataTable({
+
             dom: 'Bfrtip',
             buttons: [
                 {

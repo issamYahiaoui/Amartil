@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('front/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/icomoon.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/chosen.css')}}">
-    <link rel="stylesheet" href="{{asset('front/css/prettyPhoto.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('front/css/prettyPhoto.css')}}">--}}
     <link rel="stylesheet" href="{{asset('front/css/scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/morris.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/owl.carousel.css')}}">
@@ -30,25 +30,26 @@
     <link rel="stylesheet" href="{{asset('front/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
 
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/util.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/common.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/geocoder.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/map.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/marker.js"></script>
-    <style type="text/css">.gm-style {
-            font: 400 11px Roboto, Arial, sans-serif;
-            text-decoration: none;
-        }
-        .gm-style img { max-width: none; }</style>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/onion.js"></script>
-    <style type="text/css">@-webkit-keyframes _gm8744 {
-                               0% { -webkit-transform: translate3d(0px,0px,0); -webkit-animation-timing-function: ease-out; }
-                               50% { -webkit-transform: translate3d(0px,-20px,0); -webkit-animation-timing-function: ease-in; }
-                               100% { -webkit-transform: translate3d(0px,0px,0); -webkit-animation-timing-function: ease-out; }
-                           }
-    </style>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/controls.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/stats.js"></script>
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/util.js"></script>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/common.js"></script>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/geocoder.js"></script>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/map.js"></script>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/marker.js"></script>--}}
+    {{--<style type="text/css">.gm-style {--}}
+            {{--font: 400 11px Roboto, Arial, sans-serif;--}}
+            {{--text-decoration: none;--}}
+        {{--}--}}
+        {{--.gm-style img { max-width: none; }</style>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/onion.js"></script>--}}
+    {{--<style type="text/css">@-webkit-keyframes _gm8744 {--}}
+                               {{--0% { -webkit-transform: translate3d(0px,0px,0); -webkit-animation-timing-function: ease-out; }--}}
+                               {{--50% { -webkit-transform: translate3d(0px,-20px,0); -webkit-animation-timing-function: ease-in; }--}}
+                               {{--100% { -webkit-transform: translate3d(0px,0px,0); -webkit-animation-timing-function: ease-out; }--}}
+                           {{--}--}}
+    {{--</style>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/controls.js"></script>--}}
+    {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/stats.js"></script>--}}
+    @yield('css')
 
 
     <script src="{{asset('front/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
@@ -162,7 +163,7 @@
 <script src="{{asset('front/js/vendor/jquery-library.js')}}"></script>
 <script src="{{asset('front/js/vendor/bootstrap.min.js')}}"></script>
 <script src="{{asset('front/js/mapclustering/data.json')}}"></script>
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>
+{{--<script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>--}}
 <script src="{{asset('front/js/tinymce/tinymce.min.js?apiKey=4cuu2crphif3fuls3yb1pe4qrun9pkq99vltezv2lv6sogci')}}"></script>
 <script src="{{asset('front/js/mapclustering/markerclusterer.min.js')}}"></script>
 <script src="{{asset('front/js/mapclustering/infobox.js')}}"></script>
@@ -181,7 +182,7 @@
 <script src="{{asset('front/js/scrollbar.min.js')}}"></script>
 <script src="{{asset('front/js/isotope.pkgd.js')}}"></script>
 <script src="{{asset('front/js/jquery.steps.js')}}"></script>
-<script src="{{asset('front/js/prettyPhoto.js')}}"></script>
+{{--<script src="{{asset('front/js/prettyPhoto.js')}}"></script>--}}
 <script src="{{asset('front/js/raphael-min.js')}}"></script>
 <script src="{{asset('front/js/parallax.js')}}"></script>
 <script src="{{asset('front/js/sortable.js')}}"></script>
@@ -189,5 +190,7 @@
 <script src="{{asset('front/js/appear.js')}}"></script>
 <script src="{{asset('front/js/gmap3.js')}}"></script>
 <script src="{{asset('front/js/dev_themefunction.js')}}"></script>
+
+@yield('js')
 </body>
 </html>

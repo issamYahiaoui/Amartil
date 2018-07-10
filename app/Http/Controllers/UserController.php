@@ -78,6 +78,7 @@ class UserController extends Controller
        $user =  User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
             'role' => $request->get('role'),
             'password' => bcrypt($request->get('password')),
 
@@ -158,7 +159,7 @@ class UserController extends Controller
 
 
         $rules = [
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'name' => 'required',
             'password' => 'confirmed'
 
@@ -172,7 +173,8 @@ class UserController extends Controller
         $user->phone = $request->get('phone');
         $user->password = bcrypt($request->get('password'));
 
-      $user->save() ;
+        $user->update() ;
+
         Session::Flash('success',"Operation has successfully finished");
 
         return Redirect::back();
