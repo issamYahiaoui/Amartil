@@ -77,12 +77,7 @@
 
                                                         </span></figure>
                                             <br> <br>
-                                            <div class="listar-videobox">
-                                                {{--<iframe src="https://player.vimeo.com/video/234265016?byline=0&portrait=0"></iframe>--}}
-                                                @if($model->ads()->video_url)
-                                                    <iframe src="{{$model->ads()->video_url}}"></iframe>
-                                                @endif
-                                            </div>
+
                                         </div>
                                         <div class="listar-rightbox">
                                             <div class="listar-amenitiesarea">

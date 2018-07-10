@@ -38,8 +38,9 @@
             <div class="row">
                 <div id="listar-content" class="listar-content">
                     <div class="listar-posts listar-postsgrid listar-postsgridvone">
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
                          @foreach(\App\Article::all() as $article)
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="listar-themepost listar-post">
                                     <figure class="listar-featuredimg">
                                         <a href="{{url('blog/'.$article->id)}}"><img src="{{asset('images/'.$article->img_url)}}" alt="image description"></a>
@@ -60,8 +61,9 @@
                                         </div>
                                     </div>
                                 </div>
-                             @endforeach
-                        </div>
+                            </div>
+
+                        @endforeach
 
                     </div>
                     <nav class="listar-pagination">
