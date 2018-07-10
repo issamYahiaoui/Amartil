@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $admin =  \App\User::create([
             'name' => 'admin' ,
             'email' => 'admin@admin.com',
-            'phone' => '0123456789',
+            'phone' => '0664421310',
             'password' => bcrypt('123456') ,
             'role' => 'superadmin' ,
             'active' => 1

@@ -161,6 +161,7 @@ class UserController extends Controller
         $rules = [
             'email' => 'required',
             'name' => 'required',
+            'phone' => 'required',
             'password' => 'confirmed'
 
         ];
