@@ -47,7 +47,7 @@
                         <tr>
                             <th class="text-center">Image</th>
                             <th class="text-center">Title</th>
-                            <th class="text-center">content</th>
+
                             <th class="text-center">Actions</th>
 
                         </tr>
@@ -57,17 +57,16 @@
                         @foreach($list as $model)
 
                             <tr>
-                                <td style="width: 20%"  class="text-center" >
+                                <td  class="text-center" >
 
                                     @if($model->img_url)
-                                        <img width="100%" class="img-responsive" src="{{asset('images/'.$model->img_url)}}" alt="">
+                                        <img width="100px"  height="100px" class="img-responsive" src="{{asset('images/'.$model->img_url)}}" alt="">
                                     @else
-                                        <img width="100%" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
+                                        <img width="100px"  height="100px" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
                                     @endif
 
                                 </td>
                                 <td class="text-center">{{$model->title}}</td>
-                                <td class="text-center">{!! $model->content !!} </td>
 
 
 
@@ -135,6 +134,14 @@
 
 @endsection
 
+@section('css')
+    <link href="{{asset('dashboard/plugins/bower_components/datatables/jquery.dataTables.min.css')}}" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+@endsection
 
 @section('js')
     <script src="{{asset('dashboard/node_modules/datatables/jquery.dataTables.min.js')}}"></script>

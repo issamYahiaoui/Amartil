@@ -60,7 +60,7 @@
                             @foreach($list as $model)
 
                                 <tr>
-                                    <td style="width: 20%"  class="text-center" >
+                                        <td style="width: 20%"  class="text-center" >
 
                                         @if(count($model->images()) > 0)
                                             <img width="100%" class="img-responsive" src="{{asset('images/'.$model->images()[0]->filename)}}" alt="">

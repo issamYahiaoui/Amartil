@@ -37,7 +37,10 @@ class User extends Authenticatable
         return Ads::where('customer_id', $this->id)->get() ;
     }
     static function adminPhone(){
-        $admin = User::where('role','superadmin')->first()->phone ;
+       return User::where('role','superadmin')->first()->phone ;
+    }
+    static function adminName(){
+       return User::where('role','superadmin')->first()->name ;
     }
 
 

@@ -19,11 +19,11 @@
                         <div class="listar-themepost listar-post">
                             <figure class="listar-featuredimg">
                                 <a href="{{url('blog/'.$article->id)}}"><img src="{{asset('images/'.$article->img_url)}}" alt="image description"></a>
-                                <a class="listar-postcategory" href="{{url('articles/'.$article->id)}}">{{$article->tag}}</a>
+                                <a class="listar-postcategory" href="{{url('blog/'.$article->id)}}">{{$article->tag}}</a>
                             </figure>
                             <div class="listar-postcontent">
                                 <figure class="listar-authorimg"><img src="{{asset('front/images/author/img-02.jpg')}}" height="54" width="54" alt="image description"></figure>
-                                <h2><a href="newsdetail.html">{{$article->title}}</a></h2>
+                                <h2><a href="{{url('blog/'.$article->id)}}">{{$article->title}}</a></h2>
                                 <div class="listar-themepostfoot">
                                     <time datetime="2017-08-08">
                                         <i class="icon-clock4"></i>

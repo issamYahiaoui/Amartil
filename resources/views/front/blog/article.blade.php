@@ -21,7 +21,7 @@
                                     <div class="listar-postcontent">
                                         <div class="listar-postauthordpname">
                                             <span class="listar-postauthordp"><a href="javascript:void(0);"><img src="{{asset('front/images/author/img-01.jpg')}}" alt="image description"></a></span>
-                                            <span class="listar-postauhorname"><a href="javascript:void(0);">Johny bravo</a></span>
+                                            <span class="listar-postauhorname"><a href="javascript:void(0);">{{\App\User::adminName()}}</a></span>
                                         </div>
                                         <time datetime="2017-08-08">
                                             <i class="icon-clock4"></i>
