@@ -88,11 +88,12 @@
 
                                                         </span></figure>
                                                     <div class="listar-postcontent" >
-                                                        <span  class="ad_num" style="border: solid #2457cf 2px ;
-                                                         border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF"  >
+                                                        <span class="ad_num" style="border: solid #2457cf 2px ;
+                                                         border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF">
 
-                                                                {{$ad->id + 50}}
+                                                               {{$ad->id + 50}}
                                                                   </span>
+
                                                         <h3><a href="{{url('all-ads/'.$ad->id)}}">
 
                                                                 {{$ad->title}}</a>
@@ -192,13 +193,6 @@
                 }
 
 
-                .ad_num{
-                    color: #FFFFFF !important;
-                    padding: 3px !important;
-                    border: solid black;
-                    border-radius: 50% !important; ;
-                    background: #2457cf !important;
-                }
 
 
             </style>
