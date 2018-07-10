@@ -27,7 +27,7 @@ class ArticleController extends Controller
 
 
         return view('dashboard.blog.list',[
-            'list'=> dd(Article::all()),
+            'list'=> Article::all(),
             'active'=>'articles',
             'title'=> "Articles",
         ]);
