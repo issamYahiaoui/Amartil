@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{asset('front/style.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/xzoom.css')}}">
 
     {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/util.js"></script>--}}
     {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/common.js"></script>--}}
@@ -190,6 +191,7 @@
 <script src="{{asset('front/js/appear.js')}}"></script>
 <script src="{{asset('front/js/gmap3.js')}}"></script>
 <script src="{{asset('front/js/dev_themefunction.js')}}"></script>
+<script src="{{asset('js/xzoom.js')}}"></script>
 
 @yield('js')
 </body>

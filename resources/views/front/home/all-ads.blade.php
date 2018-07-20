@@ -108,13 +108,13 @@
                                                             </div>
                                                             <a style="font-size: 25px ; color: #ffa127" class="listar-category">
                                                                 <i class="icon-coin-dollar"></i>
-                                                                {{--<span >{{$ad->subclass()->price}} DM</span>--}}
+                                                                <span >{{$ad->subclass()->price}} DM</span>
                                                             </a>
                                                         </div>
                                                         <div  class="listar-description" style="height: 137px!important;">
 
                                                             <p>
-                                                                {{substr($ad->subclass()->description, 0, 200) }} ...
+                                                                {!! substr($ad->subclass()->description, 0, 200) !!}
                                                             </p>
 
                                                         </div>

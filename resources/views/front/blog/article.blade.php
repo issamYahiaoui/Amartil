@@ -13,7 +13,7 @@
         <div id="listar-twocolumns" class="listar-twocolumns">
             <div class="listar-themepost listar-post listar-detail listar-postdetail">
                 <figure style="max-height: 600px" class="listar-featuredimg">
-                    <img  src="{{asset('images/'.$model->img_url)}}" alt="image description">
+                    <img  style="height: 406px!important;" src="{{asset('images/'.$model->img_url)}}" alt="image description">
                     <figcaption>
                         <div class="container">
                             <div class="row">

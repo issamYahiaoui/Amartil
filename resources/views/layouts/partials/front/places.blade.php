@@ -13,15 +13,15 @@
                 <div class="listar-horizontalthemescrollbar">
                     <div class="listar-themeposts listar-categoryposts">
                         <div class="row">
-                            @foreach(\App\Ads::all() as $ad)
+                            @foreach(\App\Ads::all()->take(6) as $ad)
                                 {{--{{dd($ad->car())}}--}}
                                 <div class="col-md-offset-1 col-md-3">
                                     <div class="listar-themepost listar-placespost">
-                                        <figure style="height: 285px!important; ; width: 406px !important;" class="listar-featuredimg"><span href="detailv1.html">
+                                        <figure  class="listar-featuredimg"><span href="detailv1.html">
                                                             @if(count($ad->images()) > 0)
-                                                    <img src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
+                                                    <img style="height: 285px!important; ; width: 406px !important;" src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
                                                 @else
-                                                    <img  src="{{asset('dashboard/images/prop1.jpeg')}}" alt="image description" class="mCS_img_loaded">
+                                                    <img style="height: 285px!important; ; width: 406px !important;" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="image description" class="mCS_img_loaded">
                                                 @endif
 
                                                         </span></figure>

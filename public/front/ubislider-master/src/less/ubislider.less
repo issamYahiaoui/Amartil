@@ -1,0 +1,88 @@
+/*
+Plugin Name: UbiSlider
+Version: 0.0.1
+*/
+/*================================================
+=            1. Including main styles            =
+================================================*/
+
+/* Mixins */
+@import 'function.less';				/* Mixins 					*/
+@import 'colors.less';					/* Styles 					*/
+@import 'variables.less';				/* Variables 				*/
+
+
+.ubislider{
+    margin: 0 0;
+    padding: 24px 0 20px;
+    overflow: hidden;
+	.arrow{
+	    position: absolute;
+	    width: 25px;
+	    height: 60px;
+	    top: 50%;
+	    margin: -30px 0 0;
+	    line-height: 60px;
+	    font-size: 20px;
+	    color: @greenColor;
+	    overflow: hidden;
+	    cursor: pointer;
+	    display: block;
+	    text-align: center;
+	    background-color: @bodyBackground; 
+	    &:hover, &:active{
+	    	text-decoration: none;
+	    	color: #333;
+	    }
+		&:before{
+			font-family: 'FontAwesome';
+		}
+		&.prev{
+			left: -20px;
+			&:before{
+			    content: "\f053";
+			}
+		}
+		&.next{
+		    right: -20px;
+			&:before{
+			    content: "\f054";
+			}
+		}
+	}
+	.ubislider-inner{
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		position: relative;
+		left: 0;
+		width: 100000000000%;
+		.transition(all 0.2s ease-in-out);
+		li{
+			float: left;
+		    .transition(transform 0.2s ease-in-out);
+		    position: relative;
+		    float: left;
+		    width: 200px;
+		    margin: 0 12px 0 0;
+		    display: block;
+		    .border-radius(@radiusAngle);
+		    overflow: hidden;
+		    a{
+		    	&:hover, &:focus, &:active{
+		    		text-decoration: none;
+		    	}
+		    }
+		    .image-container{
+		    	img{
+		    		max-width: 100%;
+		    	}
+		    }
+		    &:hover{
+		    	.hidden-content{
+		    		opacity: 1;
+		    	}
+		    }
+		}
+	}
+}
