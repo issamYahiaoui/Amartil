@@ -17,7 +17,6 @@
                             <ul>
                                 <li><a href="{{url('/')}}">Acceuil</a></li>
                                 <li><a href="{{url('/all-ads')}}">Tous Les Annonces </a></li>
-                                <li><a href="{{url('/faq')}}">Faq</a></li>
                                 <li><a href="{{url('/blog')}}">Blog</a></li>
                                 <li><a href="{{url('/contact')}}">Contact</a></li>
                                 <li><a href="{{url('/u/dashboard')}}">Dashboard</a></li>

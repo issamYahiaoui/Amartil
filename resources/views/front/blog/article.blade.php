@@ -117,9 +117,7 @@
         </div>
     </main>
 
-    @include('layouts.partials.front.footer')
-    <!--************************************
-            Footer End
-    *************************************-->
+
+
     </main>
 @endsection

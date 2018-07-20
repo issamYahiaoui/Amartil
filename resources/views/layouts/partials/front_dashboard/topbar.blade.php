@@ -92,9 +92,7 @@
 
                                 </ul>
                             </li>
-                            <li class="menu-item">
-                                <a href="{{url('faq')}}">FAQ</a>
-                            </li>
+
                             <li class="menu-item">
                                 <a href="{{url('contact')}}">Contact</a>
 
