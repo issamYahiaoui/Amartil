@@ -13,36 +13,44 @@
                                     <form class="listar-formtheme listar-formsearchlisting">
                                         <fieldset >
                                             <div class="form-group listar-inputwithicon">
+                                                <i class="icon-search" style="color: #8c8c8c;" ></i>
+                                                <div class="" >
+                                                    <input placeholder="Que cherchez vous ?" style="width: 100% ; border: none!important; padding-left: 15% ; padding-top: 8%;color: #8c8c8c;
+    font-size: 12px;
+    line-height: 60px; " name="query" type="text" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group listar-inputwithicon">
                                                 <i class="icon-layers"></i>
                                                 <div class="listar-select">
-                                                    <select id="listar-categorieschosen" class="listar-categorieschosen listar-chosendropdown">
-                                                        <option>Ex: appartement, vehicule , magasin ...</option>
+                                                    <select name="category_id" id="listar-categorieschosen" class="listar-categorieschosen listar-chosendropdown">
+                                                        <option>Choisir une categorie</option>
+                                                        <option value="*">Tous les categories</option>
+                                                        <option value="aww">aww</option>
+
                                                         @foreach(\App\Category::all() as $category)
                                                             <option value="{{$category->id}}">{{$category->namw}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
+                                                </div>>
                                             </div>
                                             <div class="form-group listar-inputwithicon">
                                                 <i class="icon-global"></i>
                                                 <div class="listar-select listar-selectlocation">
-                                                    <select id="listar-locationchosen" class="listar-locationchosen listar-chosendropdown">
-                                                        <option>Choose a Location</option>
-                                                        <option>Lahore</option>
-                                                        <option>Bayonne</option>
-                                                        <option>Greenville</option>
-                                                        <option>Manhattan</option>
-                                                        <option>Queens</option>
-                                                        <option>The Heights</option>
+                                                    <select name="adr" id="listar-locationchosen" class="listar-locationchosen listar-chosendropdown">
+                                                        <option>Choisir une ville</option>
+                                                        <option value="*">Tous le Maroc</option>
+                                                        <option value="aww">aww</option>
+
+                                                        @foreach($locations as $location)
+                                                            <option value="{{$location}}">{{$location}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group listar-inputwithicon">
-                                                <i class=""><img src="{{asset('front/images/icons/icon-01.png')}}" alt="image description"></i>
-                                                <p>Price: </p>
-                                                <input id="listar-rangeslider" class="listar-rangeslider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14">
-                                            </div>
-                                            <button type="button" class="listar-btn listar-btngreen">Trouver Annonces</button>
+
+                                            <button type="submit" class="listar-btn listar-btngreen">Trouver Annonces</button>
                                         </fieldset>
                                     </form>
                                 </div>

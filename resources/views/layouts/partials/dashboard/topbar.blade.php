@@ -37,6 +37,58 @@
             <!-- User profile and search -->
             <!-- ============================================================== -->
             <ul class="navbar-nav my-lg-0">
+                <li class="nav-item dropdown show">
+                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <i class="ti-email"></i>
+                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown ">
+                        <ul>
+                            <li>
+                                <div class="drop-title">Messages</div>
+                            </li>
+                            <li>
+                                <div class="message-center ps ps--theme_default" data-ps-id="831bebea-ddd8-9c7f-ec3a-1260b515b0b0">
+                                    <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
+                                        <i class="icon-envelope"></i>
+                                        <div class="notify">
+                                            @if(count($newMessages)>0)
+                                                <span class="heartbit"></span>
+                                                <span class="point"></span>
+                                            @endif
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu mailbox animated bounceInDown">
+                                        <li>
+                                            <div class="drop-title text-center">
+                                                You have {{ count($newMessages)}} messages
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="message-center">
+                                                @foreach($newMessages as $newMessage)
+                                                    @if($newMessage->belongsToUser())
+                                                    <a href="{{url('inboxDetail/'.$newMessage->id)}}">
+                                                        <div class="mail-contnet">
+                                                            <h5>{{$newMessage->sender}}</h5>
+                                                            <span class="mail-desc">{{$newMessage->subject}}</span>
+                                                            <span class="time">{{ date_format(new DateTime($newMessage->created_at),'d M')}}</span>
+                                                        </div>
+                                                    </a>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                    <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                            </li>
+                            <li>
+                                <a class="nav-link text-center link" href="{{url('inbox')}}"> <strong>Check all messages</strong> <i class="fa fa-angle-right"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <!-- ============================================================== -->
                 <!-- User Profile -->

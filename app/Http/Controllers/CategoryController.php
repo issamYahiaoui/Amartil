@@ -6,10 +6,11 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
-class CategoryController extends Controller
+class CategoryController extends BaseController
 {
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
         $this->middleware('admin');
 

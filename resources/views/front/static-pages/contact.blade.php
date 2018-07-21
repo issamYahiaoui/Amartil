@@ -10,10 +10,10 @@
 
 
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-md-offset-1  col-xs-12 col-sm-10 col-md-10 col-lg-10">
                     <div id="listar-content" class="listar-content">
                         <div class="listar-contactusarea">
-                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 pull-left">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-left">
                                 @if(Session::has('success'))
                                     <div id="alert" class="alert alert-success text-center col-md-12">
 
@@ -23,14 +23,20 @@
                                     </div>
                                 @endif
                                 <div class="row">
-                                    <form method="POST" action="{{url('contact')}}" class="listar-formtheme listar-formcontactus">
+                                    <form method="POST" action="{{url('sendMessage')}}" class="listar-formtheme listar-formcontactus">
                                         @csrf
                                         <fieldset>
                                             <h2>Contact Form</h2>
+                                            @if(\Illuminate\Support\Facades\Auth::user())
+                                            <input style="display: none !important; " name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" type="text" >
+                                            @else
+                                                <input name="user_id" value="guest" type="text" hidden>
+                                                @endif
+
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <div class="form-group">
-                                                        <input type="text" name="name" class="form-control" placeholder="Your Name">
+                                                        <input type="text" name="sender" class="form-control" placeholder="Your Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -56,41 +62,41 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 pull-right">
-                                <div class="row">
-                                    <div class="listar-contactinfo">
-                                        <h2>Get in Touch</h2>
-                                        <div class="listar-description">
-                                            <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue Sed non mauris vitae;erat consequat.</p>
-                                        </div>
-                                        <ul class="listar-contactinfolist">
-                                            <li>
-                                                <i class="icon-"><img src="images/icons/icon-03.png" alt="image description"></i>
-                                                <span>+ 7890 456 133</span>
-                                            </li>
-                                            <li>
-                                                <i class="icon-icons208"></i>
-                                                <span><a href="mailto:listingstar@gmail.com">listingstar@gmail.com</a></span>
-                                            </li>
-                                            <li>
-                                                <i class="icon-world"></i>
-                                                <span><a href="www.listingstar.com" target="_blank">www.listingstar.com</a></span>
-                                            </li>
-                                            <li>
-                                                <i class="icon-icons74"></i>
-                                                <span>Manhattan Hall, London W1K 2EQ UK</span>
-                                            </li>
-                                        </ul>
-                                        <ul class="listar-socialicons listar-socialiconsborder">
-                                            <li class="listar-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                            <li class="listar-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                            <li class="listar-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-                                            <li class="listar-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                                            <li class="listar-instagram"><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            {{--<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 pull-right">--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="listar-contactinfo">--}}
+                                        {{--<h2>Get in Touch</h2>--}}
+                                        {{--<div class="listar-description">--}}
+                                            {{--<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue Sed non mauris vitae;erat consequat.</p>--}}
+                                        {{--</div>--}}
+                                        {{--<ul class="listar-contactinfolist">--}}
+                                            {{--<li>--}}
+                                                {{--<i class="icon-"><img src="images/icons/icon-03.png" alt="image description"></i>--}}
+                                                {{--<span>+ 7890 456 133</span>--}}
+                                            {{--</li>--}}
+                                            {{--<li>--}}
+                                                {{--<i class="icon-icons208"></i>--}}
+                                                {{--<span><a href="mailto:listingstar@gmail.com">listingstar@gmail.com</a></span>--}}
+                                            {{--</li>--}}
+                                            {{--<li>--}}
+                                                {{--<i class="icon-world"></i>--}}
+                                                {{--<span><a href="www.listingstar.com" target="_blank">www.listingstar.com</a></span>--}}
+                                            {{--</li>--}}
+                                            {{--<li>--}}
+                                                {{--<i class="icon-icons74"></i>--}}
+                                                {{--<span>Manhattan Hall, London W1K 2EQ UK</span>--}}
+                                            {{--</li>--}}
+                                        {{--</ul>--}}
+                                        {{--<ul class="listar-socialicons listar-socialiconsborder">--}}
+                                            {{--<li class="listar-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>--}}
+                                            {{--<li class="listar-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>--}}
+                                            {{--<li class="listar-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>--}}
+                                            {{--<li class="listar-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>--}}
+                                            {{--<li class="listar-instagram"><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>--}}
+                                        {{--</ul>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                 </div>

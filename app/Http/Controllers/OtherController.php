@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use Intervention\Image\Facades\Image;
 
-class OtherController extends Controller
+class OtherController extends BaseController
 {
     public function __construct()
     {
+        parent::__construct();
+
         $this->middleware('auth');
 
 

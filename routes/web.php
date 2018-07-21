@@ -27,6 +27,12 @@ Route::Resource('customers', 'CustomerController');
 Route::post('loginCustomer', 'Auth\LoginController@login');
 
 
+Route::get('/inbox', 'InboxController@inbox');
+Route::get('/inboxDetail/{id}', 'InboxController@inboxDetail');
+Route::get('/compose', 'InboxController@compose');
+Route::post('/reply', 'InboxController@reply');
+Route::post('/sendMessage', 'InboxController@sendMessage');
+
 
 
 Route::resource('ads', 'AdsController');
@@ -49,6 +55,8 @@ Route::prefix('u')->group(function () {
     Route::get('add-ad', 'CustomerController@addAd');
     Route::get('add-ad/{type}', 'CustomerController@addAdType');
     Route::get('edit-ad/{id}', 'CustomerController@editAd');
+    Route::get('inbox', 'CustomerController@inbox');
+    Route::get('detail/{id}', 'CustomerController@detail');
 
 
 });
@@ -59,6 +67,7 @@ Route::get('faq', 'HomeController@faq');
 Route::get('about', 'HomeController@about');
 Route::get('show-ads/{type}', 'HomeController@allAds');
 Route::get('all-ads/{id}', 'HomeController@showAd');
+Route::get('search', 'HomeController@search');
 
 Route::get('*', function() {
     return view('/') ;

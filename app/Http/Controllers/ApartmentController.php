@@ -12,10 +12,11 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
-class ApartmentController extends Controller
+class ApartmentController extends BaseController
 {
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
 
 

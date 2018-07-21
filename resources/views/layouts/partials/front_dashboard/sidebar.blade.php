@@ -13,6 +13,12 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="listar">
+                    <a  href="{{url('u/inbox')}}">
+                        <i class="icon-email"></i>
+                        <span>Inbox</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{url('u/ads')}}">

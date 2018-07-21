@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use App\Ads;
-class CustomerController extends Controller
+use App\Message;
+class CustomerController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,33 @@ class CustomerController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth')->except(['store']);
         $this->middleware('customer')->except(['store']);
 
+    }
+    function inbox () {
+        $messages = Message::all()->sortByDesc('created_at');
+        return view('front.dashboard.inbox.inbox')->with([
+            'messages' => $messages,
+            'read' => count($messages->where('read', 1)),
+            'unread' => count($messages->where('read', 0)),
+            'title' => __('inbox.inbox'),
+            'active' => 'inbox'
+        ]);
+    }
+    function detail($id){
+        $messages = Message::all();
+        $message = Message::find($id);
+        $message->read = 1;
+        $message->save();
+        return view('front.dashboard.inbox.detail')->with([
+            'message' => $message,
+            'title' => $message->subject,
+            'active' => 'inbox',
+            'read' => count($messages->where('read', 1)),
+            'unread' => count($messages->where('read', 0)),
+        ]);
     }
     public function index()
     {

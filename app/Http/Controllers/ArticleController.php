@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use Intervention\Image\Facades\Image;
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
 
 

@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
-class AdsController extends Controller
+class AdsController extends BaseController
 {
 
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
 
 

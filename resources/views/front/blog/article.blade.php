@@ -20,7 +20,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="listar-postcontent">
                                         <div class="listar-postauthordpname">
-                                            <span class="listar-postauthordp"><a href="javascript:void(0);"><img src="{{asset('front/images/author/img-01.jpg')}}" alt="image description"></a></span>
+                                            <span class="listar-postauthordp"><a  href="javascript:void(0);"><img style="height: 54px ; width: 54px" src="{{asset('images/avatar.png')}}" alt="image description"></a></span>
                                             <span class="listar-postauhorname"><a href="javascript:void(0);">{{\App\User::adminName()}}</a></span>
                                         </div>
                                         <time datetime="2017-08-08">
@@ -45,13 +45,14 @@
                         <div class="col-xs-12 col-sm-12 col-md-push-1 col-md-10 col-lg-push-1 col-lg-10">
                             <div id="listar-detailcontent" class="listar-detailcontent">
                                 <div class="listar-heading listar-headingvtwo">
-                                    <h2>Article Description</h2>
+                                    <h2>Contenu</h2>
                                 </div>
                                 <div class="listar-description">
                                     {!! $model->content !!}
                                 </div>
 
                                 <section class="listar-comments">
+                                    <hr>
                                     <div class="listar-heading listar-headingvtwo">
                                         <h2>{{count($model->comments()) }} Responses</h2>
                                     </div>

@@ -7,17 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use App\Ads;
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-       // $this->middleware('guest');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -31,6 +28,7 @@ class HomeController extends Controller
                 'title' => 'Home'
             ]);
     }
+
     public function contact(){
         return view('front.static-pages.contact') ;
     }
@@ -60,6 +58,66 @@ class HomeController extends Controller
         return view('front.home.all-ads',[
             'list' => $list
         ]) ;
+    }
+   function search(Request $request){
+//        dd($request->all()) ;
+       $query = $request->get('query') ;
+       $category = $request->get('category') ;
+       $location = $request->get('location') ;
+      $table = $this->getQueryParam($request) ;
+//      dd($table) ;
+
+       $res1 = Ads::join('apartments', 'apartments.ads_id' , '=' , 'ads.id')
+           ->where($table)
+           ->orWhere('title', 'like' , '%'.$query.'%')
+           ->get();
+
+       $res2 = Ads::join('cars', 'cars.ads_id' , '=' , 'ads.id')
+           ->where($table)
+           ->orWhere('title', 'like' , '%'.$query.'%')
+           ->get();
+
+
+       $res3 = Ads::join('others', 'others.ads_id' , '=' , 'ads.id')
+           ->where($table)
+           ->orWhere('title', 'like' , '%'.$query.'%')
+           ->get();
+
+
+       $res = $res1->merge($res2)->merge($res3) ;
+//       dd($res) ;
+       $search_params = [
+           'query' => $query ,
+           'category' => $category ,
+           'location' => $location ,
+       ] ;
+
+
+       return view('front.home.all-ads',[
+           'list' => $res ,
+           'search_params' => $search_params
+       ]) ;
+     }
+    public function getQueryParam($request){
+
+        $traceFields = ['adr','category_id'] ;
+        $i =0 ;
+        foreach ($traceFields as $field) {
+
+            if($request[$field] ==="*") {
+                unset($traceFields[$i]) ;
+            }
+            $i++;
+        }
+        $res = [] ; $row =[] ;
+        $i =0;
+        foreach ($traceFields as $field){
+            $row[0] = $field ; $row[1]='=' ;  $row[2]= $request[$field] ;
+            $res[$i] = $row ;
+            $i++;
+        }
+
+        return $res;
     }
     public function showAd($id){
         //

@@ -48,6 +48,16 @@
                                                     <span >{{$ad->subclass()->price}} DM</span>
                                                 </a>
                                             </div>
+                                            <div style="margin-top: 2px" class="listar-themepostfoot">
+                                                <a class="listar-location" href="javascript:void(0);">
+                                                    <i class="icon-icons74"></i>
+                                                    <em>{{$ad->subclass()->adr}}</em>
+                                                </a>
+                                                <div class="listar-postbtns" style="display: flex; justify-content: space-around">
+                                                    <a class="listar-btnquickinfo" style="width: 100px ;background: #6ebf18 ; color: #FFFFFF" href="{{url('all-ads/'.$ad->id)}}"><i class="fa fa-eye"></i>Détails</a>
+
+                                                </div>
+                                            </div>
 
 
                                         </div>

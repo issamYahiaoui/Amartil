@@ -21,6 +21,13 @@
                         </ul>
                     </li>
                      @endif
+                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-email"></i>
+                        <span class="hide-menu">Inbox</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{url('inbox')}}">Inbox</a></li>
+
+                    </ul>
+                </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-microphone"></i>
                         <span class="hide-menu">Ads</span></a>
                     <ul aria-expanded="false" class="collapse">

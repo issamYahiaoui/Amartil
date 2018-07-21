@@ -56,6 +56,36 @@
                                 <span>Ajouter Annonce</span>
                             </a>
                         </li>
+                        <li>
+                            <div class="dropdown listar-themedropdown">
+                                <a id="listar-cartdropdown" style="color: #f98925 !important;" class="listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <em>{{count(\App\Message::where('user_id', \Illuminate\Support\Facades\Auth::id())->get())}}</em>
+                                    <i class="icon-email" ></i>
+                                </a>
+                                <div class="dropdown-menu listar-themedropdownmenu listar-minicart" aria-labelledby="listar-cartdropdown">
+                                    @foreach($newMessages as $newMessage)
+                                        @if($newMessage->belongsToUser())
+                                        <div class="listar-cartitem">
+
+                                            <div class="listar-iteminfo">
+                                                <a href="{{url('inboxDetail/'.$newMessage->id)}}">
+                                                    <div class="mail-contnet">
+                                                        <h5>{{$newMessage->sender}}</h5>
+                                                        <span class="mail-desc">{{$newMessage->subject}}</span>
+                                                        <span class="time">{{ date_format(new DateTime($newMessage->created_at),'d M')}}</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        @endif
+                                    @endforeach
+
+
+                                    <a class="listar-btn listar-btngreen listar-btn-lg" href="{{url('u/inbox')}}">Voir tous les messages</a>
+                                </div>
+                            </div>
+                        </li>
+
                     </ul>
                 </nav>
                 <nav id="listar-nav" class="listar-nav">
