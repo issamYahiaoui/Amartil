@@ -14,11 +14,17 @@
             <div class="">
                 <div class="listar-themeposts listar-categoryposts">
                     <div class="row">
-                        @foreach(\App\Ads::all()->take(9) as $ad)
+                        @foreach(\App\Ads::orderBy('active', 'desc')->get()->take(9) as $ad)
                             {{--{{dd($ad->car())}}--}}
                             <div class=" col-md-4">
                                 <div class="listar-themepost listar-placespost">
-                                    <figure  class="listar-featuredimg"><span href="detailv1.html">
+                                    <figure  class="listar-featuredimg">
+                                        @if($ad->featured)
+                                            <span style="z-index:2 ;position: absolute; right: 0px ; top: 5px ; background: #6ebf18 ; color: white ;    width: 70px;height: 25px;border-radius: 10%; padding-left: 5px;">
+                                                            Featured
+                                                        </span>
+                                        @endif
+                                        <span href="detailv1.html">
                                                             @if(count($ad->images()) > 0)
                                                 <img style="height: 285px!important; ; width: 406px !important;" src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
                                             @else
@@ -34,10 +40,12 @@
                                                                   </span>
                                         <h3><a href="{{url('all-ads/'.$ad->id)}}">
 
-                                                {{$ad->title}}</a>
+                                                {{$ad->title}}  <span style="color: red ; font-size: 15px">{{$ad->active? "" : " - Non Disponible"}}</span></a>
+
 
 
                                         </h3>
+
                                         <br> <br>
                                         <div class="listar-reviewcategory">
                                             <div  style="font-size: 15px" class="listar-review">
@@ -55,7 +63,7 @@
                                                 <em>{{$ad->subclass()->adr}}</em>
                                             </a>
                                             <div class="listar-postbtns" style="display: flex; justify-content: space-around">
-                                                <a class="listar-btnquickinfo" style="width: 100px ;background: #6ebf18 ; color: #FFFFFF" href="{{url('all-ads/'.$ad->id)}}"><i class="fa fa-eye"></i>Détails</a>
+                                                <a class="listar-btnquickinfo" style="width: 100px ;background: #6ebf18 ; color: #FFFFFF" href="{{url('all-ads/'.$ad->id)}}"><i class="fa fa-eye"></i> More</a>
 
                                             </div>
                                         </div>

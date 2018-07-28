@@ -64,47 +64,48 @@ class OtherController extends BaseController
     public function store(Request $request)
     {
 
+        if(Auth::user()->ads_limit > count(Auth::user()->ads())) {
+
+            $rules = [
+                'title' => 'required'
+            ];
 
 
-        $rules = [
-            'title' => 'required'
-        ];
+            $this->validate($request, $rules);
+            $ads = Ads::create([
+                'title' => $request->get('title'),
+                'owner_phone' => $request->get('owner_phone'),
+
+                'featured' => $request->get('featured') ? 1 : 0,
+                'video_url' => $request->get('video_url'),
+                'customer_id' => Auth::user()->id,
+                'category_id'=> Category::where('name','Autres')->first()->id
 
 
-        $this->validate($request, $rules);
-        $ads = Ads::create([
-            'title' => $request->get('title'),
-            'owner_phone' => $request->get('owner_phone'),
-            'category_id' => $request->get('category_id'),
-            'featured' => $request->get('featured'),
-            'video_url' => $request->get('video_url'),
-            'customer_id' => Auth::user()->id,
+            ]);
 
-        ]) ;
+            $files = $request->file('files');
+            // dd($files);
+            if (count($files)) {
 
-        $files =$request->file('files') ;
-        // dd($files);
-        if (count($files)){
-
-            for ($i=0 ; $i< count($files); $i++) {
-                $img = $files[$i]->getClientOriginalName() ;
-                //dd($img);
-                Image::make($files[$i]->getRealPath())->save(public_path('images/' . $img));
-                AdsPhoto::create([
-                    'ads_id' => $ads->id,
-                    'filename' => $img
-                ]) ;
+                for ($i = 0; $i < count($files); $i++) {
+                    $img = $files[$i]->getClientOriginalName();
+                    //dd($img);
+                    Image::make($files[$i]->getRealPath())->save(public_path('images/' . $img));
+                    AdsPhoto::create([
+                        'ads_id' => $ads->id,
+                        'filename' => $img
+                    ]);
+                }
             }
-        }
 
-        $other = new Other() ;
-        $other->adr = $request->get('adr') ;
-        $other->lat = $request->get('lat') ;
-        $other->lng = $request->get('lng') ;
-        $other->description = $request->get('description') ;
-        $other->price = $request->get('price') ;
-        $other->ads_id = $request->get('ads_id') ;
-
+            $other = new Other();
+            $other->adr = $request->get('adr');
+            $other->lat = $request->get('lat');
+            $other->lng = $request->get('lng');
+            $other->description = $request->get('description');
+            $other->price = $request->get('price');
+            $other->ads_id = $request->get('ads_id');
 
 
 //          Other::create([
@@ -116,14 +117,16 @@ class OtherController extends BaseController
 //            'price' => $request->get('price'),
 //            'ads_id' => $ads->id,
 //        ]);
-        $other->ads_id = $ads->id ;
-        $other->save();
+            $other->ads_id = $ads->id;
+            $other->save();
 
 
-
-
-        Session::Flash('success',"Operation has successfully finished");
-        return Redirect::back();
+            Session::Flash('success', "Operation has successfully finished");
+            return Redirect::back();
+        }else{
+            Session::Flash('success',"You have exceeded the limit of ads you can add");
+            return Redirect::back();
+        }
 
     }
 
@@ -164,14 +167,13 @@ class OtherController extends BaseController
             'title' => 'required'
         ];
 
-
         $this->validate($request, $rules);
         $ads = Ads::find($request->get('ads_id')) ;
         $ads->update([
             'title' => $request->get('title'),
             'owner_phone' => $request->get('owner_phone'),
             'category_id' => $request->get('category_id'),
-            'featured' => $request->get('featured'),
+            'featured' => $request->get('featured') == null ? 0:1,
             'video_url' => $request->get('video_url'),
 
         ]) ;

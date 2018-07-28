@@ -35,15 +35,7 @@ class UserController extends BaseController
             'title'=> "Users",
         ]);
     }
-    public function activate($id){
-        $user = User::find($id) ;
-        if (!$user) abort(404) ;
-        $user->active = $user->active ? 0:1 ;
-        $user->update() ;
-        Session::Flash('success',"Operation has successfully finished");
-        return Redirect::back();
 
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -57,6 +49,15 @@ class UserController extends BaseController
             'title'=> "Add User",
 
         ]);
+    }
+    public function activate($id){
+        $user = User::find($id) ;
+        if (!$user) abort(404) ;
+        $user->active = $user->active ? 0:1 ;
+        $user->update() ;
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
     }
 
     /**
@@ -120,7 +121,45 @@ class UserController extends BaseController
      */
     public function edit($id)
     {
-        //
+
+    }
+
+
+    public function showEditForm($id){
+        $user = User::find($id) ;
+        if (!$user) abort(404) ;
+        return view('dashboard.users.edit',[
+            'active'=>'users',
+            'title'=> "Edit User",
+            'model' => $user
+        ]);
+}
+
+    public function updateUser(Request $request , $id){
+
+        $rules = [
+            'email' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'password' => 'confirmed'
+
+        ];
+
+        $this->validate($request, $rules);
+
+        $user = User::find($id) ;
+        if (!$user) abort(404) ;
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->phone = $request->get('phone');
+        $user->ads_limit = $request->get('ads_limit');
+        $user->password = bcrypt($request->get('password'));
+
+        $user->update() ;
+
+        Session::Flash('success',"Operation has successfully finished");
+
+        return Redirect::back();
     }
 
     /**

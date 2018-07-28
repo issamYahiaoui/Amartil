@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{config('app.name')}}</title>
+    <title>{{\App\Settings::all()->first()->website_name}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{--<link rel="shortcut icon" href="http://2.bp.blogspot.com/-bzr9RZlrgKI/Vc1FUbD2cQI/AAAAAAAAAIk/LZkCb1lVfVg/s1600/favicon.jpg">--}}

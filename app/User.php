@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','active', 'phone' , 'role' , 'facebook_url' , 'twitter_url' , 'youtube_url' , 'instagram_url'
+        'ads_limit','name', 'email', 'password','active', 'phone' , 'role' , 'facebook_url' , 'twitter_url' , 'youtube_url' , 'instagram_url'
     ];
 
     /**
@@ -41,6 +41,12 @@ class User extends Authenticatable
     }
     static function adminName(){
        return User::where('role','superadmin')->first()->name ;
+    }
+    static function adminId(){
+        return User::where('role','superadmin')->first()->id ;
+    }
+    static function adminEmail(){
+        return User::where('role','superadmin')->first()->email ;
     }
 
 

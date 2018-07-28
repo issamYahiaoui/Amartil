@@ -13,7 +13,7 @@
     <link rel="icon" href="{{asset('front/images/logomartil.png')}}" alt="homepage">
 
     {{--<link rel="icon" type="image/png" sizes="16x16" src="{{asset('dashboard/images/logo-icon.png')}}">--}}
-    <title>Amartli</title>
+    <title>{{\App\Settings::all()->first()->website_name}}</title>
     <!-- Custom CSS -->
     <link href="{{asset('dashboard/css/style.min.css')}}" rel="stylesheet">
     <link href="{{asset('dashboard/node_modules/dropzone-master/dist/dropzone.css')}}" rel="stylesheet">

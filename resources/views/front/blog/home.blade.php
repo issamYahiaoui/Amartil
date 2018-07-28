@@ -43,7 +43,7 @@
                                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                      <div class="listar-themepost listar-post">
                                          <figure class="listar-featuredimg">
-                                             <a href="{{url('blog/'.$article->id)}}"><img  style="height: 250px !important;" src="{{asset('images/'.$article->img_url)}}" alt="image description"></a>
+                                             <a href="{{url('blog/'.$article->id)}}"><img  style="height: 250px !important;" src="{{asset('images/blog/'.$article->img_url)}}" alt="image description"></a>
                                              <a class="listar-postcategory" href="{{url('blog/'.$article->id)}}">{{$article->tag}}</a>
                                          </figure>
                                          <div class="listar-postcontent">

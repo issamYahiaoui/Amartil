@@ -49,6 +49,8 @@
                             <th class="text-center">Email</th>
                             <th class="text-center">Phone</th>
                             <th class="text-center">Role</th>
+                            <th class="text-center">Ads number</th>
+                            <th class="text-center">Ads limit</th>
                             <th class="text-center">Active</th>
                             <th class="text-center">Actions</th>
 
@@ -63,6 +65,7 @@
                                 <td class="text-center">{{$model->name}}</td>
                                 <td class="text-center">{{$model->email}}</td>
                                 <td class="text-center">{{$model->phone}}</td>
+
                                 <td class="text-center">
                                     <span
                                             @if($model->role === "superadmin")
@@ -78,6 +81,9 @@
                                         {{$model->role}}
                                     </span>
                                 </td>
+                                <td class="text-center">{{count($model->ads())}}</td>
+                                <td class="text-center">{{$model->ads_limit}}</td>
+
                                 <td class="text-center">
 
                                     @if($model->active)
@@ -93,37 +99,44 @@
                                 </td>
 
 
-                                <td class="text-center" style="display: flex ; justify-content: space-around">
+                                <td class="text-center" style="display: flex ; justify-content: space-between">
 
 
 
-                                   <div class="">
+                                   <div class="" style="margin-right: 5px">
                                              <form action="{{url('users/'.$model->id.'/activate')}}" method="POST" >
                                                  @method('PUT')
                                                  @csrf
                                                  <div class="row  " >
                                                      @if($model->active)
-                                                         <button type="submit" class="btn btn-warning waves-effect waves-light">Desactivate</button>
+                                                         <button style="font-size: 12px ; width: 100%;" type="submit" class="btn btn-warning ">Desactivate</button>
 
                                                      @else
-                                                         <button type="submit" class="btn btn-success waves-effect waves-light ">Activate</button>
+                                                         <button style="font-size: 12px" type="submit" class="btn btn-success ">Activate</button>
 
                                                      @endif
                                                  </div>
                                              </form>
                                     </div>
+                                    <div class="">
+                                        <form action="{{url('users/edit/'.$model->id)}}" method="GET" >
 
+                                            @csrf
+                                            <div class="row  " >
+                                                <button type="submit" class="btn btn-info  "><i class="fa fa-edit"></i> </button>
+
+                                            </div>
+                                        </form>
+                                    </div>
 
                                     <div class="">
                                         <button type="submit"
-                                                class="btn btn-block btn-outline-danger"
+                                                class="btn btn-danger "
                                                 data-toggle="modal"
                                                 data-target="#delete{{$model->id}}"
                                         >
-                                             <span class="btn-label">
-                                                <i class="fa fa-remove"></i>
-                                             </span>
-                                            DELETE
+                                            <i class="fa fa-remove"></i>
+
                                         </button>
 
                                         <div class="modal fade" id="delete{{$model->id}}" tabindex="-1" role="dialog"

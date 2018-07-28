@@ -1,10 +1,13 @@
 <div class="listar-homebannerslider">
     <div id="listar-homeslider" class="listar-homeslider owl-carousel">
-        <div class="item"><figure><img src="{{asset('front/images/slider/img-01.jpg')}}" alt="image description"></figure></div>
-        <div class="item"><figure><img src="{{asset('front/images/slider/img-02.jpg')}}" alt="image description"></figure></div>
-        <div class="item"><figure><img src="{{asset('front/images/slider/img-03.jpg')}}" alt="image description"></figure></div>
-        <div class="item"><figure><img src="{{asset('front/images/slider/img-04.jpg')}}" alt="image description"></figure></div>
-        <div class="item"><figure><img src="{{asset('front/images/slider/img-05.jpg')}}" alt="image description"></figure></div>
+        @foreach(\App\SettingsPhoto::all() as $photo)
+        <div class="item"><figure><img width="100%" src="{{asset('images/slider/'.$photo->filename)}}" alt="image description"></figure></div>
+            @endforeach
+
+        {{--<div class="item"><figure><img src="{{asset('front/images/slider/img-03.jpg')}}" alt="image description"></figure></div>--}}
+        {{--<div class="item"><figure><img src="{{asset('front/images/slider/img-04.jpg')}}" alt="image description"></figure></div>--}}
+        {{--<div class="item"><figure><img src="{{asset('front/images/slider/img-05.jpg')}}" alt="image description"></figure></div>--}}
+   {{----}}
     </div>
     <div class="listar-homebanner">
         <div class="container">
@@ -30,12 +33,12 @@
                                     <i class="icon-layers"></i>
                                     <div class="listar-select">
                                         <select name="category_id" id="listar-categorieschosen" class="listar-categorieschosen listar-chosendropdown">
-                                            <option>Choisir une categorie</option>
+                                            <option value="*">Choisir une categorie</option>
                                             <option value="*">Tous les categories</option>
-                                            <option value="aww">aww</option>
+
 
                                             @foreach(\App\Category::all() as $category)
-                                                <option value="{{$category->id}}">{{$category->namw}}</option>
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
                                              @endforeach
                                         </select>
                                     </div>
@@ -44,9 +47,9 @@
                                     <i class="icon-global"></i>
                                     <div class="listar-select listar-selectlocation">
                                         <select name="adr" id="listar-locationchosen" class="listar-locationchosen listar-chosendropdown">
-                                            <option>Choisir une ville</option>
+                                            <option value="*">Choisir une ville</option>
                                             <option value="*">Tous le Maroc</option>
-                                            <option value="aww">aww</option>
+
 
                                         @foreach($locations as $location)
                                                 <option value="{{$location}}">{{$location}}</option>
@@ -68,3 +71,12 @@
         </div>
     </div>
 </div>
+<style>
+    @media (max-width: 1440px){
+        .listar-homeslider .item figure img {
+            width: 100%;
+            height: 820px;
+            max-width: none;
+        }
+    }
+</style>

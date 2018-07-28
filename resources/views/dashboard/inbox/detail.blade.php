@@ -7,7 +7,7 @@
 
             <div class="col-md-3 ">
                 <div>
-                    <a href="{{url('inbox   ')}}" class="btn btn-custom btn-block waves-effect waves-light">Inbox</a>
+                    <a href="{{url('inbox')}}" class="btn btn-custom btn-block waves-effect waves-light">Inbox</a>
                     <div class="list-group mail-list m-t-20">
 
                         <a href="#" class="list-group-item active">
@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="">
                                 <span class="">At : {{ date_format(new DateTime($message->created_at),'d M')}}</span>
-                                <h4 class="text-danger  ">From : {{$message->sender}}</h4>
+                                <h4 class="text-danger  ">From : {{$message->from}}</h4>
                                 <small class="text-muted">       {{$message->email}}</small>
                             </div>
                         </div>
@@ -49,7 +49,9 @@
                     </div>
 
                 </div>
+                @if( $message->to == \App\User::adminEmail())
                 <a href="#" class="btn btn-info btn-rounded btn-outline text-center center-block" data-toggle="modal" data-target=".reply">Replay</a>
+                  @endif
             </div>
         </div>
 
@@ -65,13 +67,12 @@
                     <h4 class="modal-title" id="myLargeModalLabel">{{__('inbox.reply')}}</h4>
                 </div>
                 <div class="modal-body text-center">
-                    <form action="{{url('sendMessage/')}}" method="post">
+                    <form action="{{url('reply')}}" method="post">
                         {!! csrf_field() !!}
-                        <input name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" type="text" hidden>
-                        <input name="sender" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" type="text" hidden>
+
                         <div class="form-group">
                             <span>To</span>
-                            <input class="form-control" name="email"  value="{{$message->email}}">
+                            <input class="form-control" name="to"  value="{{$message->from}}">
                         </div>
                         <div class="form-group">
                             <span>Subject</span>

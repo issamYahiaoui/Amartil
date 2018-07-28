@@ -95,6 +95,18 @@
                                     </div>
                                     <!--/span-->
                                 </div>
+                                <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="control-label text-right col-md-3"> Featured </label>
+                                                <div class="col-md-9">
+                                                    <input type="checkbox" name="featured" class="form-control" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
                                 <!--/row-->
                                 <div class="row">
                                     <div class="">

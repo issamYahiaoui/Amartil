@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('youtube_url')->nullable();
             $table->string('instagram_url')->nullable();
             $table->string('password');
+            $table->integer('ads_limit')->default(5);
             $table->boolean('active')->default(0);
             $table->rememberToken();
             $table->timestamps();

@@ -25,12 +25,12 @@
                                                 <i class="icon-layers"></i>
                                                 <div class="listar-select">
                                                     <select name="category_id" id="listar-categorieschosen" class="listar-categorieschosen listar-chosendropdown">
-                                                        <option>Choisir une categorie</option>
+                                                        <option value="*">Choisir une categorie</option>
                                                         <option value="*">Tous les categories</option>
-                                                        <option value="aww">aww</option>
+
 
                                                         @foreach(\App\Category::all() as $category)
-                                                            <option value="{{$category->id}}">{{$category->namw}}</option>
+                                                            <option value="{{$category->id}}">{{$category->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>>
@@ -39,9 +39,9 @@
                                                 <i class="icon-global"></i>
                                                 <div class="listar-select listar-selectlocation">
                                                     <select name="adr" id="listar-locationchosen" class="listar-locationchosen listar-chosendropdown">
-                                                        <option>Choisir une ville</option>
+                                                        <option value="*">Choisir une ville</option>
                                                         <option value="*">Tous le Maroc</option>
-                                                        <option value="aww">aww</option>
+
 
                                                         @foreach($locations as $location)
                                                             <option value="{{$location}}">{{$location}}</option>
@@ -91,7 +91,7 @@
                                                             @if(count($ad->images()) > 0)
                                                                 <img src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
                                                             @else
-                                                                <img  src="{{asset('dashboard/images/img-28.jpeg')}}" alt="image description" class="mCS_img_loaded">
+                                                                <img  src="{{asset('images/empty-image.png')}}" alt="image description" class="mCS_img_loaded">
                                                             @endif
 
                                                         </span></figure>
@@ -104,10 +104,16 @@
 
                                                         <h3><a href="{{url('all-ads/'.$ad->id)}}">
 
-                                                                {{$ad->title}}</a>
+                                                                {{$ad->title}} - <span style="color: red">{{$ad->active? "" : "Non Disponible"}}</span></a>
+
 
 
                                                         </h3>
+                                                        @if($ad->featured)
+                                                        <span style="position: absolute; right: 0px ; top: 5px ; background: #6ebf18 ; color: white ;    width: 70px;height: 25px;border-radius: 10%; padding-left: 5px;">
+                                                            Featured
+                                                        </span>
+                                                        @endif
                                                         <br> <br>
                                                         <div class="listar-reviewcategory">
                                                             <div  style="font-size: 15px" class="listar-review">

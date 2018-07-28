@@ -22,6 +22,9 @@ class CreateAdsTable extends Migration
             $table->boolean('active')->nullable()->default(0);
             $table->integer('customer_id')->nullable();
             $table->integer('category_id')->nullable();
+            $table->integer('vue')->default(0);
+
+
             $table->timestamps();
         });
     }

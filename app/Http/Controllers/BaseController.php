@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class BaseController extends Controller {
     public function __construct()
     {
-        $newMessages = Message::where('read', 0)->get();
+        $newMessages = Message::where('read_by_receiver', 0)->where('read_by_sender', 1)->get();
         $locations = [] ;
         $i= 0 ;
         foreach (Ads::all() as $ad){

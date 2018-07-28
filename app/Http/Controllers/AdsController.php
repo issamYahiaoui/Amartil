@@ -37,6 +37,16 @@ class AdsController extends BaseController
         ]);
     }
 
+    public function activate($id){
+        $ads = Ads::find($id) ;
+        if (!$ads) abort(404) ;
+        $ads->active = $ads->active ? 0:1 ;
+        $ads->update() ;
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

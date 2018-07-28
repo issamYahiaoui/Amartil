@@ -13,7 +13,7 @@ class Ads extends Model
 {
     //
     protected $fillable = ['customer_id' , 'category_id' , 'title' ,'featured' ,
-    'owner_phone',  'video_url' ,
+    'owner_phone',  'video_url' , 'active' , 'vue'
     ] ;
 
 

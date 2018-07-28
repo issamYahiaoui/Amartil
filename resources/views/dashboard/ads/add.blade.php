@@ -55,17 +55,10 @@
                     href="{{url('cars/create')}}"
                     >
                         <li class="fa fa-car"></li>
-                        Add Car ad
+                        Add Vehicule ad
                     </a>
                 </div>
-                <div class="">
-                    <a class="btn btn-warning"
-                    href="{{url('cars/create')}}"
-                    >
-                        <li class="fa fa-car"></li>
-                        Add Motocycle ad
-                    </a>
-                </div>
+
                 <div class="">
                     <a class="btn btn-success"
                     href="{{url('others/create')}}"

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ads;
 use App\AdsPhoto;
 use App\Apartment;
+use App\Car;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -65,72 +66,78 @@ class ApartmentController extends BaseController
 
 
 
-//        dd($request->all()) ;
+   if(Auth::user()->ads_limit > count(Auth::user()->ads())){
+       $rules = [
+           'title' => 'required'
+       ];
 
 
+       $this->validate($request, $rules);
+       $ads = Ads::create([
+           'title' => $request->get('title'),
+           'owner_phone' => $request->get('owner_phone'),
 
-        $rules = [
-            'title' => 'required'
-        ];
+           'featured' => $request->get('featured')? 1:0,
+           'video_url' => $request->get('video_url'),
+           'customer_id' => Auth::user()->id,
+           'category_id'=> Category::where('name','Appartements Et Maisons')->first()->id
 
-
-        $this->validate($request, $rules);
-        $ads = Ads::create([
-            'title' => $request->get('title'),
-            'owner_phone' => $request->get('owner_phone'),
-            'category_id' => $request->get('category_id'),
-            'featured' => $request->get('featured'),
-            'video_url' => $request->get('video_url'),
-            'customer_id' => Auth::user()->id,
-
-        ]) ;
-        $files =$request->file('files') ;
+       ]) ;
+       $files =$request->file('files') ;
        // dd($files);
-        if (count($files)){
+       if (count($files)){
 
-            for ($i=0 ; $i< count($files); $i++) {
-                $img = $files[$i]->getClientOriginalName() ;
-            //dd($img);
-                Image::make($files[$i]->getRealPath())->save(public_path('images/' . $img));
-                AdsPhoto::create([
-                    'ads_id' => $ads->id,
-                    'filename' => $img
-                ]) ;
-            }
-        }
+           for ($i=0 ; $i< count($files); $i++) {
+               $img = $files[$i]->getClientOriginalName() ;
+               //dd($img);
+               Image::make($files[$i]->getRealPath())->save(public_path('images/' . $img));
+               AdsPhoto::create([
+                   'ads_id' => $ads->id,
+                   'filename' => $img
+               ]) ;
+           }
+       }
 
-        $hide = ($request->get('property_type') === "Apartment" || $request->get('property_type') === "Houses and villas") ;
-        $looking = ($request->get('intention') === "Looking for property") ;
-        $other = ($request->get('is_owner') === "other") ;
-        $apartment =  Apartment::create([
-            'ads_id' =>$ads->id,
-            'adr' => $looking ?  null : $request->get('adr'),
-            'lat' => $looking ?  null : $request->get('lat'),
-            'lng' => $looking ?  null : $request->get('lng'),
-            'zip' => $looking?  null : $request->get('zip'),
-            'is_owner' => $looking?  null : $request->get('is_owner'),
-            'type_owner' => $looking?  null :$other ?  $request->get('type_owner') : null,
-            'property_type' => $looking?  null : $request->get('property_type'),
-            'rooms' => $looking?    null : (!$hide? null : $request->get('rooms')),
-            'bathrooms' =>  $looking?  null : !$hide? null : $request->get('bathrooms'),
-            'bedrooms' => $looking?  null : !$hide? null : $request->get('bedrooms'),
-            'flour' => $looking?  null : !$hide? null : $request->get('flour'),
-            'total_area' => $looking?  null : $request->get('total_area'),
-            'description' => $request->get('description'),
-            'additional_details' => $looking?  null : $request->get('additional_details'),
-            'year_built' => $looking?  null : $request->get('year_built'),
-            'format_price' => $looking?  null : $request->get('format_price'),
-            'price' =>  $looking?  null :$request->get('price'),
-            'price_meter' => $looking?  null : $request->get('price_meter') ,
-            'intention' => $request->get('intention'),
-        ]);
+       $hide = ($request->get('property_type') === "Apartment" || $request->get('property_type') === "Houses and villas") ;
+       $looking = ($request->get('intention') === "Looking for property") ;
+       $other = ($request->get('is_owner') === "other") ;
+       $apartment =  Apartment::create([
+           'ads_id' =>$ads->id,
+           'adr' => $looking ?  null : $request->get('adr'),
+           'lat' => $looking ?  null : $request->get('lat'),
+           'lng' => $looking ?  null : $request->get('lng'),
+           'zip' => $looking?  null : $request->get('zip'),
+           'is_owner' => $looking?  null : $request->get('is_owner'),
+           'type_owner' => $looking?  null :$other ?  $request->get('type_owner') : null,
+           'property_type' => $looking?  null : $request->get('property_type'),
+           'rooms' => $looking?    null : (!$hide? null : $request->get('rooms')),
+           'bathrooms' =>  $looking?  null : !$hide? null : $request->get('bathrooms'),
+           'bedrooms' => $looking?  null : !$hide? null : $request->get('bedrooms'),
+           'flour' => $looking?  null : !$hide? null : $request->get('flour'),
+           'total_area' => $looking?  null : $request->get('total_area'),
+           'description' => $request->get('description'),
+           'additional_details' => $looking?  null : $request->get('additional_details'),
+           'year_built' => $looking?  null : $request->get('year_built'),
+           'format_price' => $looking?  null : $request->get('format_price'),
+           'price' =>  $looking?  null :$request->get('price'),
+           'price_meter' => $looking?  null : $request->get('price_meter') ,
+           'intention' => $request->get('intention'),
+       ]);
 //        dd($apartment , $ads) ;
-        $apartment->additional_details = $looking? null : $request->get('additional_details');
-        $apartment->save();
+       $apartment->additional_details = $looking? null : $request->get('additional_details');
+       $apartment->save();
 
 
-        Session::Flash('success',"Operation has successfully finished");
-        return Redirect::back();
+       Session::Flash('success',"Operation has successfully finished");
+       return Redirect::back();
+   }else{
+       Session::Flash('success',"You have exceeded the limit of ads you can add");
+       return Redirect::back();
+   }
+
+
+
+
 
     }
 
@@ -179,7 +186,7 @@ class ApartmentController extends BaseController
             'title' => $request->get('title'),
             'owner_phone' => $request->get('owner_phone'),
             'category_id' => $request->get('category_id'),
-            'featured' => $request->get('featured'),
+            'featured' => $request->get('featured')? 1:0,
             'video_url' => $request->get('video_url'),
 
         ]) ;

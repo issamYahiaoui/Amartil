@@ -23,12 +23,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="listar-postcontent">
+                            <div class="listar-postcontent" >
                                 <h1>{{$model->ads()->title}}<i class="icon-checkmark listar-postverified listar-themetooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified"></i></h1>
                                 <br><br>
                                 <div class="listar-reviewcategory">
                                     <div class="">
-                                        <h3 style="color:#5c5c5c;">Category name</h3>
+                                        <h5 style="color:#5c5c5c;">{{$category}}</h5>
                                     </div>
 
                                 </div>
@@ -36,15 +36,15 @@
                                     <ul>
                                         <li>
                                             <i class="icon-telephone114"></i>
-                                            <span>{{$model->ads()->owner_phone}} Phone</span>
+                                            <span>{{\App\User::adminPhone()}}</span>
                                         </li>
                                         <li>
                                             <i class="icon-icons74"></i>
-                                            <span>{{$model->adr}} Address</span>
+                                            <span>{{$model->adr}}</span>
                                         </li>
                                         <li style="color: gold ; font-size: 22px">
                                             <i class="fa fa-money"></i>
-                                            <span>{{$model->price}} Price - <span>{{$model->format_price}}</span></span>
+                                            <span>{{$model->price}} DM - <span>{{$model->format_price}}</span></span>
                                         </li>
                                         @if($model->ads()->video_url)
                                             <li>
@@ -52,100 +52,176 @@
                                                 <span><a href="{{$model->ads()->video_url}}">Lien de la video</a></span>
                                             </li>
                                         @endif
+                                        <li >
+                                            <i class="fa fa-eye"></i>
+                                            <span>{{$model->ads()->vue}} Vues</span>
+                                        </li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="listar-themetabs">
-                                <ul class="listar-themetabnav" role="tablist">
-                                    <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
-                                    <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
-                                    <li role="presentation"><a href="#gallery" aria-controls="gallery" role="tab" data-toggle="tab">Gallery</a></li>
-                                </ul>
-                                <div class="tab-content listar-themetabcontent">
-                                    <div role="tabpanel" class="tab-pane active listar-overview" id="overview">
-                                        <div class="listar-leftbox">
-                                            <h3>Description</h3>
-                                            <br>
-                                            {!!  $model->description !!}
-                                            <br> <br>
-                                            <figure style="max-height: 315px" class="listar-featuredimg"><span href="detailv1.html">
-                                                            @if(count($model->ads()->images()) > 0)
-                                                        <img src="{{asset('images/'.$model->ads()->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
+                                <hr>
+                                <div class="info-container">
+
+                                    <div class="show-ad">
+
+                                        <section>
+                                            <div class="row">
+                                                <div class="gallery">
+                                                    @if(count($model->ads()->images()) > 0)
+
+                                                        <img  width="50%" class="xzoom" src="{{asset('images/'.$model->ads()->images()[0]->filename)}}" xoriginal="{{asset('images/'.$model->ads()->images()[0]->filename)}}" />
                                                     @else
-                                                        <img  src="{{asset('dashboard/images/prop1.jpeg')}}" alt="image description" class="mCS_img_loaded">
+                                                        <img  width="50%" class="xzoom"  src="{{asset('images/empty-image.png')}}" xoriginal="{{asset('images/'.$model->ads()->images()[0]->filename)}}" />
+
                                                     @endif
 
-                                                        </span></figure>
+                                                    <br> <br>
+                                                    <div class="xzoom-thumbs">
+
+                                                        @if(count($model->ads()->images()) > 0)
+                                                            @foreach($model->ads()->images() as $img)
+                                                                <a href="{{asset('images/'.$img->filename)}}">
+                                                                    <img class="xzoom-gallery" width="80" src="{{asset('images/'.$img->filename)}}"  >
+                                                                </a>
+                                                            @endforeach
+                                                        @endif
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <hr>
+                                        <section>
+
                                             <br> <br>
 
-                                        </div>
-                                        <div class="listar-rightbox">
-                                            <div class="listar-amenitiesarea">
-                                                <div class="listar-title">
-                                                    <h3>Basic Information</h3>
-                                                </div>
-                                                <div class="infos">
-                                                    <div class="row">
-                                                        <div class="col-md-6">Titre de l'annonce </div>
-                                                        <div class="col-md-6">{{$model->ads()->title}}</div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-6">Categorie de l'annonce</div>
-                                                        <div class="col-md-6">Categorie</div>
-                                                    </div>
-                                                    <hr>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h3>Description</h3>
+                                                    <br> <br> <br>
+                                                    <div class="description">
 
-                                                    <div class="row">
-                                                        <div class="col-md-6">Phone</div>
-                                                        <div class="col-md-6">{{$model->ads()->owner_phone}}</div>
-                                                    </div>
-                                                    <hr>
+                                                        <div class="">
+
+                                                            <br>
+
+                                                            {!!  $model->description !!}
 
 
+                                                            <br> <br>
 
-
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div role="tabpanel" class="tab-pane listar-addressmaplocation" id="location">
-                                        <div class="row">
-                                            <div class="">
-                                                <div class="form-group row">
-
-                                                    <div class="">
-                                                        <input id="searchInput"disabled hidden class="input-controls" type="text" placeholder="Enter a location">
-                                                        <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                                                        <div class="form_area">
-                                                            <input type="text" name="adr" id="location">
-                                                            <input type="text" name="lat" id="lat">
-                                                            <input type="text" name="lng" id="lng">
+                                                            <br> <br>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="location">
+                                                        <div id="googleMap" style="width:100%;height:400px;"></div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <hr>
+                                            <div class="infos">
+                                                <div class="row">
+                                                    <div class="col-md-6">Titre de l'annonce </div>
+                                                    <div class="col-md-6">{{$model->ads()->title}}</div>
+                                                </div>
+                                                <hr>
+                                                @if($category)
 
-                                    <div role="tabpanel" class="tab-pane" id="gallery">
-                                        <div id="listar-postgallery" class="listar-postgallery">
+                                                    <div class="row">
+                                                        <div class="col-md-6">Categorie de l'annonce</div>
+                                                        <div class="col-md-6">{{$category}}</div>
+                                                    </div>
+                                                    <hr>
+                                                @endif
+                                                <hr>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">Phone</div>
+                                                    <div class="col-md-6">{{$model->ads()->owner_phone}}</div>
+                                                </div>
+                                                <hr>
 
 
-                                            @if($model->ads()->images())
-                                                @foreach($model->ads()->images() as $img)
-                                                    <img src="{{asset('images/'.$img->filename)}}" alt="image description">
-                                                    <div class="listar-masnory"><figure><a  data-rel="prettyPhoto[gallery]"><img src="{{asset('images/'.$img->filename)}}" alt="image description"></a></figure></div>
-                                                @endforeach
-                                            @endif
-                                        </div>
+
+
+
+
+                                            </div>
+                                        </section>
+
                                     </div>
                                 </div>
                             </div>
+                            <br> <br> <br>
+                            {{--<section class="listar-sectionspace listar-bglight listar-haslayout">--}}
+                            {{--<div class="container">--}}
+                            {{--<div class="row">--}}
+                            {{--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">--}}
+                            {{--<div class="listar-sectionhead">--}}
+                            {{--<div class="listar-sectiontitle">--}}
+                            {{--<h2>A Decouvrir Aussi</h2>--}}
+                            {{--</div>--}}
+
+                            {{--</div>--}}
+                            {{--<div class="listar-horizontalthemescrollbar">--}}
+                            {{--<div class="listar-themeposts listar-categoryposts">--}}
+                            {{--<div class="row">--}}
+                            {{--@foreach(\App\Ads::all() as $ad)--}}
+                            {{--{{dd($ad->car())}}--}}
+                            {{--<div class="col-md-offset-1 col-md-3">--}}
+                            {{--<div class="listar-themepost listar-placespost">--}}
+                            {{--<figure style="height: 285px!important; ; width: 406px !important;" class="listar-featuredimg"><span href="detailv1.html">--}}
+                            {{--@if(count($ad->images()) > 0)--}}
+                            {{--<img src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">--}}
+                            {{--@else--}}
+                            {{--<img  src="{{asset('dashboard/images/prop1.jpeg')}}" alt="image description" class="mCS_img_loaded">--}}
+                            {{--@endif--}}
+
+                            {{--</span></figure>--}}
+                            {{--<div class="listar-postcontent" >--}}
+                            {{--<span  class="ad_num" style="border: solid #2457cf 2px ;--}}
+                            {{--border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF"  >--}}
+
+                            {{--{{$ad->id + 50}}--}}
+                            {{--</span>--}}
+                            {{--<h3><a href="{{url('all-ads/'.$ad->id)}}">--}}
+
+                            {{--{{$ad->title}}</a>--}}
+
+
+                            {{--</h3>--}}
+                            {{--<br> <br>--}}
+                            {{--<div class="listar-reviewcategory">--}}
+                            {{--<div  style="font-size: 15px" class="listar-review">--}}
+
+                            {{--{!!  $ad->category()  !!}--}}
+                            {{--</div>--}}
+                            {{--<a style="font-size: 25px ; color: #ffa127" class="listar-category">--}}
+                            {{--<i class="icon-coin-dollar"></i>--}}
+                            {{--<span >{{$ad->subclass()->price}} DM</span>--}}
+                            {{--</a>--}}
+                            {{--</div>--}}
+
+
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+
+                            {{--@endforeach--}}
+                            {{--</div>--}}
+
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--</section>--}}
+
+
+
                         </div>
                     </div>
                 </div>
@@ -153,21 +229,16 @@
 
         </main>
     </div>
+
     <style>
-        /*.listar-header {*/
-        /*z-index: 100;*/
-        /*padding: 15px 0;*/
-        /*background: #fff !important;*/
-        /*position: relative;*/
-        /*text-align: center;*/
-        /*-webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.10);*/
-        /*box-shadow: 0 0 15px 0 rgba(0,0,0,0.10);*/
-        /*}*/
-        /*.nav-black > li > a{color: #222 !important;}*/
+
         .listar-formsearchlisting .form-group {
             margin: 0;
             float: left;
             width: 33.33% !important;
+        }
+        h3{
+            color: black !important;
         }
         @media (max-width: 800px){
             .listar-formsearchlisting .form-group {
@@ -213,78 +284,34 @@
         #searchInput:focus {
             border-color: #4d90fe;
         }
+        .info-container{
+            margin: 5px !important;
+            padding: 5px!important;
+        }
     </style>
 
 @endsection
-
 @section('js')
     <script>
-        /* script */
-        function initialize() {
-            document.getElementById('location').value ='{{$model->adr}}';
-            document.getElementById('lat').value = '{{$model->lat}}';
-            document.getElementById('lng').value = '{{$model->lng}}';
-            var latlng = new google.maps.LatLng('{{$model->lat}}',{{$model->lng}});
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: latlng,
-                zoom: 13
-            });
-            var marker = new google.maps.Marker({
-                map: map,
-                position: latlng,
-                draggable: true,
-                anchorPoint: new google.maps.Point(0, -29)
-            });
-            var input = document.getElementById('searchInput');
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            var geocoder = new google.maps.Geocoder();
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-            var infowindow = new google.maps.InfoWindow();
-            autocomplete.addListener('place_changed', function() {
-                infowindow.close();
-                marker.setVisible(false);
-                var place = autocomplete.getPlace();
-                if (!place.geometry) {
-                    window.alert("Autocomplete's returned place contains no geometry");
-                    return;
-                }
-
-                // If the place has a geometry, then present it on a map.
-                if (place.geometry.viewport) {
-                    map.fitBounds(place.geometry.viewport);
-                } else {
-                    map.setCenter(place.geometry.location);
-                    map.setZoom(17);
-                }
-
-                marker.setPosition(place.geometry.location);
-                marker.setVisible(true);
-
-                bindDataToForm(place.formatted_address,place.geometry.location.lat(),place.geometry.location.lng());
-                infowindow.setContent(place.formatted_address);
-                infowindow.open(map, marker);
-
-            });
-            // this function will work on marker move event into map
-            google.maps.event.addListener(marker, 'dragend', function() {
-                geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (results[0]) {
-                            bindDataToForm(results[0].formatted_address,marker.getPosition().lat(),marker.getPosition().lng());
-                            infowindow.setContent(results[0].formatted_address);
-                            infowindow.open(map, marker);
-                        }
-                    }
-                });
-            });
-        }
-        function bindDataToForm(address,lat,lng){
-            document.getElementById('location').value = address;
-            document.getElementById('lat').value = lat;
-            document.getElementById('lng').value = lng;
-        }
-        console.log('google map is on')
-        google.maps.event.addDomListener(window, 'load', initialize);
+        $(document).ready(function(){
+            console.log('gallery is on')
+            $(".xzoom, .xzoom-gallery").xzoom();
+        });
     </script>
+
+    <script>
+        var lat = "{{$model->lat}}"
+        var lng = "{{$model->lng}}"
+
+        $(function () {
+            var mapProp= {
+                center:new google.maps.LatLng(lat,lng),
+                zoom:5,
+            };
+            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            var marker = new google.maps.Marker({position: {lat:lat , lng : lng}, map: map});
+            console.log('marker',marker)
+        })
+    </script>
+
 @endsection

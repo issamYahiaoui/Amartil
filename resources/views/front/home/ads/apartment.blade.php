@@ -28,7 +28,7 @@
                                 <br><br>
                                 <div class="listar-reviewcategory">
                                     <div class="">
-                                      <h3 style="color:#5c5c5c;">Category name</h3>
+                                      <h5 style="color:#5c5c5c;">Category : {{$category}}</h5>
                                     </div>
 
                                 </div>
@@ -52,6 +52,10 @@
                                                 <span><a href="{{$model->ads()->video_url}}">Lien de la video</a></span>
                                             </li>
                                            @endif
+                                        <li >
+                                            <i class="fa fa-eye"></i>
+                                            <span>{{$model->ads()->vue}} Vues</span>
+                                        </li>
                                     </ul>
                                 </div>
                                 <hr>
@@ -62,12 +66,20 @@
                                         <section>
                                             <div class="row">
                                                 <div class="gallery">
+                                                    @if(count($model->ads()->images()) > 0)
 
-                                                <img  width="50%" class="xzoom" src="{{asset('images/'.$model->ads()->images()[0]->filename)}}" xoriginal="{{asset('images/'.$model->ads()->images()[0]->filename)}}" />
+                                                        <img  width="50%" class="xzoom" src="{{asset('images/'.$model->ads()->images()[0]->filename)}}" xoriginal="{{asset('images/'.$model->ads()->images()[0]->filename)}}" />
+                                                    @else
+
+                                                        <img  width="50%" class="xzoom"  src="{{asset('images/empty-image.png')}}" xoriginal="{{asset('images/empty-image.png')}}" />
+
+                                                    @endif
+
+
                                                     <br> <br>
                                                 <div class="xzoom-thumbs">
 
-                                                    @if($model->ads()->images())
+                                                    @if(count($model->ads()->images()) > 0)
                                                         @foreach($model->ads()->images() as $img)
                                                             <a href="{{asset('images/'.$img->filename)}}">
                                                                 <img class="xzoom-gallery" width="80" src="{{asset('images/'.$img->filename)}}"  >
@@ -122,47 +134,61 @@
                                                                 <br> <br> <br>
                                                             </div>
                                                             <div class="infos">
+                                                                @if($model->ads()->title)
                                                                 <div class="row">
                                                                     <div class="col-md-6">Titre de l'annonce </div>
                                                                     <div class="col-md-6">{{$model->ads()->title}}</div>
                                                                 </div>
+
                                                                 <hr>
-                                                                <div class="row">
+                                                                @endif
+                                                                @if($category)
+
+                                                                    <div class="row">
                                                                     <div class="col-md-6">Categorie de l'annonce</div>
-                                                                    <div class="col-md-6">Categorie</div>
-                                                                </div>
+                                                                    <div class="col-md-6">{{$category}}</div>
+                                                                    </div>
                                                                 <hr>
+                                                                    @endif
+                                                                    @if($model->ads()->owner_phone)
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">Phone</div>
                                                                     <div class="col-md-6">{{$model->ads()->owner_phone}}</div>
                                                                 </div>
                                                                 <hr>
-
+                                                                    @endif
+                                                                    @if($model->intention)
                                                                 <div class="row">
                                                                     <div class="col-md-6">Intention de l'annonceur</div>
                                                                     <div class="col-md-6">{{$model->intention}}</div>
                                                                 </div>
                                                                 <hr>
-
+                                                                    @endif
+                                                                    @if($model->is_owner)
                                                                 <div class="row">
                                                                     <div class="col-md-6">Type de l'annonceur</div>
                                                                     <div class="col-md-6">{{$model->is_owner}}</div>
                                                                 </div>
                                                                 <hr>
+                                                                    @endif
+                                                                    @if($model->zip)
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">Zip/Code postal</div>
-                                                                    <div class="col-md-6">{{$model->zip}}</div>
+                                                                    <div class="col-md-6">{{$model->zip }}</div>
                                                                 </div>
                                                                 <hr>
+                                                                    @endif
 
+                                                                    @if($model->property_type)
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">Type de la propriete</div>
                                                                     <div class="col-md-6">{{$model->property_type}}</div>
                                                                 </div>
                                                                 <hr>
+                                                                    @endif
 
                                                                 @if($model->property_type === "Apartment" || $model->property_type === "Houses and villas" )
                                                                     <div class="row">
@@ -190,22 +216,28 @@
                                                                     <hr>
 
                                                                 @endif
+                                                                    @if($model->total_aria)
                                                                 <div class="row">
                                                                     <div class="col-md-6">Superficie totale</div>
                                                                     <div class="col-md-6">{{$model->total_aria}}</div>
                                                                 </div>
                                                                 <hr>
+                                                                    @endif
+                                                                    @if($model->year_built)
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">Annee de construction</div>
                                                                     <div class="col-md-6">{{$model->year_built}}</div>
                                                                 </div>
                                                                 <hr>
+                                                                    @endif
+                                                                    @if($model->price_meter)
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">Prix / (m^2)</div>
                                                                     <div class="col-md-6"> {{$model->price_meter}}120</div>
                                                                 </div>
+                                                                        @endif
 
 
                                                             </div>
@@ -218,7 +250,10 @@
                                                                 <h3>Details additionels</h3>
                                                                 <br> <br> <br>
                                                             </div>
-                                                            <div class=""></div>
+                                                            <div class="row">
+
+                                                                <div class="col-md-6">{{$model->additional_details}}</div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -382,6 +417,8 @@
                 zoom:5,
             };
             var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            var marker = new google.maps.Marker({position: {lat:lat , lng : lng}, map: map});
+            console.log('marker',marker)
         })
     </script>
 

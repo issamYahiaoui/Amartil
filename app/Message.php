@@ -10,16 +10,15 @@ class Message extends Model
 {
     protected $fillable=[
         'message',
-        'read',
+        'read_by_sender',
+        'read_by_receiver',
         'subject',
-        'email',
-        'sender' ,
-        'user_id'
+        'from' ,
+        'to' ,
+
     ];
 
-    public function belongsToUser(){
-        return $this->user_id  == Auth::user()->id;
-    }
+
 
 
 }

@@ -30,7 +30,8 @@
                     <table id="messagesTable" class="display responsive nowrap" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th class="text-center">Sender</th>
+                            <th class="text-center">From</th>
+                            <th class="text-center">To</th>
                             <th class="text-center">Subject</th>
                             <th class="text-center">Date</th>
                         </tr>
@@ -39,16 +40,17 @@
                         @foreach($messages as $message)
 
                             <tr
-                                    @if($message->read)
+                                    @if($message->read_by_receiver)
                                     class="read"
                                     @else
                                     class="unread"
                                     @endif
                             >
-                                <td class="text-center">{{$message->sender}}</td>
+                                <td class="text-center">{{$message->from}}</td>
+                                <td class="text-center">{{$message->to}}</td>
                                 <td class="max-texts text-center"><a
                                             href="{{url('inboxDetail/'.$message->id)}}"/>
-                                    @if(!$message->read)
+                                    @if(!$message->read_by_receiver)
                                         <span class="label label-success m-r-10">New</span>
                                     @endif
                                     {{$message->subject}}

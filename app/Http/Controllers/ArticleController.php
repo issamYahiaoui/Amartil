@@ -74,7 +74,7 @@ class ArticleController extends BaseController
         if ($file){
 
             $img = $file->getClientOriginalName() ;
-            Image::make($file->getRealPath())->save(public_path('images/' . $img));
+            Image::make($file->getRealPath())->save(public_path('images/blog/' . $img));
         }
 
         $article =  Article::create([

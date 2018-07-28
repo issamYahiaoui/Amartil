@@ -47,42 +47,29 @@
                                 <div class="drop-title">Messages</div>
                             </li>
                             <li>
-                                <div class="message-center ps ps--theme_default" data-ps-id="831bebea-ddd8-9c7f-ec3a-1260b515b0b0">
-                                    <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#">
-                                        <i class="icon-envelope"></i>
-                                        <div class="notify">
-                                            @if(count($newMessages)>0)
-                                                <span class="heartbit"></span>
-                                                <span class="point"></span>
-                                            @endif
+                                <div class="message-center ps ps--theme_default" data-ps-id="dcbaad4c-9847-31cb-c127-5d6711a2c910">
+                                    <!-- Message -->
+                            @foreach($newMessages as $newMessage)
+
+
+                                    <a href="{{url('inboxDetail/'.$newMessage->id)}}">
+                                        <div class="mail-contnet">
+                                            <h5>{{$newMessage->from}}</h5>
+                                            <span class="mail-desc">{{$newMessage->subject}}</span>
+                                            <span class="time">{{ date_format(new DateTime($newMessage->created_at),'d M')}}</span>
                                         </div>
                                     </a>
-                                    <ul class="dropdown-menu mailbox animated bounceInDown">
-                                        <li>
-                                            <div class="drop-title text-center">
-                                                You have {{ count($newMessages)}} messages
 
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="message-center">
-                                                @foreach($newMessages as $newMessage)
-                                                    @if($newMessage->belongsToUser())
-                                                    <a href="{{url('inboxDetail/'.$newMessage->id)}}">
-                                                        <div class="mail-contnet">
-                                                            <h5>{{$newMessage->sender}}</h5>
-                                                            <span class="mail-desc">{{$newMessage->subject}}</span>
-                                                            <span class="time">{{ date_format(new DateTime($newMessage->created_at),'d M')}}</span>
-                                                        </div>
-                                                    </a>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </li>
 
-                                    </ul>
+                            @endforeach
+
+
                                     <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
                             </li>
+                            <li>
+                              <ul>
+
+                              </ul>
                             <li>
                                 <a class="nav-link text-center link" href="{{url('inbox')}}"> <strong>Check all messages</strong> <i class="fa fa-angle-right"></i> </a>
                             </li>

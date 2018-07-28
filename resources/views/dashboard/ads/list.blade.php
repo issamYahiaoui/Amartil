@@ -7,7 +7,7 @@
             @if(count($errors->all())>0)
                 <div class="alert alert-danger text-center col-md-12 ">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+                        <span aria-hidden="true"><i class="fa fa-close"></i></span>
                     </button>
                     <ul class="list-unstyled text-center">
                         @foreach($errors->all() as $error)
@@ -23,7 +23,7 @@
 
                     {{Session::get('success')}}
                     <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
-                                class="fa fa-minus"></i></span>
+                                class="fa fa-close"></i></span>
                 </div>
             @endif
 
@@ -65,7 +65,7 @@
                                         @if(count($model->images()) > 0)
                                             <img width="100%" class="img-responsive" src="{{asset('images/'.$model->images()[0]->filename)}}" alt="">
                                         @else
-                                            <img width="100%" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
+                                            <img  width="100%" class="img-responsive" src="{{asset('images/empty-image.png')}}" alt="">
                                         @endif
 
                                     </td>
@@ -74,12 +74,27 @@
                                     <td class="text-center">{{$model->owner_phone}}</td>
 
                                     <td class="text-center"  style="display: flex ; justify-content: space-around ; align-items: center ; width: available">
+                                        <div class="">
+                                            <form action="{{url('ads/'.$model->id.'/activate')}}" method="POST" >
+                                                @method('PUT')
+                                                @csrf
+                                                <div class="row  " >
+                                                    @if($model->active)
+                                                        <button type="submit" class="btn btn-warning waves-effect waves-light">Desactivate</button>
+
+                                                    @else
+                                                        <button type="submit" class="btn btn-success waves-effect waves-light ">Activate</button>
+
+                                                    @endif
+                                                </div>
+                                            </form>
+                                        </div>
 
                                         <form action="{{url('ads/'.$model->id.'/edit')}}" method="GET" >
 
                                             @csrf
                                             <div class="row">
-                                                <button type="submit" class="btn btn-block btn-outline-danger "><li class="fa fa-edit"></li></button>
+                                                <button type="submit" class="btn btn-block btn-outline-info "><li class="fa fa-edit"></li></button>
                                             </div>
                                         </form>
 

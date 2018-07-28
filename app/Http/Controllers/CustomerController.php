@@ -27,8 +27,8 @@ class CustomerController extends BaseController
         $messages = Message::all()->sortByDesc('created_at');
         return view('front.dashboard.inbox.inbox')->with([
             'messages' => $messages,
-            'read' => count($messages->where('read', 1)),
-            'unread' => count($messages->where('read', 0)),
+            'read' => count($messages->where('read_by_receiver', 1)),
+            'unread' => count($messages->where('read_by_receiver', 0)),
             'title' => __('inbox.inbox'),
             'active' => 'inbox'
         ]);
@@ -36,14 +36,14 @@ class CustomerController extends BaseController
     function detail($id){
         $messages = Message::all();
         $message = Message::find($id);
-        $message->read = 1;
+        $message->read_by_receiver= 1;
         $message->save();
         return view('front.dashboard.inbox.detail')->with([
             'message' => $message,
             'title' => $message->subject,
             'active' => 'inbox',
-            'read' => count($messages->where('read', 1)),
-            'unread' => count($messages->where('read', 0)),
+            'read' => count($messages->where('read_by_receiver', 1)),
+            'unread' => count($messages->where('read_by_receiver', 0)),
         ]);
     }
     public function index()

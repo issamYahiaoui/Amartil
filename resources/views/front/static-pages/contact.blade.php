@@ -19,7 +19,7 @@
 
                                         {{Session::get('success')}}
                                         <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
-                                                    class="fa fa-minus"></i></span>
+                                                    class="fa fa-close"></i></span>
                                     </div>
                                 @endif
                                 <div class="row">
@@ -27,23 +27,17 @@
                                         @csrf
                                         <fieldset>
                                             <h2>Contact Form</h2>
-                                            @if(\Illuminate\Support\Facades\Auth::user())
-                                            <input style="display: none !important; " name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" type="text" >
-                                            @else
-                                                <input name="user_id" value="guest" type="text" hidden>
-                                                @endif
+
+
+
 
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <div class="form-group">
-                                                        <input type="text" name="sender" class="form-control" placeholder="Your Name">
+                                                        <input type="text" name="from" @if(\Illuminate\Support\Facades\Auth::user()) value="{{\Illuminate\Support\Facades\Auth::user()->email}}"  @endif class="form-control" placeholder="Your Email">
                                                     </div>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                                    <div class="form-group">
-                                                        <input type="email" name="email" class="form-control" placeholder="Email Address">
-                                                    </div>
-                                                </div>
+
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <div class="form-group">
                                                         <input type="text" name="subject" class="form-control" placeholder="Subject">

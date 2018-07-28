@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use App\Ads;
+use function Sodium\add;
+
 class HomeController extends BaseController
 {
     /**
@@ -42,16 +45,16 @@ class HomeController extends BaseController
         $list = null ;
         switch ($type){
             case $type === "all":
-                $list = Ads::all() ;
+                $list = Ads::orderBy('active', 'desc')->get() ;
                 break ;
             case $type === "apartments":
-                $list = Ads::join('apartments', 'apartments.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
+                $list = Ads::orderBy('active', 'desc')->join('apartments', 'apartments.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
                 break ;
             case $type === "cars":
-                $list = Ads::join('cars', 'cars.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
+                $list = Ads::orderBy('active', 'desc')->join('cars', 'cars.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
                 break ;
             case $type === "others":
-                $list = Ads::join('others', 'others.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
+                $list = Ads::orderBy('active', 'desc')->join('others', 'others.ads_id' , '=' , 'ads.id')->select('ads.*')->get();
 
         }
 
@@ -62,30 +65,35 @@ class HomeController extends BaseController
    function search(Request $request){
 //        dd($request->all()) ;
        $query = $request->get('query') ;
-       $category = $request->get('category') ;
+       $category = $request->get('category_id') ;
        $location = $request->get('location') ;
       $table = $this->getQueryParam($request) ;
-//      dd($table) ;
 
-       $res1 = Ads::join('apartments', 'apartments.ads_id' , '=' , 'ads.id')
-           ->where($table)
-           ->orWhere('title', 'like' , '%'.$query.'%')
-           ->get();
+       if( $query != null){
+           array_push($table,['title','like', '%'.$query.'%']) ;
+       }
 
-       $res2 = Ads::join('cars', 'cars.ads_id' , '=' , 'ads.id')
-           ->where($table)
-           ->orWhere('title', 'like' , '%'.$query.'%')
-           ->get();
+               $res1 = Ads::orderBy('active', 'desc')->join('apartments', 'apartments.ads_id' , '=' , 'ads.id')
+                   ->where($table)
+                   ->get();
+
+               $res2 = Ads::orderBy('active', 'desc')->join('cars', 'cars.ads_id' , '=' , 'ads.id')
+                   ->where($table)
+                   ->get();
+
+               $res3 = Ads::orderBy('active', 'desc')->join('others', 'others.ads_id' , '=' , 'ads.id')
+                   ->where($table)
+                   ->get();
+
+            $res = $this->mergeRes($res1,$res2,$res3)->sortBy('category_id')->sortByDesc('active') ;
 
 
-       $res3 = Ads::join('others', 'others.ads_id' , '=' , 'ads.id')
-           ->where($table)
-           ->orWhere('title', 'like' , '%'.$query.'%')
-           ->get();
 
 
-       $res = $res1->merge($res2)->merge($res3) ;
-//       dd($res) ;
+
+
+
+
        $search_params = [
            'query' => $query ,
            'category' => $category ,
@@ -98,9 +106,60 @@ class HomeController extends BaseController
            'search_params' => $search_params
        ]) ;
      }
+
+
+     public function mergeRes($res1,$res2,$res3) {
+        $res = collect(new Ads());
+        $i=0 ;
+         foreach ($this->getLongerTab($res1,$res2,$res3) as $t) {
+             $res->push($t) ;
+
+         }
+
+
+        foreach ($res1 as $a ) {
+
+            if(!$this->contain($res,$a)){
+              $res->push($a) ;
+            }
+
+         }
+
+         foreach ($res2 as $a) {
+             if(!$this->contain($res,$a)){
+                 $res->push($a) ;
+
+             }
+         }
+
+         foreach ($res3 as $a) {
+
+             if(!$this->contain($res,$a)){
+                 $res->push($a) ;
+
+             }
+         }
+         return $res;
+
+     }
+     public function contain($res, $a){
+        foreach ($res as $r){
+
+            if($r['ads_id'] == $a['ads_id']) {
+
+                return true ;
+            }
+
+
+        }
+     }
+     public function getLongerTab($a_tab,$b_tab,$c_tab){
+        $a = count($a_tab) ;  $b = count($b_tab) ;  $c = count($c_tab) ;
+        return $a>$b ? ($a>$c? $a_tab : $c_tab) : ($b>$c ? $b_tab:$c_tab) ;
+      }
     public function getQueryParam($request){
 
-        $traceFields = ['adr','category_id'] ;
+        $traceFields = ['category_id'] ;
         $i =0 ;
         foreach ($traceFields as $field) {
 
@@ -123,25 +182,39 @@ class HomeController extends BaseController
         //
         $ads = Ads::find($id) ;
         if (!$ads) abort(404) ;
-        $view_name = null  ; $model = null  ;
+        $view_name = null  ; $model = null  ; $category = null ;
         if ($ads->apartment()){
             $view_name = "front.home.ads.apartment" ;
             $model = $ads->apartment() ;
+            $category = "Apartments" ;
+
+
+
         } else {
             if ($ads->car()) {
                 $view_name = "front.home.ads.car" ;
                 $model = $ads->car() ;
+                $category = "vehicule" ;
+                $ads->car()->vue = $ads->car()->vue + 1 ;
+                $ads->car()->save() ;
 
             }elseif ($ads->other()){
                 $view_name = "front.home.ads.other" ;
                 $model = $ads->other() ;
+                $category = "Autres" ;
+                $ads->other()->vue = $ads->other()->vue + 1 ;
+                $ads->other()->save() ;
+
             }
         }
+        $ads->vue = $ads->vue + 1 ;
+        $ads->update();
 
-        return view($view_name,[
+         return view($view_name,[
             'model' => $model ,
             'title' => 'ads' ,
-            'active' => 'ads'
+            'active' => 'ads' ,
+            'category' => $category
         ]) ;
     }
 

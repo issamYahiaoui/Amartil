@@ -20,22 +20,28 @@ Auth::routes();
 
 Route::resource('users', 'UserController');
 Route::put('me', 'UserController@updateProfile');
+Route::put('users/edit/{id}', 'UserController@updateUser');
+Route::get('users/edit/{id}', 'UserController@showEditForm');
 Route::put('users/{id}/activate', 'UserController@activate');
 Route::get('me', 'UserController@show');
+
 Route::get('img/{id}/delete', 'AdsController@deleteImage');
 Route::Resource('customers', 'CustomerController');
 Route::post('loginCustomer', 'Auth\LoginController@login');
 
 
+Route::get('/settings', 'SettingsController@index');
+Route::put('/settings', 'SettingsController@updateSettings');
 Route::get('/inbox', 'InboxController@inbox');
 Route::get('/inboxDetail/{id}', 'InboxController@inboxDetail');
 Route::get('/compose', 'InboxController@compose');
-Route::post('/reply', 'InboxController@reply');
+Route::post('/reply', 'InboxController@replyMessage');
 Route::post('/sendMessage', 'InboxController@sendMessage');
 
 
 
 Route::resource('ads', 'AdsController');
+Route::put('ads/{id}/activate', 'AdsController@activate');
 Route::resource('apartments', 'ApartmentController');
 Route::resource('cars', 'CarController');
 Route::resource('others', 'OtherController');
@@ -68,6 +74,7 @@ Route::get('about', 'HomeController@about');
 Route::get('show-ads/{type}', 'HomeController@allAds');
 Route::get('all-ads/{id}', 'HomeController@showAd');
 Route::get('search', 'HomeController@search');
+Route::get('settings-img/{id}/delete', 'SettingsController@deleteImage');
 
 Route::get('*', function() {
     return view('/') ;

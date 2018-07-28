@@ -3,15 +3,40 @@
 
 @section('content')
     <div class="col-md-12">
+        @if(count($errors->all())>0)
+            <div class="alert alert-danger text-center col-md-12 ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+                </button>
+                <ul class="list-unstyled text-center">
+                    @foreach($errors->all() as $error)
+                        <li class="text-center">
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(Session::has('success'))
+            <div id="alert" class="alert alert-success text-center col-md-12">
+
+                {{Session::get('success')}}
+                <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
+                            class="fa fa-minus"></i></span>
+            </div>
+        @endif
         <div class="white-box text-center">
             <form action="{{url('reply')}}" method="post">
                 {!! csrf_field() !!}
 
-                <input name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}" type="text" hidden>
-                <input name="sender" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" type="text" hidden>
+
                 <div class="form-group">
-                    <span>To</span>
-                    <input class="form-control" name="email" value="{{old('email')}}" >
+                    <label>To</label>
+                    <select class="form-control" name="to"  >
+                        @foreach(\App\User::where('role','customer')->get() as $customer)
+                            <option value="{{$customer->email}}">{{$customer->email}} </option>
+                         @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <span>Subject</span>
