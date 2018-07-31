@@ -17,23 +17,37 @@
                     <div class="col-md-10">
                         <div class="">
                             <div class="col-md-3">
-                                <div class="item ">
-                                    <div class="listar-themepost listar-categorypost">
-                                        <figure class="listar-featuredimg">
-                                            <a href="javascript:void(0);">
-                                                <img style="height: 190px" src="https://s-ec.bstatic.com/images/hotel/max1024x768/541/54198130.jpg" alt="image description">
-                                                <div class="listar-contentbox">
-                                                    <div class="listar-postcontent">
-                                                        <span class="listar-categoryicon listar-flip"><i class="icon-tourism"></i></span>
-                                                        <span class="listar-categoryicon listar-flip"><i class="icon-tourism"></i></span>
-                                                        <h3>Appartements</h3>
-
-                                                    </div>
+                                <div class="listar-themepost listar-categorypost">
+                                    <figure class="listar-featuredimg">
+                                        <a href="javascript:void(0);">
+                                            <img src="https://s-ec.bstatic.com/images/hotel/max1024x768/541/54198130.jpg" alt="image description">
+                                            <div class="listar-contentbox">
+                                                <div class="listar-postcontent">
+                                                    <span class="listar-categoryicon listar-flip"><i class="icon-foods"></i></span>
+                                                    <h3>Restaurant</h3>
+                                                    <h4>Food and Drinks</h4>
                                                 </div>
-                                            </a>
-                                        </figure>
-                                    </div>
+                                            </div>
+                                        </a>
+                                    </figure>
                                 </div>
+                                {{--<div class="item ">--}}
+                                    {{--<div class="listar-themepost listar-categorypost">--}}
+                                        {{--<figure class="listar-featuredimg">--}}
+                                            {{--<a href="javascript:void(0);">--}}
+                                                {{--<img style="height: 190px" src="https://s-ec.bstatic.com/images/hotel/max1024x768/541/54198130.jpg" alt="image description">--}}
+                                                {{--<div class="listar-contentbox">--}}
+                                                    {{--<div class="listar-postcontent">--}}
+                                                        {{--<span class="listar-categoryicon listar-flip"><i class="icon-tourism"></i></span>--}}
+                                                        {{--<span class="listar-categoryicon listar-flip"><i class="icon-tourism"></i></span>--}}
+                                                        {{--<h3>Appartements</h3>--}}
+
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</a>--}}
+                                        {{--</figure>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
                             <div class="col-md-3">
                                 <div class="item ">
