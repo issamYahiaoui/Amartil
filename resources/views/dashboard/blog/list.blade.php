@@ -60,9 +60,9 @@
                                 <td  class="text-center" >
 
                                     @if($model->img_url)
-                                        <img width="100px"  height="100px" class="img-responsive" src="{{asset('images/'.$model->img_url)}}" alt="">
+                                        <img width="100px"  height="100px" class="img-responsive" src="{{asset('images/blog/'.$model->img_url)}}" alt="">
                                     @else
-                                        <img width="100px"  height="100px" class="img-responsive" src="{{asset('dashboard/images/prop1.jpeg')}}" alt="">
+                                        <img width="100px"  height="100px" class="img-responsive" src="{{asset('dashboard/images/empty-image.png')}}" alt="">
                                     @endif
 
                                 </td>
