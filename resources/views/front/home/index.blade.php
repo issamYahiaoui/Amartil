@@ -14,6 +14,8 @@
 
     @include('layouts.partials.front.categories')
 
+    @include('layouts.partials.front.parallex1')
+        <br> <br>
 
     @include('layouts.partials.front.places')
 

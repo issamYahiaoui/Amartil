@@ -13,6 +13,36 @@
             <form enctype="multipart/form-data" class="listar-formtheme listar-formaddlisting" action="{{url('others')}}" method="POST">
                 @csrf
                 <div id="listar-addlistingsteps" class="listar-addlistingsteps">
+                    <div class="  listar-steptitle"><em>Location</em></div>
+
+                    <section>
+                        <div class="conditional_div">
+
+                            <fieldset>
+                                <div class="listar-boxtitle">
+                                    <h3>Location</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="">
+                                        <label class="control-label text-right ">Full Address</label>
+                                        <div class="form-group row">
+
+                                            <div class="col-md-12">
+                                                <input id="searchInput"  class="input-controls" type="text" placeholder="Enter a location">
+                                                <div class="map" id="map" style="width: 100%; height: 300px;"></div>
+                                                <div class="form_area">
+                                                    <input type="text" name="adr" id="location">
+                                                    <input type="text" name="lat" id="lat">
+                                                    <input type="text" name="lng" id="lng">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </div>
+                    </section>
                     <div class="listar-steptitle"><em>Basic Information</em></div>
                     <section>
                         <fieldset>
@@ -53,6 +83,15 @@
                                     </div>
 
                                 </div>
+
+
+
+
+
+
+                            </div>
+                            <div class="conditional_div">
+
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
                                     <div class="" id="imgs">
@@ -61,7 +100,7 @@
 
                                         <div class="row">
 
-                                            <input onchange="upload(event)" name="files[]" type="file" class="form-control" multiple >
+                                            <input onchange="upload(event)" name="files[]" type="file" class="form-control" multiple hidden>
                                             {{--<button id="triggerFile" type="button" class="btn btn-outline-info btn-rounded"><i class="fa fa-file-photo-o"></i> Upload Images</button>--}}
 
                                         </div>
@@ -74,46 +113,12 @@
                                     </div>
 
                                 </div>
-
-
-
-
-
                             </div>
                         </fieldset>
                     </section>
 
 
-                    <div class="  listar-steptitle"><em>Location</em></div>
 
-                    <section>
-                        <div class="conditional_div">
-
-                            <fieldset>
-                                <div class="listar-boxtitle">
-                                    <h3>Location</h3>
-                                </div>
-                                <div class="row">
-                                    <div class="">
-                                        <label class="control-label text-right ">Full Address</label>
-                                        <div class="form-group row">
-
-                                            <div class="col-md-12">
-                                                <input id="searchInput"  class="input-controls" type="text" placeholder="Enter a location">
-                                                <div class="map" id="map" style="width: 100%; height: 300px;"></div>
-                                                <div class="form_area">
-                                                    <input type="text" name="adr" id="location">
-                                                    <input type="text" name="lat" id="lat">
-                                                    <input type="text" name="lng" id="lng">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                        </div>
-                    </section>
 
 
 

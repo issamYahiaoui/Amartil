@@ -14,57 +14,7 @@
                 @csrf
 
                 <div id="listar-addlistingsteps" class="listar-addlistingsteps">
-                    <div class="listar-steptitle"><em>Basic Information</em></div>
-                    <section>
-                        <fieldset>
-                            <div class="listar-boxtitle">
-                                <h3>Basic Information</h3>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div class="form-group listar-dashboardfield">
-                                        <label>Titre de l'annonce</label>
-                                        <input type="text" name="title" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div class="form-group listar-dashboardfield">
-                                        <label>Lien Video <span>(Viemo or Youtube)</span></label>
-                                        <input type="url" name="video_url" class="form-control" placeholder="//:http">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6" id="description">
-                                    <div class="form-group listar-dashboardfield">
-                                        <label>Description</label>
-                                        <div class="clearfix"></div>
-                                        <textarea name="description" id="listar-tinymceeditor" class="listar-tinymceeditor"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div class="form-group listar-dashboardfield">
-                                        <label>Mobile</label>
-                                        <input type="text" name="owner_phone" class="form-control" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div class="form-group listar-dashboardfield">
-                                        <label for="intention">Que voulez vous faire ?</label>
-                                        <select id="intention" name="intention" class="listar-subscriptionchosen listar-chosendropdown">
-                                            <option value=""></option>
-                                            <option value="">Choose ...</option>
-                                            <option value="To Sale">Acheter</option>
-                                            <option value="To Rent">Louer</option>
-                                            <option value="Looking for property">Chercher ...</option>
-                                        </select>
-                                    </div>
 
-                                </div>
-
-
-
-                            </div>
-                        </fieldset>
-                    </section>
 
 
                         <div class="  listar-steptitle"><em>Location</em></div>
@@ -96,6 +46,7 @@
                             </fieldset>
                         </div>
                     </section>
+
 
 
                         <div class=" listar-steptitle"><em>Additinoal Detail</em></div>
@@ -254,33 +205,90 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
-                                        <div class="" id="imgs">
-                                            <h3 class="box-title"></h3>
-                                            <hr class="m-t-0 m-b-40">
-
-                                            <div class="row">
-
-                                                <input onchange="upload(event)" name="files[]" type="file" class="form-control" multiple hidden>
-                                                {{--<button id="triggerFile" type="button" class="btn btn-outline-info btn-rounded"><i class="fa fa-file-photo-o"></i> Upload Images</button>--}}
-
-                                            </div>
-                                            <br> <br>
-
-                                            <div id="result" class=" "   >
-
-                                            </div>
-                                            <br> <br>
-                                        </div>
-
-                                    </div>
 
 
 
                                 </div>
                             </fieldset>
                         </div>
+                    </section>
+
+
+                    <div class="listar-steptitle"><em>Basic Information</em></div>
+                    <section>
+                        <fieldset>
+                            <div class="listar-boxtitle">
+                                <h3>Basic Information</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group listar-dashboardfield">
+                                        <label>Titre de l'annonce</label>
+                                        <input type="text" name="title" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group listar-dashboardfield">
+                                        <label>Lien Video <span>(Viemo or Youtube)</span></label>
+                                        <input type="url" name="video_url" class="form-control" placeholder="//:http">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6" id="description">
+                                    <div class="form-group listar-dashboardfield">
+                                        <label>Description</label>
+                                        <div class="clearfix"></div>
+                                        <textarea name="description" id="listar-tinymceeditor" class="listar-tinymceeditor"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group listar-dashboardfield">
+                                        <label>Mobile</label>
+                                        <input type="text" name="owner_phone" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group listar-dashboardfield">
+                                        <label for="intention">Que voulez vous faire ?</label>
+                                        <select id="intention" name="intention" class="listar-subscriptionchosen listar-chosendropdown">
+                                            <option value=""></option>
+                                            <option value="">Choose ...</option>
+                                            <option value="To Sale">Acheter</option>
+                                            <option value="To Rent">Louer</option>
+                                            <option value="Looking for property">Chercher ...</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="conditional_div">
+
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                    <div class="" id="imgs">
+                                        <h3 class="box-title"></h3>
+                                        <hr class="m-t-0 m-b-40">
+
+                                        <div class="row">
+
+                                            <input onchange="upload(event)" name="files[]" type="file" class="form-control" multiple hidden>
+                                            {{--<button id="triggerFile" type="button" class="btn btn-outline-info btn-rounded"><i class="fa fa-file-photo-o"></i> Upload Images</button>--}}
+
+                                        </div>
+                                        <br> <br>
+
+                                        <div id="result" class=" "   >
+
+                                        </div>
+                                        <br> <br>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </fieldset>
                     </section>
 
                 </div>
