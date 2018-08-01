@@ -7,12 +7,12 @@
 
 
     <main id="listar-main" class="listar-main listar-haslayout">
-
+        @include('layouts.partials.front.categories')
 
     @include('layouts.partials.front.home-ads')
 
 
-    @include('layouts.partials.front.categories')
+
 
     @include('layouts.partials.front.parallex1')
         <br> <br>
