@@ -62,10 +62,10 @@
 <!--************************************
         Preloader Start
 *************************************-->
-<div class="preloader-outer">
-    <div class="pin"></div>
-    <div class="pulse"></div>
-</div>
+{{--<div class="preloader-outer">--}}
+    {{--<div class="pin"></div>--}}
+    {{--<div class="pulse"></div>--}}
+{{--</div>--}}
 @include('layouts.partials.front.header')
 <!--************************************
         Preloader End
