@@ -23,7 +23,7 @@
                             @endif
                         </li>
                         <li>
-                            <a class="listar-btn listar-btngreen" href="{{url('u/add-ad')}}">
+                            <a class="listar-btn listar-btngreen big-add-button" href="{{url('u/add-ad')}}">
                                 <i class="icon-plus"></i>
                                 <span>Ajouter Une Annonce </span>
                             </a>
@@ -70,6 +70,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+                        <a class="listar-btn listar-btngreen collapse add-button"  href="{{url('u/add-ad')}}">
+                            <i class="icon-plus"></i>
+                            <span></span>
+                        </a>
+
                     </div>
                     <div id="listar-navigation" class="collapse navbar-collapse listar-navigation">
                         <ul class="nav-black">
@@ -150,3 +155,23 @@
         </div>
     </div>
 </header>
+
+<style>
+    .add-button{
+        display: none;
+    }
+    .big-add-button{
+        display: inline-block;
+    }
+
+    @media screen and (max-width: 600px) {
+        .add-button{
+            margin: 5px;width: 20%;height: 6%;
+            display: inline-block;
+        }
+        .big-add-button{
+            display: none;
+        }
+
+    }
+</style>
