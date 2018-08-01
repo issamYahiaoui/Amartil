@@ -10,7 +10,7 @@
                 </div>
                 <div class="">
                     <div class="listar-themeposts listar-categoryposts">
-                        <div class="listar-horizontalthemescrollbar mCustomScrollbar _mCS_2">
+                        <div class="">
                             @foreach(\App\Ads::orderBy('active', 'desc')->get()->take(3) as $ad)
                                 {{--{{dd($ad->car())}}--}}
                                 <div class=" col-md-4">
