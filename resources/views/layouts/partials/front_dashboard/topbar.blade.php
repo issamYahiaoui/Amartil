@@ -108,7 +108,7 @@
                             <li class="menu-item-has-children">
                                 <a href="javascript:void(0);">Explorer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="{{url('show-ads/all')}}">Tous les annonces</a></li>
+                                    <li><a href="{{url('show-ads/all')}}">Toutes les annonces</a></li>
                                     <li class="menu-item">
                                         <a href="{{url('show-ads/apartments')}}">Appartements</a>
 
