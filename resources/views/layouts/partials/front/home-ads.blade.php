@@ -16,7 +16,7 @@
                     <div class="row">
                         @foreach(\App\Ads::orderBy('active', 'desc')->get()->take(9) as $ad)
                             {{--{{dd($ad->car())}}--}}
-                            <div class=" col-md-4">
+                            <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="listar-themepost listar-placespost">
                                     <figure  class="listar-featuredimg">
                                         @if($ad->featured)
