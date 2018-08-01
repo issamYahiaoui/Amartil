@@ -1,6 +1,6 @@
 <section class="listar-sectionspace listar-haslayout listar-bglight">
     <div class="container">
-        <div class="listar-horizontalthemescrollbar mCustomScrollbar _mCS_2">
+        <div class="">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="listar-sectionhead">
