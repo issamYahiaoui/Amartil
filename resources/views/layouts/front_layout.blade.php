@@ -30,6 +30,11 @@
     <link rel="stylesheet" href="{{asset('front/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('css/xzoom.css')}}">
+    <style>
+        body.listar-home .listar-header.listar_darkheader {
+            background: rgba(0, 0, 0, 0);
+        }
+    </style>
 
     {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/util.js"></script>--}}
     {{--<script type="text/javascript" charset="UTF-8" src="https://maps.google.com/maps-api-v3/api/js/33/6a/common.js"></script>--}}
