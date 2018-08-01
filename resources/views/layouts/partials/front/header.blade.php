@@ -28,6 +28,7 @@
                                 <span>Ajouter Une Annonce </span>
                             </a>
                         </li>
+                        @if( ! \Illuminate\Support\Facades\Auth::user())
                         <li>
                             <div class="dropdown listar-themedropdown">
                                 <a id="listar-cartdropdown" style="color: #f98925 !important;" class="big-add-button listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,6 +60,7 @@
                                 </div>
                             </div>
                         </li>
+                            @endif
 
                     </ul>
                 </nav>
@@ -71,35 +73,7 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                            <div class="dropdown listar-themedropdown">
-                                <a id="listar-cartdropdown" style="color: #f98925 !important;" class=" add-button listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @if(\Illuminate\Support\Facades\Auth::user())
-                                        <em>{{count(\App\Message::where('read_by_receiver',0)->where('to',\Illuminate\Support\Facades\Auth::user()->email)->get())}}</em>
-                                    @endif
-                                    <i class="icon-email"></i>
-                                </a>
-                                <div class="dropdown-menu listar-themedropdownmenu listar-minicart" aria-labelledby="listar-cartdropdown">
-                                    @if(\Illuminate\Support\Facades\Auth::user())
-                                        @foreach(\App\Message::where('read_by_receiver',0)->where('to',\Illuminate\Support\Facades\Auth::user()->email)->get() as $newMessage)
 
-                                            <div class="listar-cartitem">
-                                                <div class="listar-iteminfo">
-                                                    <a href="{{url('u/detail/'.$newMessage->id)}}">
-                                                        <div class="mail-contnet">
-                                                            <h5>{{$newMessage->from}}</h5>
-                                                            <span class="mail-desc">{{$newMessage->subject}}</span>
-                                                            <span class="time">{{ date_format(new DateTime($newMessage->created_at),'d M')}}</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                        @endforeach
-                                    @endif
-
-                                    <a class="listar-btn listar-btngreen listar-btn-lg" href="{{url('u/inbox')}}">Voir tous les messages</a>
-                                </div>
-                            </div>
 
                         @if( ! \Illuminate\Support\Facades\Auth::user())
 
