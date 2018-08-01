@@ -16,7 +16,7 @@
                         <li>
                             @if( ! \Illuminate\Support\Facades\Auth::user())
 
-                                <a id="listar-btnsignin" class="listar-btn listar-btnblue" href="#listar-loginsingup">
+                                <a id="listar-btnsignin" class="listar-btn listar-btnblue big-add-button" href="#listar-loginsingup">
                                     <i class="icon-smiling-face"></i>
                                     <span>Se Connecter</span>
                                 </a>
@@ -30,7 +30,7 @@
                         </li>
                         <li>
                             <div class="dropdown listar-themedropdown">
-                                <a id="listar-cartdropdown" style="color: #f98925 !important;" class="listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a id="listar-cartdropdown" style="color: #f98925 !important;" class="big-add-button listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if(\Illuminate\Support\Facades\Auth::user())
                                         <em>{{count(\App\Message::where('read_by_receiver',0)->where('to',\Illuminate\Support\Facades\Auth::user()->email)->get())}}</em>
                                     @endif
@@ -70,10 +70,49 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
+
+                            <div class="dropdown listar-themedropdown">
+                                <a id="listar-cartdropdown" style="color: #f98925 !important;" class=" add-button listar-btn listar-btnround listar-btncartdropdown" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if(\Illuminate\Support\Facades\Auth::user())
+                                        <em>{{count(\App\Message::where('read_by_receiver',0)->where('to',\Illuminate\Support\Facades\Auth::user()->email)->get())}}</em>
+                                    @endif
+                                    <i class="icon-email"></i>
+                                </a>
+                                <div class="dropdown-menu listar-themedropdownmenu listar-minicart" aria-labelledby="listar-cartdropdown">
+                                    @if(\Illuminate\Support\Facades\Auth::user())
+                                        @foreach(\App\Message::where('read_by_receiver',0)->where('to',\Illuminate\Support\Facades\Auth::user()->email)->get() as $newMessage)
+
+                                            <div class="listar-cartitem">
+                                                <div class="listar-iteminfo">
+                                                    <a href="{{url('u/detail/'.$newMessage->id)}}">
+                                                        <div class="mail-contnet">
+                                                            <h5>{{$newMessage->from}}</h5>
+                                                            <span class="mail-desc">{{$newMessage->subject}}</span>
+                                                            <span class="time">{{ date_format(new DateTime($newMessage->created_at),'d M')}}</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        @endforeach
+                                    @endif
+
+                                    <a class="listar-btn listar-btngreen listar-btn-lg" href="{{url('u/inbox')}}">Voir tous les messages</a>
+                                </div>
+                            </div>
+
+                        @if( ! \Illuminate\Support\Facades\Auth::user())
+
+                            <a id="listar-btnsignin" class="listar-btn listar-btnblue add-button" href="#listar-loginsingup">
+                                <i class="fa fa-lock"></i>
+                                <span></span>
+                            </a>
+                        @endif
                         <a class="listar-btn listar-btngreen collapse add-button"  href="{{url('u/add-ad')}}">
                             <i class="icon-plus"></i>
                             <span></span>
                         </a>
+
 
                     </div>
                     <div id="listar-navigation" class="collapse navbar-collapse listar-navigation">
@@ -167,6 +206,10 @@
     @media screen and (max-width: 600px) {
         .add-button{
             margin: 5px;width: 20%;height: 6%;
+            display: inline-block;
+        }
+        .msg-add-button{
+            margin: 3px;width: 20%;height: 6%;
             display: inline-block;
         }
         .big-add-button{
