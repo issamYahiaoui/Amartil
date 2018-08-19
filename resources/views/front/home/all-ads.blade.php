@@ -87,14 +87,18 @@
                                             {{--{{dd($ad->car())}}--}}
                                             <div class="col-md-offset-1 col-md-10">
                                                 <div class="listar-themepost listar-placespost">
-                                                    <figure style="max-height: 315px" class="listar-featuredimg"><span href="detailv1.html">
-                                                            @if(count($ad->images()) > 0)
-                                                                <img src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
-                                                            @else
-                                                                <img  src="{{asset('images/empty-image.png')}}" alt="image description" class="mCS_img_loaded">
-                                                            @endif
+                                                    <a  href="{{url('all-ads/'.$ad->id)}}">
+                                                        <figure style="max-height: 315px" class="listar-featuredimg"><span href="detailv1.html">
+
+                                                                 @if(count($ad->images()) > 0)
+                                                                    <img src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
+                                                                @else
+                                                                    <img  src="{{asset('images/empty-image.png')}}" alt="image description" class="mCS_img_loaded">
+                                                                @endif
 
                                                         </span></figure>
+                                                    </a>
+
                                                     <div class="listar-postcontent" >
                                                         <span class="ad_num" style="border: solid #2457cf 2px ;
                                                          border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF">

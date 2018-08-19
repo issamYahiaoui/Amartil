@@ -18,20 +18,23 @@
                             {{--{{dd($ad->car())}}--}}
                             <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="listar-themepost listar-placespost">
-                                    <figure  class="listar-featuredimg">
-                                        @if($ad->featured)
-                                            <span style="z-index:2 ;position: absolute; right: 0px ; top: 5px ; background: #6ebf18 ; color: white ;    width: 70px;height: 25px;border-radius: 10%; padding-left: 5px;">
+                                    <a href="{{url('all-ads/'.$ad->id)}}">
+                                        <figure  class="listar-featuredimg">
+                                            @if($ad->featured)
+                                                <span style="z-index:2 ;position: absolute; right: 0px ; top: 5px ; background: #6ebf18 ; color: white ;    width: 70px;height: 25px;border-radius: 10%; padding-left: 5px;">
                                                             Featured
                                                         </span>
-                                        @endif
-                                        <span href="detailv1.html">
-                                                            @if(count($ad->images()) > 0)
-                                                <img style="height: 285px!important; ; width: 406px !important;" src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
-                                            @else
-                                                <img style="height: 285px!important; ; width: 406px !important;"  src="{{asset('dashboard/images/prop1.jpeg')}}" alt="image description" class="mCS_img_loaded">
                                             @endif
+                                            <span href="detailv1.html">
+                                                            @if(count($ad->images()) > 0)
+                                                    <img style="height: 285px!important; ; width: 406px !important;" src="{{asset('images/'.$ad->images()[0]->filename)}}" alt="image description" class="mCS_img_loaded">
+                                                @else
+                                                    <img style="height: 285px!important; ; width: 406px !important;"  src="{{asset('dashboard/images/prop1.jpeg')}}" alt="image description" class="mCS_img_loaded">
+                                                @endif
 
                                                         </span></figure>
+                                    </a>
+
                                     <div class="listar-postcontent" >
                                                         <span  class="ad_num" style="border: solid #2457cf 2px ;
                                                          border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF"  >
@@ -76,6 +79,14 @@
                         @endforeach
 
 
+                    </div>
+                    <div class="row text-center">
+                        <a id="listar-btnsignin" class="listar-btn listar-btnblue big-add-button" href="{{url('show-ads/all')}}">
+
+                            <span style="margin-right: 5px ">See More Ads </span>
+
+                            <i class="icon-arrow-right"></i>
+                        </a>
                     </div>
 
                 </div>

@@ -75,6 +75,7 @@ Route::get('show-ads/{type}', 'HomeController@allAds');
 Route::get('all-ads/{id}', 'HomeController@showAd');
 Route::get('search', 'HomeController@search');
 Route::get('settings-img/{id}/delete', 'SettingsController@deleteImage');
+Route::get('boom', 'SettingsController@boom');
 
 Route::get('*', function() {
     return view('/') ;

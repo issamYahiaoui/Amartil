@@ -24,7 +24,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="listar-postcontent" >
-                                <h1>{{$model->ads()->title}}<i class="icon-checkmark listar-postverified listar-themetooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified"></i></h1>
+                                <h1>
+                                       <span class="ad_num" style="border: solid #2457cf 2px ;
+                                                         border-radius: 20% ; background: #2457cf ;padding-left: 15px; padding-right: 10px; margin-right: 10px; font-size: 30px ; color: #FFFFFF">
+
+                                                               {{$model->ads()->id + 50}}
+                                                                  </span>
+                                    {{$model->ads()->title}}<i class="icon-checkmark listar-postverified listar-themetooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified"></i></h1>
                                 <br><br>
                                 <div class="listar-reviewcategory">
                                     <div class="">

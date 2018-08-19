@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session ;
 use Illuminate\Support\Facades\Redirect ;
 use Intervention\Image\Facades\Image;
+use File ;
 
 class SettingsController extends BaseController
 {
@@ -26,17 +27,20 @@ class SettingsController extends BaseController
         $settings  =  Settings::all()->first() ;
         if (!$settings) abort(404) ;
         $files =$request->file('files') ;
-        if (count($files)){
+        if($files){
+            if (count($files)){
 
-            for ($i=0 ; $i< count($files); $i++) {
-                $img = $files[$i]->getClientOriginalName() ;
-                //dd($img);
-                Image::make($files[$i]->getRealPath())->save(public_path('images/slider/' . $img));
-                SettingsPhoto::create([
-                    'filename' => $img
-                ]) ;
+                for ($i=0 ; $i< count($files); $i++) {
+                    $img = $files[$i]->getClientOriginalName() ;
+                    //dd($img);
+                    Image::make($files[$i]->getRealPath())->save(public_path('images/slider/' . $img));
+                    SettingsPhoto::create([
+                        'filename' => $img
+                    ]) ;
+                }
             }
         }
+
         $settings->update([
             'website_name' => $request->get('website_name'),
             'website_phone' => $request->get('website_phone'),
@@ -49,6 +53,9 @@ class SettingsController extends BaseController
         ]) ;
         Session::Flash('success',"Operation has successfully finished");
         return Redirect::back();
+    }
+    public function boom(){
+
     }
 
     public function deleteImage($id){
